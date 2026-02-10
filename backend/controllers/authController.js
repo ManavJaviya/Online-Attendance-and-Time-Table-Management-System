@@ -18,7 +18,7 @@ exports.login = async (req, res) => {
     if (snapshot.empty) {
       return res.status(401).json({ message: "Invalid credentials" });
     }
-
+    //
     res.status(200).json({
       message: "Login successful",
       role: role.trim().toLowerCase(),
