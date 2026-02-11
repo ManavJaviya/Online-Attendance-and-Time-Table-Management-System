@@ -1,0 +1,40 @@
+{
+  "subjects": {
+    "DataStructures": {
+      "subjectName": "Data Structures",
+      "facultyId": "FAC201",
+      "semester": 6,
+      "classes": ["CE1", "CE2", "CE3", "CE4", "CE5"]
+    },
+    "DatabaseManagementSystem": {
+      "subjectName": "Database Management System",
+      "facultyId": "FAC202",
+      "semester": 6,
+      "classes": ["CE1", "CE2", "CE3", "CE4", "CE5"]
+    },
+    "ComputerNetworks": {
+      "subjectName": "Computer Networks",
+      "facultyId": "FAC203",
+      "semester": 6,
+      "classes": ["CE1", "CE2", "CE3", "CE4", "CE5"]
+    },
+    "ArtificialIntelligence": {
+      "subjectName": "Artificial Intelligence",
+      "facultyId": "FAC204",
+      "semester": 6,
+      "classes": ["CE1", "CE2", "CE3", "CE4", "CE5"]
+    },
+    "TheoryOfComputation": {
+      "subjectName": "Theory of Computation",
+      "facultyId": "FAC205",
+      "semester": 6,
+      "classes": ["CE1", "CE2", "CE3", "CE4", "CE5"]
+    },
+    "SoftwareEngineering": {
+      "subjectName": "Software Engineering",
+      "facultyId": "FAC206",
+      "semester": 6,
+      "classes": ["CE1", "CE2", "CE3", "CE4", "CE5"]
+    }
+  }
+}
