@@ -44,6 +44,6 @@ async function importSubjects() {
     console.error(" Error importing subjects:", error);
   }
 }
-
+//
 // Call the function to start importing
 importSubjects();
