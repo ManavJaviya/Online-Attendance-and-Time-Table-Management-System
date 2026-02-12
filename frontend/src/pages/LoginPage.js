@@ -1,60 +1,116 @@
-import { useState } from "react";
-import axios from "axios";
+import React, { useState } from "react";
+import { collection, query, where, getDocs } from "firebase/firestore";
+import { db } from "../firebase";
 import { useNavigate } from "react-router-dom";
-import "../styles/login.css";
+import "./LoginPage.css";
 
 const LoginPage = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [role, setRole] = useState("student");
-
   const navigate = useNavigate();
 
-  const handleLogin = async () => {
-    try {
-      const res = await axios.post("http://localhost:5000/api/auth/login", {
-        email,
-        password,
-        role,
-      });
+  // Selected role (admin / faculty / student)
+  const [selectedRole, setSelectedRole] = useState(null);
 
-      if (res.data.role === "admin") navigate("/admin");
-      if (res.data.role === "faculty") navigate("/faculty");
-      if (res.data.role === "student") navigate("/student");
+  // Login fields
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  // ================= LOGIN FUNCTION =================
+  const handleLogin = async (e) => {
+    e.preventDefault();
+
+    if (!selectedRole) {
+      alert("Please select role first");
+      return;
+    }
+
+    try {
+      const q = query(
+        collection(db, "users"),
+        where("email", "==", email),
+        where("password", "==", password),
+        where("role", "==", selectedRole) // check selected role
+      );
+
+      const querySnapshot = await getDocs(q);
+
+      if (!querySnapshot.empty) {
+        const userData = querySnapshot.docs[0].data();
+
+        localStorage.setItem("user", JSON.stringify(userData));
+
+        // redirect by role
+        if (selectedRole === "admin") navigate("/admin");
+        if (selectedRole === "faculty") navigate("/faculty");
+        if (selectedRole === "student") navigate("/student");
+
+      } else {
+        alert("Invalid credentials");
+      }
+
     } catch (error) {
-      alert("Invalid credentials");
+      console.error(error);
     }
   };
 
+  // ================= UI =================
   return (
     <div className="login-container">
-      <div className="login-card">
-        <h1 className="login-title">Smart Attendance System</h1>
-        <p className="login-subtitle">Academic Login Portal</p>
 
-        <label>User Role</label>
-        <select value={role} onChange={(e) => setRole(e.target.value)}>
-          <option value="student">Student</option>
-          <option value="faculty">Faculty</option>
-          <option value="admin">Admin</option>
-        </select>
+      <h1 className="login-title">Attendance System</h1>
 
-        <label>Email</label>
-        <input
-          type="email"
-          placeholder="Enter email"
-          onChange={(e) => setEmail(e.target.value)}
-        />
+      {/* ROLE SELECTION */}
+      {!selectedRole && (
+        <div className="role-grid">
 
-        <label>Password</label>
-        <input
-          type="password"
-          placeholder="Enter password"
-          onChange={(e) => setPassword(e.target.value)}
-        />
+          <div className="role-card" onClick={() => setSelectedRole("admin")}>
+            <div className="role-icon">👨‍💼</div>
+            <h3>Admin</h3>
+          </div>
 
-        <button onClick={handleLogin}>Login</button>
-      </div>
+          <div className="role-card" onClick={() => setSelectedRole("faculty")}>
+            <div className="role-icon">👩‍🏫</div>
+            <h3>Faculty</h3>
+          </div>
+
+          <div className="role-card" onClick={() => setSelectedRole("student")}>
+            <div className="role-icon">🎓</div>
+            <h3>Student</h3>
+          </div>
+
+        </div>
+      )}
+
+      {/* LOGIN FORM */}
+      {selectedRole && (
+        <form className="login-form" onSubmit={handleLogin}>
+
+          <h2>{selectedRole.toUpperCase()} LOGIN</h2>
+
+          <input
+            type="email"
+            placeholder="Enter email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            required
+          />
+
+          <input
+            type="password"
+            placeholder="Enter password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            required
+          />
+
+          <button type="submit">Login</button>
+
+          <p className="back-btn" onClick={() => setSelectedRole(null)}>
+            ← Change Role
+          </p>
+
+        </form>
+      )}
+
     </div>
   );
 };
