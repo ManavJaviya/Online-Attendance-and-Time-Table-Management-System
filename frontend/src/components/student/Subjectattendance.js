@@ -1,6 +1,7 @@
 import React from 'react';
 import './Subjectattendance.css';
 
+
 const SubjectAttendance = ({ subjects, onViewDetails }) => {
   return (
     <div className="subject-attendance-card">

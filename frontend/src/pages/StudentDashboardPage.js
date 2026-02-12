@@ -1,16 +1,15 @@
-import React from 'react';
-import { useNavigate } from 'react-router-dom';
-import TopHeader from '../components/student/Topheader';
-import StatsCard from '../components/student/Statscard';
-import SubjectAttendance from '../components/student/Subjectattendance';
-import TodaySchedule from '../components/student/Todayschedule';
-import AttendanceAlert from '../components/student/Attendancealert';
-import './Studentdashboardpage.css';
+import React from "react";
+import Navbar from "../components/Navbar";
+import { useNavigate } from "react-router-dom";
+import StatsCard from "../components/student/Statscard";
+import SubjectAttendance from "../components/student/Subjectattendance";
+import TodaySchedule from "../components/student/Todayschedule";
+import AttendanceAlert from "../components/student/Attendancealert";
+import "./FacultyDashboardPage.css";   // ← USE FACULTY THEME
 
 const StudentDashboardPage = () => {
   const navigate = useNavigate();
 
-  // Mock data
   const subjectAttendance = [
     { subject: "Data Structures", code: "CS201", percentage: 92, classes: 24, attended: 22 },
     { subject: "Algorithm Design", code: "CS301", percentage: 88, classes: 20, attended: 18 },
@@ -25,74 +24,85 @@ const StudentDashboardPage = () => {
   ];
 
   const overallAttendance = 87;
-  const lowAttendanceSubjects = subjectAttendance.filter((s) => s.percentage < 75);
+  const lowAttendanceSubjects = subjectAttendance.filter(s => s.percentage < 75);
 
   return (
-    <div className="student-dashboard-layout">
-      <TopHeader />
-      
-      <div className="student-dashboard-content">
-        {/* Page Header */}
+    <div className="faculty-dashboard-layout">
+      <Navbar />
+
+      <div className="faculty-dashboard-container">
+
+        {/* HEADER */}
         <div className="dashboard-header">
           <h1 className="dashboard-title">Student Dashboard</h1>
-          <p className="dashboard-subtitle">Track your attendance and view your schedule.</p>
+          <p className="dashboard-subtitle">Track your attendance and schedule</p>
         </div>
 
-        {/* Alert for low attendance */}
+        {/* ALERT */}
         {lowAttendanceSubjects.length > 0 && (
-          <AttendanceAlert 
-            count={lowAttendanceSubjects.length}
-            onViewDetails={() => navigate('/student/alerts')}
-          />
+          <div className="classes-card">
+            <AttendanceAlert
+              count={lowAttendanceSubjects.length}
+              onViewDetails={() => navigate("/student/alerts")}
+            />
+          </div>
         )}
 
-        {/* Stats Grid */}
+        {/* STATS */}
         <div className="stats-grid">
           <StatsCard
             title="Overall Attendance"
             value={`${overallAttendance}%`}
-            change={overallAttendance >= 75 ? "Above minimum" : "Below minimum!"}
-            changeType={overallAttendance >= 75 ? "positive" : "negative"}
-            icon="📋"
+            change="This semester"
+            changeType="positive"
+            icon="📊"
             iconClassName="stat-icon-primary"
           />
+
           <StatsCard
             title="Classes Today"
             value="4"
-            change="Next: 11:00 AM"
+            change="Next class 11 AM"
             changeType="neutral"
             icon="📅"
             iconClassName="stat-icon-accent"
           />
+
           <StatsCard
-            title="Classes Attended"
-            value="84"
-            change="This semester"
+            title="Subjects"
+            value="4"
+            change="Enrolled"
             changeType="neutral"
-            icon="✓"
+            icon="📚"
             iconClassName="stat-icon-success"
           />
+
           <StatsCard
-            title="Subjects at Risk"
-            value={lowAttendanceSubjects.length.toString()}
-            change={lowAttendanceSubjects.length > 0 ? "Need attention" : "All good!"}
-            changeType={lowAttendanceSubjects.length > 0 ? "negative" : "positive"}
+            title="Low Attendance"
+            value={lowAttendanceSubjects.length}
+            change="Need attention"
+            changeType="negative"
             icon="⚠"
             iconClassName="stat-icon-warning"
           />
         </div>
 
-        {/* Subject-wise Attendance */}
-        <SubjectAttendance 
-          subjects={subjectAttendance}
-          onViewDetails={() => navigate('/student/attendance')}
-        />
+        {/* SUBJECT CARD */}
+        <div className="classes-card">
+          <SubjectAttendance
+            subjects={subjectAttendance}
+            onViewDetails={() => navigate("/student/attendance")}
+          />
+        </div>
 
-        {/* Today's Schedule */}
-        <TodaySchedule 
-          schedule={todaySchedule}
-          onViewFull={() => navigate('/student/timetable')}
-        />
+        {/* SCHEDULE */}
+        <div className="classes-card">
+          <TodaySchedule
+            schedule={todaySchedule}
+            onViewFull={() => navigate("/student/timetable")}
+          />
+        </div>
+
       </div>
     </div>
   );

@@ -1,12 +1,12 @@
 /* Student StatsCard Component Styles */
 
 .student-stats-card {
-  background: var(--color-bg-card);
-  border-radius: var(--border-radius);
-  box-shadow: var(--shadow-sm);
-  overflow: hidden;
-  transition: transform 0.2s, box-shadow 0.2s;
+  background: white;
+  border-radius: 0.75rem;
+  padding: 1.25rem;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.08);
 }
+
 
 .student-stats-card:hover {
   transform: translateY(-2px);
