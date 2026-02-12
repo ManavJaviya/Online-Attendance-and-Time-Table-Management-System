@@ -3,7 +3,6 @@ import { useNavigate } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import "./FacultyAttendancePage.css";
 
-// mock students
 const mockStudents = [
   { id: "1", name: "John Doe", rollNo: "101" },
   { id: "2", name: "Harsh", rollNo: "102" },
@@ -20,12 +19,10 @@ export default function FacultyAttendancePage() {
   const navigate = useNavigate();
   const [topic, setTopic] = useState("");
 
-  // default all absent
   const [attendance, setAttendance] = useState(
     Object.fromEntries(mockStudents.map((s) => [s.id, false]))
   );
 
-  // toggle present/absent
   const toggleStudent = (id) => {
     setAttendance((prev) => ({
       ...prev,
@@ -33,14 +30,11 @@ export default function FacultyAttendancePage() {
     }));
   };
 
-  // mark all present
   const markAllPresent = () => {
     setAttendance(Object.fromEntries(mockStudents.map((s) => [s.id, true])));
   };
 
   const handleSubmit = () => {
-    console.log("Topic:", topic);
-    console.log("Attendance:", attendance);
     alert("Attendance Submitted Successfully");
     navigate("/faculty");
   };
@@ -50,16 +44,28 @@ export default function FacultyAttendancePage() {
       <Navbar />
 
       <div className="faculty-attendance-container">
-        
-        {/* Header */}
+
+        {/* HEADER */}
         <div className="attendance-header">
-          <h1>Mark Attendance</h1>
-          <p>Record student attendance for today's class</p>
+
+          <div className="header-row">
+            <button
+              className="back-btn"
+              onClick={() => navigate("/faculty")}
+            >
+              <span className="arrow">←</span>
+            </button>
+
+            <div>
+              <h1>Mark Attendance</h1>
+              <p>Record student attendance for today's class</p>
+            </div>
+          </div>
+
         </div>
 
         <div className="grid-attendance-container">
           
-          {/* TOP BAR */}
           <div className="top-bar">
             <input
               type="text"
@@ -74,7 +80,6 @@ export default function FacultyAttendancePage() {
             </button>
           </div>
 
-          {/* GRID */}
           <div className="student-grid">
             {mockStudents.map((student) => (
               <div
@@ -90,12 +95,12 @@ export default function FacultyAttendancePage() {
             ))}
           </div>
 
-          {/* SUBMIT */}
           <div className="submit-wrapper">
             <button className="submit-btn" onClick={handleSubmit}>
               Submit Attendance
             </button>
           </div>
+
         </div>
       </div>
     </div>

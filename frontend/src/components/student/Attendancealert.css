@@ -1,0 +1,89 @@
+/* AttendanceAlert Component Styles */
+
+.attendance-alert {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 1.5rem;
+  background-color: hsla(0, 84%, 60%, 0.05);
+  border: 1px solid hsla(0, 84%, 60%, 0.3);
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow-sm);
+}
+
+.alert-icon {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  background-color: hsla(0, 84%, 60%, 0.1);
+  border-radius: 0.5rem;
+  color: var(--color-destructive);
+}
+
+.alert-icon .icon {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+.alert-content {
+  flex: 1;
+}
+
+.alert-title {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--color-destructive);
+  margin: 0 0 0.25rem 0;
+}
+
+.alert-message {
+  font-size: 0.875rem;
+  color: var(--color-text-muted);
+  margin: 0;
+  line-height: 1.5;
+}
+
+.alert-button {
+  padding: 0.5rem 1rem;
+  background-color: white;
+  color: var(--color-destructive);
+  border: 1px solid var(--color-destructive);
+  border-radius: 0.5rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.2s;
+}
+
+.alert-button:hover {
+  background-color: var(--color-destructive);
+  color: white;
+}
+
+@media (max-width: 768px) {
+  .attendance-alert {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 1rem;
+  }
+
+  .alert-button {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .alert-icon {
+    width: 2rem;
+    height: 2rem;
+  }
+
+  .alert-icon .icon {
+    width: 1.25rem;
+    height: 1.25rem;
+  }
+}
