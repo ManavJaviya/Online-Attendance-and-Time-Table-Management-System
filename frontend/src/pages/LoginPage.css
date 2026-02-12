@@ -1,0 +1,72 @@
+.login-container {
+  min-height: 100vh;
+  background: #f4f6fb;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.login-title {
+  margin-bottom: 30px;
+}
+
+/* ROLE CARDS */
+
+.role-grid {
+  display: flex;
+  gap: 30px;
+}
+
+.role-card {
+  width: 160px;
+  height: 160px;
+  background: white;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+  transition: 0.2s;
+}
+
+.role-card:hover {
+  transform: translateY(-5px);
+}
+
+.role-icon {
+  font-size: 40px;
+  margin-bottom: 10px;
+}
+
+/* LOGIN FORM */
+
+.login-form {
+  width: 320px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.login-form input {
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid #ddd;
+}
+
+.login-form button {
+  padding: 10px;
+  border: none;
+  background: #3b5bdb;
+  color: white;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.back-btn {
+  text-align: center;
+  cursor: pointer;
+  color: #666;
+}

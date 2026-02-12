@@ -1,107 +1,155 @@
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { useNavigate, useLocation } from "react-router-dom";
 import Navbar from "../components/Navbar";
+import { collection, getDocs, addDoc } from "firebase/firestore";
+import { db } from "../firebase";
 import "./FacultyAttendancePage.css";
-
-const mockStudents = [
-  { id: "1", name: "John Doe", rollNo: "101" },
-  { id: "2", name: "Harsh", rollNo: "102" },
-  { id: "3", name: "Meet", rollNo: "103" },
-  { id: "4", name: "Raj", rollNo: "104" },
-  { id: "5", name: "Amit", rollNo: "105" },
-  { id: "6", name: "Riya", rollNo: "106" },
-  { id: "7", name: "Neha", rollNo: "107" },
-  { id: "8", name: "Dev", rollNo: "108" },
-  { id: "9", name: "Karan", rollNo: "109" },
-];
 
 export default function FacultyAttendancePage() {
   const navigate = useNavigate();
+  const location = useLocation();
+
+  // class passed from dashboard
+  const selectedClass = location.state?.className;
+
+  // logged in faculty
+  const user = JSON.parse(localStorage.getItem("user"));
+
+  // ================= STATES =================
   const [topic, setTopic] = useState("");
+  const [students, setStudents] = useState([]);
+  const [attendance, setAttendance] = useState({});
 
-  const [attendance, setAttendance] = useState(
-    Object.fromEntries(mockStudents.map((s) => [s.id, false]))
-  );
+  // ================= FETCH STUDENTS =================
+  useEffect(() => {
+    // if no class selected → do nothing
+    if (!selectedClass) return;
 
+    const fetchStudents = async () => {
+      try {
+        const snapshot = await getDocs(collection(db, "students"));
+
+        const filtered = snapshot.docs
+          .map(doc => ({ id: doc.id, ...doc.data() }))
+          .filter(student => student.class === selectedClass);
+
+        setStudents(filtered);
+
+        const initial = Object.fromEntries(
+          filtered.map(s => [s.id, false])
+        );
+        setAttendance(initial);
+
+      } catch (error) {
+        console.error("Error fetching students:", error);
+      }
+    };
+
+    fetchStudents();
+  }, [selectedClass]);
+
+  // ================= TOGGLE =================
   const toggleStudent = (id) => {
-    setAttendance((prev) => ({
+    setAttendance(prev => ({
       ...prev,
-      [id]: !prev[id],
+      [id]: !prev[id]
     }));
   };
 
+  // ================= ALL PRESENT =================
   const markAllPresent = () => {
-    setAttendance(Object.fromEntries(mockStudents.map((s) => [s.id, true])));
+    const allPresent = Object.fromEntries(
+      students.map(s => [s.id, true])
+    );
+    setAttendance(allPresent);
   };
 
-  const handleSubmit = () => {
-    alert("Attendance Submitted Successfully");
-    navigate("/faculty");
+  // ================= SUBMIT =================
+  const handleSubmit = async () => {
+    try {
+      await addDoc(collection(db, "attendance"), {
+        facultyId: user.userId,
+        class: selectedClass,
+        topic: topic,
+        date: new Date().toISOString(),
+        attendance: attendance
+      });
+
+      alert("Attendance submitted successfully");
+      navigate("/faculty");
+
+    } catch (error) {
+      console.error("Error saving attendance:", error);
+    }
   };
 
+  // ================= UI =================
   return (
     <div className="faculty-attendance-layout">
       <Navbar />
 
       <div className="faculty-attendance-container">
 
-        {/* HEADER */}
-        <div className="attendance-header">
+        {!selectedClass ? (
 
-          <div className="header-row">
-            <button
-              className="back-btn"
-              onClick={() => navigate("/faculty")}
-            >
-              <span className="arrow">←</span>
-            </button>
+          /* SHOW MESSAGE IF NO CLASS */
+          <div style={{ padding: "40px" }}>
+            No class selected. Please go back to dashboard.
+          </div>
 
-            <div>
+        ) : (
+
+          <>
+            {/* HEADER */}
+            <div className="attendance-header">
               <h1>Mark Attendance</h1>
-              <p>Record student attendance for today's class</p>
+              <p>Class: {selectedClass}</p>
             </div>
-          </div>
 
-        </div>
+            <div className="grid-attendance-container">
 
-        <div className="grid-attendance-container">
-          
-          <div className="top-bar">
-            <input
-              type="text"
-              placeholder="Today's lecture topic..."
-              value={topic}
-              onChange={(e) => setTopic(e.target.value)}
-              className="topic-input"
-            />
+              {/* TOP BAR */}
+              <div className="top-bar">
+                <input
+                  type="text"
+                  placeholder="Today's lecture topic..."
+                  value={topic}
+                  onChange={(e) => setTopic(e.target.value)}
+                  className="topic-input"
+                />
 
-            <button className="all-present-btn" onClick={markAllPresent}>
-              All Present
-            </button>
-          </div>
-
-          <div className="student-grid">
-            {mockStudents.map((student) => (
-              <div
-                key={student.id}
-                className={`student-box ${
-                  attendance[student.id] ? "present" : "absent"
-                }`}
-                onClick={() => toggleStudent(student.id)}
-              >
-                <div className="student-name">{student.name}</div>
-                <div className="student-roll">{student.rollNo}</div>
+                <button className="all-present-btn" onClick={markAllPresent}>
+                  All Present
+                </button>
               </div>
-            ))}
-          </div>
 
-          <div className="submit-wrapper">
-            <button className="submit-btn" onClick={handleSubmit}>
-              Submit Attendance
-            </button>
-          </div>
+              {/* STUDENTS */}
+              <div className="student-grid">
+                {students.map(student => (
+                  <div
+                    key={student.id}
+                    className={`student-box ${
+                      attendance[student.id] ? "present" : "absent"
+                    }`}
+                    onClick={() => toggleStudent(student.id)}
+                  >
+                    <div className="student-name">{student.name}</div>
+                    <div className="student-roll">{student.rollNo}</div>
+                  </div>
+                ))}
+              </div>
 
-        </div>
+              {/* SUBMIT */}
+              <div className="submit-wrapper">
+                <button className="submit-btn" onClick={handleSubmit}>
+                  Submit Attendance
+                </button>
+              </div>
+
+            </div>
+          </>
+        )}
+
       </div>
     </div>
   );

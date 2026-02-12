@@ -4,6 +4,8 @@ import AdminDashboardPage from "./pages/AdminDashboardPage";
 import FacultyDashboardPage from "./pages/FacultyDashboardPage";
 import FacultyAttendancePage from "./pages/FacultyAttendancePage";
 import StudentDashboardPage from "./pages/StudentDashboardPage";
+import ProtectedFacultyRoute from "./routes/ProtectedFacultyRoute";
+
 
 function App() {
   return (
@@ -11,8 +13,18 @@ function App() {
       <Routes>
         <Route path="/" element={<LoginPage />} />
         <Route path="/admin" element={<AdminDashboardPage />} />
-        <Route path="/faculty" element={<FacultyDashboardPage />} />
+
+        <Route
+          path="/faculty"
+          element={       
+            // this will protect from direct link access
+            <ProtectedFacultyRoute>
+              <FacultyDashboardPage />
+            </ProtectedFacultyRoute>
+          }
+        />   
         <Route path="/faculty/attendance" element={<FacultyAttendancePage />} />
+     
         <Route path="/student" element={<StudentDashboardPage />} />
       </Routes>
     </BrowserRouter>

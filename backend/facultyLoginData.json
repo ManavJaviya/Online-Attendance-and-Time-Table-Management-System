@@ -1,0 +1,40 @@
+{
+  "users": {
+    "FAC201": {
+      "email": "201@edu.com",
+      "password": "FAC201",
+      "role": "faculty",
+      "userId": "FAC201"
+    },
+    "FAC202": {
+      "email": "202@edu.com",
+      "password": "FAC202",
+      "role": "faculty",
+      "userId": "FAC202"
+    },
+    "FAC203": {
+      "email": "203@edu.com",
+      "password": "FAC203",
+      "role": "faculty",
+      "userId": "FAC203"
+    },
+    "FAC204": {
+      "email": "204@edu.com",
+      "password": "FAC204",
+      "role": "faculty",
+      "userId": "FAC204"
+    },
+    "FAC205": {
+      "email": "205@edu.com",
+      "password": "FAC205",
+      "role": "faculty",
+      "userId": "FAC205"
+    },
+    "FAC206": {
+      "email": "206@edu.com",
+      "password": "FAC206",
+      "role": "faculty",
+      "userId": "FAC206"
+    }
+  }
+}
