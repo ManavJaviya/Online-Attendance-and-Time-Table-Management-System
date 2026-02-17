@@ -102,8 +102,17 @@ export default function FacultyAttendancePage() {
           <>
             {/* HEADER */}
             <div className="attendance-header">
-              <h1>Mark Attendance</h1>
-              <p>Class: {selectedClass}</p>
+              <div className="header-with-back">
+                <button className="back-arrow-btn" onClick={() => navigate("/faculty")} title="Go back to dashboard">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
+                    <polyline points="15 18 9 12 15 6"></polyline>
+                  </svg>
+                </button>
+                <div>
+                  <h1>Mark Attendance</h1>
+                  <p>Class: {selectedClass}</p>
+                </div>
+              </div>
             </div>
 
             <div className="grid-attendance-container">

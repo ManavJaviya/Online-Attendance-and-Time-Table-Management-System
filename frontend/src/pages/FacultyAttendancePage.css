@@ -28,6 +28,49 @@
   margin-bottom: 2rem;
 }
 
+.header-with-back {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.back-arrow-btn {
+  padding: 0.625rem 1.25rem;
+  background: transparent;
+  color: black !important;
+  border: none !important;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  transition: all 0.2s;
+  font-family: inherit;
+  white-space: nowrap;
+  margin-top: 0.25rem;
+  flex-shrink: 0;
+  line-height: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 45px;
+  min-height: 45px;
+}
+
+.back-arrow-btn svg {
+  width: 24px;
+  height: 24px;
+  stroke: black;
+}
+
+.back-arrow-btn:hover {
+  background: rgba(55, 97, 214, 0.3);
+  box-shadow: 0 2px 8px rgba(55, 97, 214, 0.3);
+  transform: translateX(-2px);
+}
+
+.back-arrow-btn:active {
+  background: hsl(234, 89%, 44%) !important;
+  transform: scale(0.98);
+}
+
 .attendance-header h1 {
   font-size: 2rem;
   font-weight: 700;
@@ -221,6 +264,15 @@
 
   .attendance-header h1 {
     font-size: 1.5rem;
+  }
+
+  .header-with-back {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .back-arrow-btn {
+    width: 100%;
   }
 
   .top-bar {

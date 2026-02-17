@@ -149,6 +149,7 @@
     "STU247": { "email": "lokesh247@edu.com", "password": "STU247", "role": "student", "userId": "STU247" },
     "STU248": { "email": "jay248@edu.com", "password": "STU248", "role": "student", "userId": "STU248" },
     "STU249": { "email": "vivek249@edu.com", "password": "STU249", "role": "student", "userId": "STU249" },
-    "STU250": { "email": "harsh250@edu.com", "password": "STU250", "role": "student", "userId": "STU250" }
+    "STU250": { "email": "harsh250@edu.com", "password": "STU250", "role": "student", "userId": "STU250" },
+    "STU251": { "email": "heet123@edu.com", "password": "STU251", "role": "student", "userId": "STU251" }
   }
 }

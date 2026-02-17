@@ -1,0 +1,138 @@
+/* Attendance Circular Progress Card */
+
+.attendance-circular-card {
+  background: white;
+  border-radius: 0.75rem;
+  padding: 1.25rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+
+.attendance-circular-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  transition: all 0.2s ease;
+}
+
+.circular-card-content {
+  padding: 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.circular-info {
+  flex: 1;
+}
+
+.circular-title {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: hsl(220, 20%, 50%);
+  margin: 0 0 0.5rem 0;
+}
+
+.circular-subtitle {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: hsl(142, 76%, 36%);
+  margin: 0;
+}
+
+.circular-progress-wrapper {
+  position: relative;
+  width: 120px;
+  height: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.circular-svg {
+  width: 100%;
+  height: 100%;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.08));
+}
+
+.progress-circle {
+  transition: stroke-dashoffset 0.8s cubic-bezier(0.4, 0.0, 0.2, 1);
+}
+
+.circular-percentage-display {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+
+.percentage-text {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #18a0a8;
+  text-align: center;
+}
+
+/* Circle Fill Animation */
+@keyframes fillCircle {
+  from {
+    stroke-dashoffset: 282.6;
+  }
+  to {
+    stroke-dashoffset: var(--target-offset, 282.6);
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .circular-card-content {
+    padding: 1.25rem;
+    gap: 1rem;
+  }
+
+  .circular-title {
+    font-size: 0.8rem;
+  }
+
+  .circular-subtitle {
+    font-size: 0.8rem;
+  }
+
+  .circular-progress-wrapper {
+    width: 100px;
+    height: 100px;
+  }
+
+  .percentage-text {
+    font-size: 1.25rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .circular-card-content {
+    padding: 1rem;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .circular-title {
+    font-size: 0.75rem;
+  }
+
+  .circular-subtitle {
+    font-size: 0.75rem;
+  }
+
+  .circular-progress-wrapper {
+    width: 90px;
+    height: 90px;
+  }
+
+  .percentage-text {
+    font-size: 1.1rem;
+  }
+}
+

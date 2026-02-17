@@ -154,7 +154,6 @@
     "STU247": { "name": "Yash Mehta", "rollNo": 247, "class": "CE5", "semester": 6 },
     "STU248": { "name": "Kishor Desai", "rollNo": 248, "class": "CE5", "semester": 6 },
     "STU249": { "name": "Ritesh Patel", "rollNo": 249, "class": "CE5", "semester": 6 },
-    "STU250": { "name": "Dhruv Shah", "rollNo": 250, "class": "CE5", "semester": 6 }
-
-  }
+    "STU250": { "name": "Dhruv Shah", "rollNo": 250, "class": "CE5", "semester": 6 },
+    "STU251": { "name": "Heet Patel", "rollNo": 251, "class": "CE5", "semester": 6 }  }
 }

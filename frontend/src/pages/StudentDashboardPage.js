@@ -2,6 +2,7 @@ import React from "react";
 import Navbar from "../components/Navbar";
 import { useNavigate } from "react-router-dom";
 import StatsCard from "../components/student/Statscard";
+import AttendanceCircular from "../components/student/AttendanceCircular";
 import SubjectAttendance from "../components/student/Subjectattendance";
 import TodaySchedule from "../components/student/Todayschedule";
 import AttendanceAlert from "../components/student/Attendancealert";
@@ -50,13 +51,10 @@ const StudentDashboardPage = () => {
 
         {/* STATS */}
         <div className="stats-grid">
-          <StatsCard
+          <AttendanceCircular 
+            percentage={overallAttendance}
             title="Overall Attendance"
-            value={`${overallAttendance}%`}
-            change="This semester"
-            changeType="positive"
-            icon="📊"
-            iconClassName="stat-icon-primary"
+            subtitle="This semester"
           />
 
           <StatsCard
