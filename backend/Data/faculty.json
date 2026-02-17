@@ -1,0 +1,67 @@
+{
+  "FAC201": {
+    "name": "Prof. Rajesh Mehta",
+    "subject": "Data Structures",
+    "classes": ["CE1", "CE2"]
+  },
+  "FAC207": {
+    "name": "Prof. Nilesh Parmar",
+    "subject": "Data Structures",
+    "classes": ["CE3", "CE4", "CE5"]
+  },
+
+  "FAC202": {
+    "name": "Prof. Anil Shah",
+    "subject": "DBMS",
+    "classes": ["CE1", "CE3"]
+  },
+  "FAC208": {
+    "name": "Prof. Ravi Joshi",
+    "subject": "DBMS",
+    "classes": ["CE2", "CE4", "CE5"]
+  },
+
+  "FAC203": {
+    "name": "Prof. Kiran Patel",
+    "subject": "Computer Networks",
+    "classes": ["CE1", "CE4"]
+  },
+  "FAC209": {
+    "name": "Prof. Amit Trivedi",
+    "subject": "Computer Networks",
+    "classes": ["CE2", "CE3", "CE5"]
+  },
+
+  "FAC204": {
+    "name": "Prof. Suresh Nair",
+    "subject": "Artificial Intelligence",
+    "classes": ["CE1", "CE5"]
+  },
+  "FAC210": {
+    "name": "Prof. Neha Kulkarni",
+    "subject": "Artificial Intelligence",
+    "classes": ["CE2", "CE3", "CE4"]
+  },
+
+  "FAC205": {
+    "name": "Prof. Vivek Desai",
+    "subject": "Theory of Computation",
+    "classes": ["CE1", "CE2", "CE3"]
+  },
+  "FAC211": {
+    "name": "Prof. Rohan Mehta",
+    "subject": "Theory of Computation",
+    "classes": ["CE4", "CE5"]
+  },
+
+  "FAC206": {
+    "name": "Prof. Manish Trivedi",
+    "subject": "Software Engineering",
+    "classes": ["CE1", "CE4"]
+  },
+  "FAC212": {
+    "name": "Prof. Pooja Shah",
+    "subject": "Software Engineering",
+    "classes": ["CE2", "CE3", "CE5"]
+  }
+}

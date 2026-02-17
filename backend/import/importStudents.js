@@ -2,10 +2,10 @@
 const admin = require("firebase-admin");
 
 // Import your service account key (used to securely connect to Firebase)
-const serviceAccount = require("./config/serviceAccountKey.json");
+const serviceAccount = require("../config/serviceAccountKey.json");
 
 // Import the students data from students.json
-const studentsData = require("./students.json");
+const studentsData = require("../students.json");
 
 // Initialize Firebase Admin using service account credentials
 admin.initializeApp({

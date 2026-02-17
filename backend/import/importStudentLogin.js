@@ -13,10 +13,10 @@
 const admin = require("firebase-admin");
 
 // Import service account key (Backend Admin Access)
-const serviceAccount = require("./config/serviceAccountKey.json");
+const serviceAccount = require("../config/serviceAccountKey.json");
 
 // Import student login JSON file
-const studentLoginData = require("./studentLoginData.json");
+const studentLoginData = require("../studentLoginData.json");
 
 // Initialize Firebase Admin SDK
 admin.initializeApp({

@@ -1,22 +1,10 @@
-/*
-  importFacultyLogin.js
-
-  Purpose:
-  This script reads facultyLoginData.json
-  and inserts faculty authentication records
-  into the "users" collection.
-
-  Used for:
-  Bulk creating faculty login accounts.
-*/
-
 const admin = require("firebase-admin");
 
 // Import service account key
-const serviceAccount = require("./config/serviceAccountKey.json");
+const serviceAccount = require("../config/serviceAccountKey.json");
 
 // Import faculty login JSON file
-const facultyLoginData = require("./facultyLoginData.json");
+const facultyLoginData = require("../facultyLoginData.json");
 
 // Initialize Firebase Admin SDK
 admin.initializeApp({
