@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Navbar from "../components/Navbar";
 import { useNavigate } from "react-router-dom";
 import StatsCard from "../components/student/Statscard";
@@ -6,37 +6,141 @@ import AttendanceCircular from "../components/student/AttendanceCircular";
 import SubjectAttendance from "../components/student/Subjectattendance";
 import TodaySchedule from "../components/student/Todayschedule";
 import AttendanceAlert from "../components/student/Attendancealert";
-import "./FacultyDashboardPage.css";   // ← USE FACULTY THEME
+
+import { db } from "../firebase";
+import { doc, getDoc } from "firebase/firestore";
+
+/* ===== LECTURE TIME MAP (PROFESSIONAL) ===== */
+const LECTURE_TIMES = {
+  lec1: "08:00 – 09:00",
+  lec2: "09:00 – 10:00",
+  lec3: "10:00 – 11:00",
+  lec4: "11:30 – 12:30",
+  lec5: "12:30 – 01:30"
+};
 
 const StudentDashboardPage = () => {
   const navigate = useNavigate();
 
-  const subjectAttendance = [
-    { subject: "Data Structures", code: "CS201", percentage: 92, classes: 24, attended: 22 },
-    { subject: "Algorithm Design", code: "CS301", percentage: 88, classes: 20, attended: 18 },
-    { subject: "Database Systems", code: "CS401", percentage: 72, classes: 18, attended: 13 },
-    { subject: "Computer Networks", code: "CS501", percentage: 95, classes: 22, attended: 21 },
-  ];
+  /* ===== TEMP (later from login context) ===== */
+  const studentId = "STU101";
+  const studentClass = "CE1";
 
-  const todaySchedule = [
-    { id: "1", subject: "Data Structures", time: "09:00 - 10:00", room: "Room 101", faculty: "Dr. Smith" },
-    { id: "2", subject: "Algorithm Design", time: "11:00 - 12:00", room: "Room 203", faculty: "Prof. Johnson" },
-    { id: "3", subject: "Database Systems", time: "14:00 - 15:00", room: "Lab 1", faculty: "Dr. Williams" },
-  ];
+  /* ===== STATES ===== */
+  const [studentName, setStudentName] = useState("");
+  const [subjectAttendance, setSubjectAttendance] = useState([]);
+  const [todaySchedule, setTodaySchedule] = useState([]);
+  const [overallAttendance, setOverallAttendance] = useState(0);
 
-  const overallAttendance = 87;
-  const lowAttendanceSubjects = subjectAttendance.filter(s => s.percentage < 75);
+  /* ===== LOAD DATA ===== */
+  useEffect(() => {
+    fetchStudentProfile();
+    fetchAttendance();
+    fetchTodaySchedule();
+  }, []);
 
+  /* ===== STUDENT PROFILE ===== */
+  const fetchStudentProfile = async () => {
+    try {
+      const ref = doc(db, "students", studentId);
+      const snap = await getDoc(ref);
+      if (snap.exists()) {
+        setStudentName(snap.data().name);
+      }
+    } catch (err) {
+      console.error("Student profile error", err);
+    }
+  };
+
+  /* ===== ATTENDANCE ===== */
+  const fetchAttendance = async () => {
+    try {
+      const ref = doc(db, "attendance", studentId);
+      const snap = await getDoc(ref);
+
+      if (!snap.exists()) return;
+
+      const data = snap.data();
+      const subjects = [];
+      let totalClasses = 0;
+      let totalAttended = 0;
+
+      Object.keys(data).forEach((subject) => {
+        const { attended, total } = data[subject];
+        const percentage = Math.round((attended / total) * 100);
+
+        subjects.push({
+          subject,
+          classes: total,
+          attended,
+          percentage
+        });
+
+        totalClasses += total;
+        totalAttended += attended;
+      });
+
+      setSubjectAttendance(subjects);
+      setOverallAttendance(
+        totalClasses === 0
+          ? 0
+          : Math.round((totalAttended / totalClasses) * 100)
+      );
+    } catch (err) {
+      console.error("Attendance fetch error", err);
+    }
+  };
+
+  /* ===== TODAY SCHEDULE (ORDERED & PROFESSIONAL) ===== */
+  const fetchTodaySchedule = async () => {
+    try {
+      const day = new Date()
+        .toLocaleDateString("en-US", { weekday: "long" })
+        .toLowerCase();
+
+      const ref = doc(db, "timetable", studentClass);
+      const snap = await getDoc(ref);
+
+      if (!snap.exists()) return;
+
+      const daySchedule = snap.data()[day];
+      if (!daySchedule) return;
+
+      const orderedKeys = ["lec1", "lec2", "lec3", "lec4", "lec5"];
+
+      const lectures = orderedKeys
+        .filter((key) => daySchedule[key])
+        .map((key, index) => ({
+          id: index + 1,
+          subject: daySchedule[key].subject,
+          faculty: daySchedule[key].facultyId,
+          time: LECTURE_TIMES[key]
+        }));
+
+      setTodaySchedule(lectures);
+    } catch (err) {
+      console.error("Timetable fetch error", err);
+    }
+  };
+
+  const lowAttendanceSubjects = subjectAttendance.filter(
+    (s) => s.percentage < 75
+  );
+
+  /* ===== UI ===== */
   return (
     <div className="faculty-dashboard-layout">
       <Navbar />
 
       <div className="faculty-dashboard-container">
-
         {/* HEADER */}
         <div className="dashboard-header">
-          <h1 className="dashboard-title">Student Dashboard</h1>
-          <p className="dashboard-subtitle">Track your attendance and schedule</p>
+          <h1 className="dashboard-title">
+            Welcome, {studentName || "Student"}
+          </h1>
+          <p className="dashboard-subtitle">
+            Here is your attendance overview and today’s schedule
+          </p>
         </div>
 
         {/* ALERT */}
@@ -51,7 +155,7 @@ const StudentDashboardPage = () => {
 
         {/* STATS */}
         <div className="stats-grid">
-          <AttendanceCircular 
+          <AttendanceCircular
             percentage={overallAttendance}
             title="Overall Attendance"
             subtitle="This semester"
@@ -59,33 +163,30 @@ const StudentDashboardPage = () => {
 
           <StatsCard
             title="Classes Today"
-            value="4"
-            change="Next class 11 AM"
+            value={todaySchedule.length}
+            change="As per timetable"
             changeType="neutral"
             icon="📅"
-            iconClassName="stat-icon-accent"
           />
 
           <StatsCard
             title="Subjects"
-            value="4"
+            value={subjectAttendance.length}
             change="Enrolled"
             changeType="neutral"
             icon="📚"
-            iconClassName="stat-icon-success"
           />
 
           <StatsCard
             title="Low Attendance"
             value={lowAttendanceSubjects.length}
-            change="Need attention"
+            change="Needs attention"
             changeType="negative"
             icon="⚠"
-            iconClassName="stat-icon-warning"
           />
         </div>
 
-        {/* SUBJECT CARD */}
+        {/* SUBJECT ATTENDANCE */}
         <div className="classes-card">
           <SubjectAttendance
             subjects={subjectAttendance}
@@ -93,14 +194,13 @@ const StudentDashboardPage = () => {
           />
         </div>
 
-        {/* SCHEDULE */}
+        {/* TODAY SCHEDULE */}
         <div className="classes-card">
           <TodaySchedule
             schedule={todaySchedule}
             onViewFull={() => navigate("/student/timetable")}
           />
         </div>
-
       </div>
     </div>
   );
