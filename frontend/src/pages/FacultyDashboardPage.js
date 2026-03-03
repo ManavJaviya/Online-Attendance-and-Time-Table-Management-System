@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Navbar from "../components/Navbar";
 import StatsCard from "../components/admin/Statscard";
+import TodaySchedule from "../components/student/Todayschedule";
 import { useNavigate } from "react-router-dom";
 import { doc, getDoc } from "firebase/firestore";
 import { db } from "../firebase";
@@ -8,13 +9,12 @@ import "./FacultyDashboardPage.css";
 
 const FacultyDashboardPage = () => {
   const navigate = useNavigate();
-
-  // Logged in user data (saved during login)
   const user = JSON.parse(localStorage.getItem("user"));
 
-  // Faculty academic details from database
   const [facultyData, setFacultyData] = useState(null);
+  const [todaySchedule, setTodaySchedule] = useState([]);
 
+  /* ================= FETCH FACULTY DATA ================= */
   useEffect(() => {
     const fetchFacultyData = async () => {
       try {
@@ -25,8 +25,6 @@ const FacultyDashboardPage = () => {
 
         if (facultySnap.exists()) {
           setFacultyData(facultySnap.data());
-        } else {
-          console.log("Faculty document not found");
         }
       } catch (error) {
         console.error("Error fetching faculty data:", error);
@@ -36,8 +34,50 @@ const FacultyDashboardPage = () => {
     fetchFacultyData();
   }, [user]);
 
-  // ================= NAVIGATION =================
+  /* ================= FETCH TODAY'S TIMETABLE ================= */
+  useEffect(() => {
+    const fetchTodaySchedule = async () => {
+      try {
+        if (!user?.userId) return;
 
+        const today = new Date().toLocaleDateString("en-IN", {
+          weekday: "long",
+          timeZone: "Asia/Kolkata",
+        }).toLowerCase();
+
+        const ref = doc(db, "facultyTimetable", user.userId);
+        const snap = await getDoc(ref);
+
+        if (!snap.exists()) {
+          setTodaySchedule([]);
+          return;
+        }
+
+        const dayData = snap.data()[today];
+
+        if (!dayData) {
+          setTodaySchedule([]);
+          return;
+        }
+
+        const formatted = dayData.map((lec, index) => ({
+          id: index + 1,
+          subject: lec.subject,
+          time: lec.time,
+          room: lec.class,
+          faculty: ""
+        }));
+
+        setTodaySchedule(formatted);
+      } catch (error) {
+        console.error("Error fetching timetable:", error);
+      }
+    };
+
+    fetchTodaySchedule();
+  }, [user]);
+
+  /* ================= NAVIGATION ================= */
   const handleViewTimetable = () => {
     navigate("/faculty/timetable");
   };
@@ -46,7 +86,7 @@ const FacultyDashboardPage = () => {
     navigate("/faculty/reports");
   };
 
-  // ================= UI =================
+  /* ================= UI ================= */
   return (
     <div className="faculty-dashboard-layout">
       <Navbar />
@@ -63,7 +103,6 @@ const FacultyDashboardPage = () => {
 
         {/* ================= STATS ================= */}
         <div className="stats-grid">
-
           <StatsCard
             title="Subject"
             value={facultyData?.subject || "Loading..."}
@@ -83,13 +122,30 @@ const FacultyDashboardPage = () => {
           />
 
           <StatsCard
-            title="Role"
-            value={user?.role || ""}
-            change="User Role"
+            title="Today's Lectures"
+            value={todaySchedule.length}
+            change="Scheduled Today"
             changeType="neutral"
-            icon="👤"
+            icon="📅"
             iconClassName="stat-icon-success"
           />
+        </div>
+
+        {/* ================= TODAY'S TIMETABLE ================= */}
+        <div className="classes-card">
+          <div className="card-header">
+          </div>
+
+          {todaySchedule.length > 0 ? (
+            <TodaySchedule
+              schedule={todaySchedule}
+              onViewFull={handleViewTimetable}
+            />
+          ) : (
+            <div className="no-classes">
+              No lectures scheduled today.
+            </div>
+          )}
         </div>
 
         {/* ================= ASSIGNED CLASSES ================= */}
@@ -102,11 +158,9 @@ const FacultyDashboardPage = () => {
           </div>
 
           <div className="classes-list">
-
             {facultyData?.classes?.length > 0 ? (
               facultyData.classes.map((cls, index) => (
                 <div key={index} className="class-item">
-
                   <div className="class-left">
                     <h3 className="class-subject">
                       {facultyData.subject}
@@ -119,14 +173,13 @@ const FacultyDashboardPage = () => {
                       className="btn btn-primary btn-sm"
                       onClick={() =>
                         navigate("/faculty/attendance", {
-                          state: { className: cls } // PASS CLASS
+                          state: { className: cls }
                         })
                       }
                     >
                       Mark Attendance
                     </button>
                   </div>
-
                 </div>
               ))
             ) : (
@@ -134,13 +187,11 @@ const FacultyDashboardPage = () => {
                 No classes assigned yet.
               </div>
             )}
-
           </div>
         </div>
 
         {/* ================= QUICK ACTIONS ================= */}
         <div className="quick-actions-grid">
-
           <div
             className="action-card"
             onClick={() => navigate("/faculty/attendance")}
@@ -173,7 +224,6 @@ const FacultyDashboardPage = () => {
               </p>
             </div>
           </div>
-
         </div>
 
       </div>

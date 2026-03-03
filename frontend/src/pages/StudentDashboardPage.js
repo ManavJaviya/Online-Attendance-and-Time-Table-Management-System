@@ -12,11 +12,11 @@ import { doc, getDoc } from "firebase/firestore";
 
 /* ===== LECTURE TIME MAP (PROFESSIONAL) ===== */
 const LECTURE_TIMES = {
-  lec1: "08:00 – 09:00",
-  lec2: "09:00 – 10:00",
-  lec3: "10:00 – 11:00",
-  lec4: "11:30 – 12:30",
-  lec5: "12:30 – 01:30"
+  lec1: "08:00 - 09:00",
+  lec2: "09:00 - 10:00",
+  lec3: "10:00 - 11:00",
+  lec4: "11:30 - 12:30",
+  lec5: "12:30 - 01:30"
 };
 
 const StudentDashboardPage = () => {

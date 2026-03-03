@@ -5,6 +5,7 @@ import FacultyDashboardPage from "./pages/FacultyDashboardPage";
 import FacultyAttendancePage from "./pages/FacultyAttendancePage";
 import StudentDashboardPage from "./pages/StudentDashboardPage";
 import ProtectedFacultyRoute from "./routes/ProtectedFacultyRoute";
+import FacultyTimetablePage from "./pages/FacultyTimetablePage";
 
 
 function App() {
@@ -26,6 +27,7 @@ function App() {
         <Route path="/faculty/attendance" element={<FacultyAttendancePage />} />
      
         <Route path="/student" element={<StudentDashboardPage />} />
+        <Route path="/faculty/timetable" element={<FacultyTimetablePage />} />
       </Routes>
     </BrowserRouter>
   );
