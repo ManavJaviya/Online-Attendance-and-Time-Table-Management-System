@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import Navbar from "../components/Navbar";
-import { collection, getDocs, addDoc } from "firebase/firestore";
+import { collection, getDocs, addDoc, doc, setDoc, getDoc } from "firebase/firestore";
 import { db } from "../firebase";
 import "./FacultyAttendancePage.css";
 
@@ -9,8 +9,9 @@ export default function FacultyAttendancePage() {
   const navigate = useNavigate();
   const location = useLocation();
 
-  // class passed from dashboard
+  // class and subject passed from dashboard
   const selectedClass = location.state?.className;
+  const selectedSubject = location.state?.subject;
 
   // logged in faculty
   const user = JSON.parse(localStorage.getItem("user"));
@@ -65,22 +66,56 @@ export default function FacultyAttendancePage() {
   };
 
   // ================= SUBMIT =================
-  const handleSubmit = async () => {
-    try {
-      await addDoc(collection(db, "attendance"), {
-        facultyId: user.userId,
-        class: selectedClass,
-        topic: topic,
-        date: new Date().toISOString(),
-        attendance: attendance
-      });
-
-      alert("Attendance submitted successfully");
-      navigate("/faculty");
-
-    } catch (error) {
-      console.error("Error saving attendance:", error);
+  const handleSubmit = () => {
+    if (!selectedClass || !selectedSubject) {
+      alert(`Missing class or subject information.\nClass: ${selectedClass}\nSubject: ${selectedSubject}`);
+      return;
     }
+
+    // Immediately alert and navigate so the user doesn't have to wait
+    alert("Attendance submitted successfully!");
+    navigate("/faculty");
+
+    // Process everything in the background
+    const processAttendance = async () => {
+      try {
+        // 1. Save the lecture session
+        await addDoc(collection(db, "class_sessions"), {
+          facultyId: user.userId,
+          class: selectedClass,
+          subject: selectedSubject,
+          topic: topic || "No topic",
+          date: new Date().toISOString(),
+          attendance: attendance // Map of studentId -> boolean
+        });
+
+        // 2. Update each student's attendance summary in parallel to speed it up
+        await Promise.all(students.map(async (student) => {
+          const isPresent = attendance[student.id];
+          const studentAttendanceRef = doc(db, "attendance", student.id);
+          const snap = await getDoc(studentAttendanceRef);
+
+          let currentData = {};
+          if (snap.exists()) {
+            currentData = snap.data();
+          }
+
+          const currentSubjectStats = currentData[selectedSubject] || { attended: 0, total: 0 };
+
+          await setDoc(studentAttendanceRef, {
+            [selectedSubject]: {
+              total: currentSubjectStats.total + 1,
+              attended: currentSubjectStats.attended + (isPresent ? 1 : 0)
+            }
+          }, { merge: true });
+        }));
+
+      } catch (error) {
+        console.error("Error saving attendance:", error);
+      }
+    };
+
+    processAttendance();
   };
 
   // ================= UI =================
@@ -137,9 +172,8 @@ export default function FacultyAttendancePage() {
                 {students.map(student => (
                   <div
                     key={student.id}
-                    className={`student-box ${
-                      attendance[student.id] ? "present" : "absent"
-                    }`}
+                    className={`student-box ${attendance[student.id] ? "present" : "absent"
+                      }`}
                     onClick={() => toggleStudent(student.id)}
                   >
                     <div className="student-name">{student.name}</div>

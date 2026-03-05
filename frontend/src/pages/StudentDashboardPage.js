@@ -8,7 +8,7 @@ import TodaySchedule from "../components/student/Todayschedule";
 import AttendanceAlert from "../components/student/Attendancealert";
 
 import { db } from "../firebase";
-import { doc, getDoc } from "firebase/firestore";
+import { doc, getDoc, onSnapshot } from "firebase/firestore";
 
 /* ===== LECTURE TIME MAP (PROFESSIONAL) ===== */
 const LECTURE_TIMES = {
@@ -22,22 +22,30 @@ const LECTURE_TIMES = {
 const StudentDashboardPage = () => {
   const navigate = useNavigate();
 
-  /* ===== TEMP (later from login context) ===== */
-  const studentId = "STU101";
-  const studentClass = "CE1";
+  const user = JSON.parse(localStorage.getItem("user"));
+  const studentId = user?.userId;
 
   /* ===== STATES ===== */
   const [studentName, setStudentName] = useState("");
+  const [studentClass, setStudentClass] = useState("");
   const [subjectAttendance, setSubjectAttendance] = useState([]);
   const [todaySchedule, setTodaySchedule] = useState([]);
   const [overallAttendance, setOverallAttendance] = useState(0);
 
   /* ===== LOAD DATA ===== */
   useEffect(() => {
-    fetchStudentProfile();
-    fetchAttendance();
-    fetchTodaySchedule();
-  }, []);
+    if (studentId) {
+      fetchStudentProfile();
+      const unsubscribe = listenAttendance();
+      return () => unsubscribe && unsubscribe();
+    }
+  }, [studentId]);
+
+  useEffect(() => {
+    if (studentClass) {
+      fetchTodaySchedule();
+    }
+  }, [studentClass]);
 
   /* ===== STUDENT PROFILE ===== */
   const fetchStudentProfile = async () => {
@@ -45,7 +53,9 @@ const StudentDashboardPage = () => {
       const ref = doc(db, "students", studentId);
       const snap = await getDoc(ref);
       if (snap.exists()) {
-        setStudentName(snap.data().name);
+        const data = snap.data();
+        setStudentName(data.name);
+        setStudentClass(data.class);
       }
     } catch (err) {
       console.error("Student profile error", err);
@@ -53,39 +63,46 @@ const StudentDashboardPage = () => {
   };
 
   /* ===== ATTENDANCE ===== */
-  const fetchAttendance = async () => {
+  const listenAttendance = () => {
     try {
       const ref = doc(db, "attendance", studentId);
-      const snap = await getDoc(ref);
 
-      if (!snap.exists()) return;
+      const unsubscribe = onSnapshot(ref, (snap) => {
+        if (!snap.exists()) {
+          setSubjectAttendance([]);
+          setOverallAttendance(0);
+          return;
+        }
 
-      const data = snap.data();
-      const subjects = [];
-      let totalClasses = 0;
-      let totalAttended = 0;
+        const data = snap.data();
+        const subjects = [];
+        let totalClasses = 0;
+        let totalAttended = 0;
 
-      Object.keys(data).forEach((subject) => {
-        const { attended, total } = data[subject];
-        const percentage = Math.round((attended / total) * 100);
+        Object.keys(data).forEach((subject) => {
+          const { attended, total } = data[subject];
+          const percentage = Math.round((attended / total) * 100);
 
-        subjects.push({
-          subject,
-          classes: total,
-          attended,
-          percentage
+          subjects.push({
+            subject,
+            classes: total,
+            attended,
+            percentage
+          });
+
+          totalClasses += total;
+          totalAttended += attended;
         });
 
-        totalClasses += total;
-        totalAttended += attended;
+        setSubjectAttendance(subjects);
+        setOverallAttendance(
+          totalClasses === 0
+            ? 0
+            : Math.round((totalAttended / totalClasses) * 100)
+        );
       });
 
-      setSubjectAttendance(subjects);
-      setOverallAttendance(
-        totalClasses === 0
-          ? 0
-          : Math.round((totalAttended / totalClasses) * 100)
-      );
+      return unsubscribe;
     } catch (err) {
       console.error("Attendance fetch error", err);
     }
