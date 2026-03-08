@@ -173,7 +173,7 @@ const FacultyDashboardPage = () => {
                       className="btn btn-primary btn-sm"
                       onClick={() =>
                         navigate("/faculty/attendance", {
-                          state: { className: cls }
+                          state: { className: cls, subject: facultyData.subject }
                         })
                       }
                     >
