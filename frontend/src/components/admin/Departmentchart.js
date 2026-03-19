@@ -1,13 +1,26 @@
 import React from 'react';
 import './Departmentchart.css';
 
-const DepartmentChart = () => {
-  const departments = [
-    { name: 'Computer Science', students: 450, color: 'hsl(234, 89%, 54%)' },
-    { name: 'Mechanical', students: 380, color: 'hsl(174, 72%, 40%)' },
-    { name: 'Electronics', students: 420, color: 'hsl(38, 92%, 50%)' },
-    { name: 'Civil', students: 370, color: 'hsl(142, 76%, 36%)' },
-  ];
+const DepartmentChart = ({ departmentData }) => {
+  const defaultColors = {
+    'Computer Science': 'hsl(234, 89%, 54%)',
+    'Mechanical': 'hsl(174, 72%, 40%)',
+    'Electronics': 'hsl(38, 92%, 50%)',
+    'Civil': 'hsl(142, 76%, 36%)'
+  };
+
+  const departments = departmentData 
+    ? Object.keys(departmentData).map(name => ({
+        name,
+        students: departmentData[name],
+        color: defaultColors[name] || 'hsl(0, 0%, 50%)'
+      })) 
+    : [
+        { name: 'Computer Science', students: 0, color: 'hsl(234, 89%, 54%)' },
+        { name: 'Mechanical', students: 0, color: 'hsl(174, 72%, 40%)' },
+        { name: 'Electronics', students: 0, color: 'hsl(38, 92%, 50%)' },
+        { name: 'Civil', students: 0, color: 'hsl(142, 76%, 36%)' },
+      ];
 
   const totalStudents = departments.reduce((sum, dept) => sum + dept.students, 0);
 
@@ -20,7 +33,7 @@ const DepartmentChart = () => {
       <div className="chart-content">
         <div className="department-list">
           {departments.map((dept, index) => {
-            const percentage = ((dept.students / totalStudents) * 100).toFixed(1);
+            const percentage = totalStudents > 0 ? ((dept.students / totalStudents) * 100).toFixed(1) : 0;
             return (
               <div key={index} className="department-item">
                 <div className="department-info">

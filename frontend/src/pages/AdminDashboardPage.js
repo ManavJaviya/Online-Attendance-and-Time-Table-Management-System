@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import Navbar from '../components/Navbar';
 import StatsCard from '../components/admin/Statscard';
 import AttendanceChart from '../components/admin/Attendancechart';
@@ -9,6 +10,26 @@ import LowAttendanceTable from '../components/admin/Lowattendancetable';
 import './AdminDashboardPage.css';
 
 const AdminDashboardPage = () => {
+  const [stats, setStats] = useState({
+    totalStudents: "Loading...",
+    totalFaculty: "Loading...",
+    activeSubjects: "Loading...",
+    avgAttendance: "Loading..."
+  });
+
+  useEffect(() => {
+    const fetchStats = async () => {
+      try {
+        const response = await axios.get("http://localhost:5000/api/dashboard/stats");
+        setStats(response.data);
+      } catch (error) {
+        console.error("Error fetching dashboard stats:", error);
+      }
+    };
+    
+    fetchStats();
+  }, []);
+
   return (
     <div className="admin-dashboard-layout">
       <Navbar />
@@ -24,33 +45,33 @@ const AdminDashboardPage = () => {
         <div className="stats-grid">
           <StatsCard
             title="Total Students"
-            value="1,620"
-            change="+12% from last semester"
-            changeType="positive"
+            value={stats.totalStudents}
+            change="Live from Database"
+            changeType="neutral"
             icon="👨‍🎓"
             iconClassName="stat-icon-primary"
           />
           <StatsCard
             title="Total Faculty"
-            value="86"
-            change="+3 new this month"
-            changeType="positive"
+            value={stats.totalFaculty}
+            change="Live from Database"
+            changeType="neutral"
             icon="👨‍🏫"
             iconClassName="stat-icon-accent"
           />
           <StatsCard
             title="Active Subjects"
-            value="124"
-            change="Across all departments"
+            value={stats.activeSubjects}
+            change="Live from Database"
             changeType="neutral"
             icon="📚"
             iconClassName="stat-icon-warning"
           />
           <StatsCard
             title="Avg. Attendance"
-            value="89.2%"
-            change="+2.4% from last week"
-            changeType="positive"
+            value={stats.avgAttendance !== "Loading..." ? `${stats.avgAttendance}%` : "Loading..."}
+            change="Live from Database"
+            changeType="neutral"
             icon="📈"
             iconClassName="stat-icon-success"
           />
@@ -59,7 +80,7 @@ const AdminDashboardPage = () => {
         {/* Charts Row */}
         <div className="charts-grid">
           <AttendanceChart />
-          <DepartmentChart />
+          <DepartmentChart departmentData={stats.departments} />
         </div>
 
         {/* Activity and Actions Row */}
