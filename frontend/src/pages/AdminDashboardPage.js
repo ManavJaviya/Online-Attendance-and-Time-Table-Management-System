@@ -21,6 +21,8 @@ const AdminDashboardPage = () => {
     const fetchStats = async () => {
       try {
         const response = await axios.get("http://localhost:5000/api/dashboard/stats");
+        console.log("Dashboard API Response:", response.data);
+        console.log("Departments in response:", response.data.departments);
         setStats(response.data);
       } catch (error) {
         console.error("Error fetching dashboard stats:", error);

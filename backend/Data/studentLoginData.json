@@ -12,21 +12,21 @@
       "password": "STU102",
       "role": "student",
       "userId": "STU102",
-      "department": "Mechanical"
+      "department": "Computer Science"
     },
     "STU103": {
       "email": "aditya103@edu.com",
       "password": "STU103",
       "role": "student",
       "userId": "STU103",
-      "department": "Civil"
+      "department": "Computer Science"
     },
     "STU104": {
       "email": "krishna104@edu.com",
       "password": "STU104",
       "role": "student",
       "userId": "STU104",
-      "department": "Mechanical"
+      "department": "Computer Science"
     },
     "STU105": {
       "email": "arjun105@edu.com",
@@ -40,7 +40,7 @@
       "password": "STU106",
       "role": "student",
       "userId": "STU106",
-      "department": "Civil"
+      "department": "Computer Science"
     },
     "STU107": {
       "email": "rohan107@edu.com",
@@ -54,14 +54,14 @@
       "password": "STU108",
       "role": "student",
       "userId": "STU108",
-      "department": "Civil"
+      "department": "Computer Science"
     },
     "STU109": {
       "email": "ishaan109@edu.com",
       "password": "STU109",
       "role": "student",
       "userId": "STU109",
-      "department": "Mechanical"
+      "department": "Computer Science"
     },
     "STU110": {
       "email": "harsh110@edu.com",
@@ -75,14 +75,14 @@
       "password": "STU111",
       "role": "student",
       "userId": "STU111",
-      "department": "Civil"
+      "department": "Computer Science"
     },
     "STU112": {
       "email": "manav112@edu.com",
       "password": "STU112",
       "role": "student",
       "userId": "STU112",
-      "department": "Electronics"
+      "department": "Computer Science"
     },
     "STU113": {
       "email": "dhruv113@edu.com",
@@ -96,42 +96,42 @@
       "password": "STU114",
       "role": "student",
       "userId": "STU114",
-      "department": "Mechanical"
+      "department": "Computer Science"
     },
     "STU115": {
       "email": "nikhil115@edu.com",
       "password": "STU115",
       "role": "student",
       "userId": "STU115",
-      "department": "Mechanical"
+      "department": "Computer Science"
     },
     "STU116": {
       "email": "siddharth116@edu.com",
       "password": "STU116",
       "role": "student",
       "userId": "STU116",
-      "department": "Mechanical"
+      "department": "Computer Science"
     },
     "STU117": {
       "email": "omkar117@edu.com",
       "password": "STU117",
       "role": "student",
       "userId": "STU117",
-      "department": "Civil"
+      "department": "Computer Science"
     },
     "STU118": {
       "email": "pranav118@edu.com",
       "password": "STU118",
       "role": "student",
       "userId": "STU118",
-      "department": "Mechanical"
+      "department": "Computer Science"
     },
     "STU119": {
       "email": "ankit119@edu.com",
       "password": "STU119",
       "role": "student",
       "userId": "STU119",
-      "department": "Electronics"
+      "department": "Computer Science"
     },
     "STU120": {
       "email": "ritesh120@edu.com",
@@ -145,28 +145,28 @@
       "password": "STU121",
       "role": "student",
       "userId": "STU121",
-      "department": "Civil"
+      "department": "Computer Science"
     },
     "STU122": {
       "email": "parth122@edu.com",
       "password": "STU122",
       "role": "student",
       "userId": "STU122",
-      "department": "Mechanical"
+      "department": "Computer Science"
     },
     "STU123": {
       "email": "kunal123@edu.com",
       "password": "STU123",
       "role": "student",
       "userId": "STU123",
-      "department": "Electronics"
+      "department": "Computer Science"
     },
     "STU124": {
       "email": "mayank124@edu.com",
       "password": "STU124",
       "role": "student",
       "userId": "STU124",
-      "department": "Mechanical"
+      "department": "Computer Science"
     },
     "STU125": {
       "email": "chirag125@edu.com",
@@ -180,7 +180,7 @@
       "password": "STU126",
       "role": "student",
       "userId": "STU126",
-      "department": "Civil"
+      "department": "Computer Science"
     },
     "STU127": {
       "email": "sahil127@edu.com",
@@ -201,14 +201,14 @@
       "password": "STU129",
       "role": "student",
       "userId": "STU129",
-      "department": "Electronics"
+      "department": "Computer Science"
     },
     "STU130": {
       "email": "deepak130@edu.com",
       "password": "STU130",
       "role": "student",
       "userId": "STU130",
-      "department": "Civil"
+      "department": "Computer Science"
     },
     "STU131": {
       "email": "aditya131@edu.com",
@@ -222,7 +222,7 @@
       "password": "STU132",
       "role": "student",
       "userId": "STU132",
-      "department": "Mechanical"
+      "department": "Electronics"
     },
     "STU133": {
       "email": "vivek133@edu.com",
@@ -236,56 +236,56 @@
       "password": "STU134",
       "role": "student",
       "userId": "STU134",
-      "department": "Computer Science"
+      "department": "Electronicse"
     },
     "STU135": {
       "email": "saurabh135@edu.com",
       "password": "STU135",
       "role": "student",
       "userId": "STU135",
-      "department": "Computer Science"
+      "department": "Electronics"
     },
     "STU136": {
       "email": "rahul136@edu.com",
       "password": "STU136",
       "role": "student",
       "userId": "STU136",
-      "department": "Mechanical"
+      "department": "Electronics"
     },
     "STU137": {
       "email": "yogesh137@edu.com",
       "password": "STU137",
       "role": "student",
       "userId": "STU137",
-      "department": "Mechanical"
+      "department": "Electronics"
     },
     "STU138": {
       "email": "nitin138@edu.com",
       "password": "STU138",
       "role": "student",
       "userId": "STU138",
-      "department": "Mechanical"
+      "department": "Electronics"
     },
     "STU139": {
       "email": "ashish139@edu.com",
       "password": "STU139",
       "role": "student",
       "userId": "STU139",
-      "department": "Mechanical"
+      "department": "Electronics"
     },
     "STU140": {
       "email": "kishan140@edu.com",
       "password": "STU140",
       "role": "student",
       "userId": "STU140",
-      "department": "Civil"
+      "department": "Electronics"
     },
     "STU141": {
       "email": "hemant141@edu.com",
       "password": "STU141",
       "role": "student",
       "userId": "STU141",
-      "department": "Civil"
+      "department": "Electronics"
     },
     "STU142": {
       "email": "chetan142@edu.com",
@@ -306,56 +306,56 @@
       "password": "STU144",
       "role": "student",
       "userId": "STU144",
-      "department": "Civil"
+      "department": "Electronics"
     },
     "STU145": {
       "email": "bhavesh145@edu.com",
       "password": "STU145",
       "role": "student",
       "userId": "STU145",
-      "department": "Mechanical"
+      "department": "Electronics"
     },
     "STU146": {
       "email": "mahesh146@edu.com",
       "password": "STU146",
       "role": "student",
       "userId": "STU146",
-      "department": "Computer Science"
+      "department": "Electronics"
     },
     "STU147": {
       "email": "rakesh147@edu.com",
       "password": "STU147",
       "role": "student",
       "userId": "STU147",
-      "department": "Mechanical"
+      "department": "Electronics"
     },
     "STU148": {
       "email": "ajay148@edu.com",
       "password": "STU148",
       "role": "student",
       "userId": "STU148",
-      "department": "Computer Science"
+      "department": "Electronics"
     },
     "STU149": {
       "email": "sunil149@edu.com",
       "password": "STU149",
       "role": "student",
       "userId": "STU149",
-      "department": "Mechanical"
+      "department": "Electronics"
     },
     "STU150": {
       "email": "tarun150@edu.com",
       "password": "STU150",
       "role": "student",
       "userId": "STU150",
-      "department": "Civil"
+      "department": "Electronics"
     },
     "STU151": {
       "email": "varun151@edu.com",
       "password": "STU151",
       "role": "student",
       "userId": "STU151",
-      "department": "Mechanical"
+      "department": "Electronics"
     },
     "STU152": {
       "email": "anurag152@edu.com",
@@ -369,35 +369,35 @@
       "password": "STU153",
       "role": "student",
       "userId": "STU153",
-      "department": "Civil"
+      "department": "Electronics"
     },
     "STU154": {
       "email": "rishi154@edu.com",
       "password": "STU154",
       "role": "student",
       "userId": "STU154",
-      "department": "Civil"
+      "department": "Electronics"
     },
     "STU155": {
       "email": "ketan155@edu.com",
       "password": "STU155",
       "role": "student",
       "userId": "STU155",
-      "department": "Mechanical"
+      "department": "Electronics"
     },
     "STU156": {
       "email": "amit156@edu.com",
       "password": "STU156",
       "role": "student",
       "userId": "STU156",
-      "department": "Mechanical"
+      "department": "Electronics"
     },
     "STU157": {
       "email": "sandeep157@edu.com",
       "password": "STU157",
       "role": "student",
       "userId": "STU157",
-      "department": "Mechanical"
+      "department": "Electronics"
     },
     "STU158": {
       "email": "harshit158@edu.com",
@@ -411,14 +411,14 @@
       "password": "STU159",
       "role": "student",
       "userId": "STU159",
-      "department": "Computer Science"
+      "department": "Electronics"
     },
     "STU160": {
       "email": "jay160@edu.com",
       "password": "STU160",
       "role": "student",
       "userId": "STU160",
-      "department": "Civil"
+      "department": "Electronics"
     },
     "STU161": {
       "email": "rohit161@edu.com",
@@ -432,7 +432,7 @@
       "password": "STU162",
       "role": "student",
       "userId": "STU162",
-      "department": "Computer Science"
+      "department": "Civil"
     },
     "STU163": {
       "email": "tushar163@edu.com",
@@ -446,56 +446,56 @@
       "password": "STU164",
       "role": "student",
       "userId": "STU164",
-      "department": "Computer Science"
+      "department": "Civil"
     },
     "STU165": {
       "email": "jayesh165@edu.com",
       "password": "STU165",
       "role": "student",
       "userId": "STU165",
-      "department": "Mechanical"
+      "department": "Civil"
     },
     "STU166": {
       "email": "rajat166@edu.com",
       "password": "STU166",
       "role": "student",
       "userId": "STU166",
-      "department": "Mechanical"
+      "department": "Civil"
     },
     "STU167": {
       "email": "sagar167@edu.com",
       "password": "STU167",
       "role": "student",
       "userId": "STU167",
-      "department": "Computer Science"
+      "department": "Civil"
     },
     "STU168": {
       "email": "mohit168@edu.com",
       "password": "STU168",
       "role": "student",
       "userId": "STU168",
-      "department": "Computer Science"
+      "department": "Civil"
     },
     "STU169": {
       "email": "anmol169@edu.com",
       "password": "STU169",
       "role": "student",
       "userId": "STU169",
-      "department": "Electronics"
+      "department": "Civil"
     },
     "STU170": {
       "email": "kartik170@edu.com",
       "password": "STU170",
       "role": "student",
       "userId": "STU170",
-      "department": "Electronics"
+      "department": "Civil"
     },
     "STU171": {
       "email": "sahil171@edu.com",
       "password": "STU171",
       "role": "student",
       "userId": "STU171",
-      "department": "Computer Science"
+      "department": "Civil"
     },
     "STU172": {
       "email": "harsh172@edu.com",
@@ -523,63 +523,63 @@
       "password": "STU175",
       "role": "student",
       "userId": "STU175",
-      "department": "Electronics"
+      "department": "Civil"
     },
     "STU176": {
       "email": "manish176@edu.com",
       "password": "STU176",
       "role": "student",
       "userId": "STU176",
-      "department": "Electronics"
+      "department": "Civil"
     },
     "STU177": {
       "email": "nirav177@edu.com",
       "password": "STU177",
       "role": "student",
       "userId": "STU177",
-      "department": "Computer Science"
+      "department": "Civil"
     },
     "STU178": {
       "email": "parth178@edu.com",
       "password": "STU178",
       "role": "student",
       "userId": "STU178",
-      "department": "Computer Science"
+      "department": "Civil"
     },
     "STU179": {
       "email": "umesh179@edu.com",
       "password": "STU179",
       "role": "student",
       "userId": "STU179",
-      "department": "Mechanical"
+      "department": "Civil"
     },
     "STU180": {
       "email": "krunal180@edu.com",
       "password": "STU180",
       "role": "student",
       "userId": "STU180",
-      "department": "Mechanical"
+      "department": "Civil"
     },
     "STU181": {
       "email": "darshan181@edu.com",
       "password": "STU181",
       "role": "student",
       "userId": "STU181",
-      "department": "Mechanical"
+      "department": "Civil"
     },
     "STU182": {
       "email": "ramesh182@edu.com",
       "password": "STU182",
       "role": "student",
       "userId": "STU182",
-      "department": "Computer Science"
+      "department": "Civil"
     },
     "STU183": {
       "email": "amit183@edu.com",
       "password": "STU183",
       "role": "student",
       "userId": "STU183",
-      "department": "Electronics"
+      "department": "Civil"
     },
     "STU184": {
       "email": "jatin184@edu.com",
@@ -593,7 +593,7 @@
       "password": "STU185",
       "role": "student",
       "userId": "STU185",
-      "department": "Electronics"
+      "department": "Civil"
     },
     "STU186": {
       "email": "suresh186@edu.com",
@@ -607,98 +607,98 @@
       "password": "STU187",
       "role": "student",
       "userId": "STU187",
-      "department": "Electronics"
+      "department": "Civil"
     },
     "STU188": {
       "email": "anand188@edu.com",
       "password": "STU188",
       "role": "student",
       "userId": "STU188",
-      "department": "Mechanical"
+      "department": "Civil"
     },
     "STU189": {
       "email": "kishor189@edu.com",
       "password": "STU189",
       "role": "student",
       "userId": "STU189",
-      "department": "Computer Science"
+      "department": "Civil"
     },
     "STU190": {
       "email": "vivek190@edu.com",
       "password": "STU190",
       "role": "student",
       "userId": "STU190",
-      "department": "Computer Science"
+      "department": "Civil"
     },
     "STU191": {
       "email": "rohit191@edu.com",
       "password": "STU191",
       "role": "student",
       "userId": "STU191",
-      "department": "Civil"
+      "department": "Mechanical"
     },
     "STU192": {
       "email": "adarsh192@edu.com",
       "password": "STU192",
       "role": "student",
       "userId": "STU192",
-      "department": "Civil"
+      "department": "Mechanical"
     },
     "STU193": {
       "email": "mayur193@edu.com",
       "password": "STU193",
       "role": "student",
       "userId": "STU193",
-      "department": "Electronics"
+      "department": "Mechanical"
     },
     "STU194": {
       "email": "sanket194@edu.com",
       "password": "STU194",
       "role": "student",
       "userId": "STU194",
-      "department": "Computer Science"
+      "department": "Mechanical"
     },
     "STU195": {
       "email": "harshal195@edu.com",
       "password": "STU195",
       "role": "student",
       "userId": "STU195",
-      "department": "Electronics"
+      "department": "Mechanical"
     },
     "STU196": {
       "email": "pranay196@edu.com",
       "password": "STU196",
       "role": "student",
       "userId": "STU196",
-      "department": "Computer Science"
+      "department": "Mechanical"
     },
     "STU197": {
       "email": "vikram197@edu.com",
       "password": "STU197",
       "role": "student",
       "userId": "STU197",
-      "department": "Civil"
+      "department": "Mechanical"
     },
     "STU198": {
       "email": "naman198@edu.com",
       "password": "STU198",
       "role": "student",
       "userId": "STU198",
-      "department": "Computer Science"
+      "department": "Mechanical"
     },
     "STU199": {
       "email": "kiran199@edu.com",
       "password": "STU199",
       "role": "student",
       "userId": "STU199",
-      "department": "Electronics"
+      "department": "Mechanical"
     },
     "STU200": {
       "email": "tej200@edu.com",
       "password": "STU200",
       "role": "student",
       "userId": "STU200",
-      "department": "Electronics"
+      "department": "Mechanical"
     },
     "STU201": {
       "email": "aayush201@edu.com",
@@ -719,77 +719,77 @@
       "password": "STU203",
       "role": "student",
       "userId": "STU203",
-      "department": "Computer Science"
+      "department": "Mechanical"
     },
     "STU204": {
       "email": "chintan204@edu.com",
       "password": "STU204",
       "role": "student",
       "userId": "STU204",
-      "department": "Computer Science"
+      "department": "Mechanical"
     },
     "STU205": {
       "email": "harish205@edu.com",
       "password": "STU205",
       "role": "student",
       "userId": "STU205",
-      "department": "Electronics"
+      "department": "Mechanical"
     },
     "STU206": {
       "email": "niraj206@edu.com",
       "password": "STU206",
       "role": "student",
       "userId": "STU206",
-      "department": "Computer Science"
+      "department": "Mechanical"
     },
     "STU207": {
       "email": "sohan207@edu.com",
       "password": "STU207",
       "role": "student",
       "userId": "STU207",
-      "department": "Electronics"
+      "department": "Mechanical"
     },
     "STU208": {
       "email": "rajat208@edu.com",
       "password": "STU208",
       "role": "student",
       "userId": "STU208",
-      "department": "Electronics"
+      "department": "Mechanical"
     },
     "STU209": {
       "email": "manoj209@edu.com",
       "password": "STU209",
       "role": "student",
       "userId": "STU209",
-      "department": "Computer Science"
+      "department": "Mechanical"
     },
     "STU210": {
       "email": "amitabh210@edu.com",
       "password": "STU210",
       "role": "student",
       "userId": "STU210",
-      "department": "Civil"
+      "department": "Mechanical"
     },
     "STU211": {
       "email": "siddhesh211@edu.com",
       "password": "STU211",
       "role": "student",
       "userId": "STU211",
-      "department": "Computer Science"
+      "department": "Mechanical"
     },
     "STU212": {
       "email": "raghavendra212@edu.com",
       "password": "STU212",
       "role": "student",
       "userId": "STU212",
-      "department": "Computer Science"
+      "department": "Mechanical"
     },
     "STU213": {
       "email": "bhavesh213@edu.com",
       "password": "STU213",
       "role": "student",
       "userId": "STU213",
-      "department": "Computer Science"
+      "department": "Mechanical"
     },
     "STU214": {
       "email": "lokesh214@edu.com",
@@ -803,14 +803,14 @@
       "password": "STU215",
       "role": "student",
       "userId": "STU215",
-      "department": "Civil"
+      "department": "Mechanical"
     },
     "STU216": {
       "email": "vimal216@edu.com",
       "password": "STU216",
       "role": "student",
       "userId": "STU216",
-      "department": "Electronics"
+      "department": "Mechanical"
     },
     "STU217": {
       "email": "sagar217@edu.com",
@@ -824,14 +824,14 @@
       "password": "STU218",
       "role": "student",
       "userId": "STU218",
-      "department": "Computer Science"
+      "department": "Mechanical"
     },
     "STU219": {
       "email": "kishan219@edu.com",
       "password": "STU219",
       "role": "student",
       "userId": "STU219",
-      "department": "Electronics"
+      "department": "Mechanical"
     },
     "STU220": {
       "email": "naveen220@edu.com",
@@ -845,217 +845,217 @@
       "password": "STU221",
       "role": "student",
       "userId": "STU221",
-      "department": "Electronics"
+      "department": "ICT"
     },
     "STU222": {
       "email": "akshay222@edu.com",
       "password": "STU222",
       "role": "student",
       "userId": "STU222",
-      "department": "Civil"
+      "department": "ICT"
     },
     "STU223": {
       "email": "darshit223@edu.com",
       "password": "STU223",
       "role": "student",
       "userId": "STU223",
-      "department": "Electronics"
+      "department": "ICT"
     },
     "STU224": {
       "email": "harsh224@edu.com",
       "password": "STU224",
       "role": "student",
       "userId": "STU224",
-      "department": "Civil"
+      "department": "ICT"
     },
     "STU225": {
       "email": "sankalp225@edu.com",
       "password": "STU225",
       "role": "student",
       "userId": "STU225",
-      "department": "Computer Science"
+      "department": "ICT"
     },
     "STU226": {
       "email": "vishal226@edu.com",
       "password": "STU226",
       "role": "student",
       "userId": "STU226",
-      "department": "Mechanical"
+      "department": "ICT"
     },
     "STU227": {
       "email": "amit227@edu.com",
       "password": "STU227",
       "role": "student",
       "userId": "STU227",
-      "department": "Civil"
+      "department": "ICT"
     },
     "STU228": {
       "email": "chetan228@edu.com",
       "password": "STU228",
       "role": "student",
       "userId": "STU228",
-      "department": "Computer Science"
+      "department": "ICT"
     },
     "STU229": {
       "email": "jignesh229@edu.com",
       "password": "STU229",
       "role": "student",
       "userId": "STU229",
-      "department": "Mechanical"
+      "department": "ICT"
     },
     "STU230": {
       "email": "kunal230@edu.com",
       "password": "STU230",
       "role": "student",
       "userId": "STU230",
-      "department": "Civil"
+      "department": "ICT"
     },
     "STU231": {
       "email": "rahul231@edu.com",
       "password": "STU231",
       "role": "student",
       "userId": "STU231",
-      "department": "Electronics"
+      "department": "ICT"
     },
     "STU232": {
       "email": "tapan232@edu.com",
       "password": "STU232",
       "role": "student",
       "userId": "STU232",
-      "department": "Mechanical"
+      "department": "ICT"
     },
     "STU233": {
       "email": "manish233@edu.com",
       "password": "STU233",
       "role": "student",
       "userId": "STU233",
-      "department": "Computer Science"
+      "department": "ICT"
     },
     "STU234": {
       "email": "nikhil234@edu.com",
       "password": "STU234",
       "role": "student",
       "userId": "STU234",
-      "department": "Mechanical"
+      "department": "ICT"
     },
     "STU235": {
       "email": "ravi235@edu.com",
       "password": "STU235",
       "role": "student",
       "userId": "STU235",
-      "department": "Mechanical"
+      "department": "ICT"
     },
     "STU236": {
       "email": "yogesh236@edu.com",
       "password": "STU236",
       "role": "student",
       "userId": "STU236",
-      "department": "Electronics"
+      "department": "ICT"
     },
     "STU237": {
       "email": "parth237@edu.com",
       "password": "STU237",
       "role": "student",
       "userId": "STU237",
-      "department": "Computer Science"
+      "department": "ICT"
     },
     "STU238": {
       "email": "hemal238@edu.com",
       "password": "STU238",
       "role": "student",
       "userId": "STU238",
-      "department": "Mechanical"
+      "department": "ICT"
     },
     "STU239": {
       "email": "jay239@edu.com",
       "password": "STU239",
       "role": "student",
       "userId": "STU239",
-      "department": "Civil"
+      "department": "ICT"
     },
     "STU240": {
       "email": "smit240@edu.com",
       "password": "STU240",
       "role": "student",
       "userId": "STU240",
-      "department": "Electronics"
+      "department": "ICT"
     },
     "STU241": {
       "email": "karan241@edu.com",
       "password": "STU241",
       "role": "student",
       "userId": "STU241",
-      "department": "Mechanical"
+      "department": "ICT"
     },
     "STU242": {
       "email": "rohit242@edu.com",
       "password": "STU242",
       "role": "student",
       "userId": "STU242",
-      "department": "Computer Science"
+      "department": "ICT"
     },
     "STU243": {
       "email": "devansh243@edu.com",
       "password": "STU243",
       "role": "student",
       "userId": "STU243",
-      "department": "Mechanical"
+      "department": "ICT"
     },
     "STU244": {
       "email": "ankit244@edu.com",
       "password": "STU244",
       "role": "student",
       "userId": "STU244",
-      "department": "Civil"
+      "department": "ICT"
     },
     "STU245": {
       "email": "sagar245@edu.com",
       "password": "STU245",
       "role": "student",
       "userId": "STU245",
-      "department": "Electronics"
+      "department": "ICT"
     },
     "STU246": {
       "email": "vivek246@edu.com",
       "password": "STU246",
       "role": "student",
       "userId": "STU246",
-      "department": "Electronics"
+      "department": "ICT"
     },
     "STU247": {
       "email": "yash247@edu.com",
       "password": "STU247",
       "role": "student",
       "userId": "STU247",
-      "department": "Electronics"
+      "department": "ICT"
     },
     "STU248": {
       "email": "kishor248@edu.com",
       "password": "STU248",
       "role": "student",
       "userId": "STU248",
-      "department": "Mechanical"
+      "department": "ICT"
     },
     "STU249": {
       "email": "ritesh249@edu.com",
       "password": "STU249",
       "role": "student",
       "userId": "STU249",
-      "department": "Electronics"
+      "department": "ICT"
     },
     "STU250": {
       "email": "dhruv250@edu.com",
       "password": "STU250",
       "role": "student",
       "userId": "STU250",
-      "department": "Electronics"
+      "department": "ICT"
     },
     "STU251": {
       "email": "heet251@edu.com",
       "password": "STU251",
       "role": "student",
       "userId": "STU251",
-      "department": "Computer Science"
+      "department": "ICT"
     }
   }
 }

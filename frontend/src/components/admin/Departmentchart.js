@@ -2,25 +2,29 @@ import React from 'react';
 import './Departmentchart.css';
 
 const DepartmentChart = ({ departmentData }) => {
+  console.log("DepartmentChart received departmentData:", departmentData);
+  
   const defaultColors = {
     'Computer Science': 'hsl(234, 89%, 54%)',
     'Mechanical': 'hsl(174, 72%, 40%)',
     'Electronics': 'hsl(38, 92%, 50%)',
-    'Civil': 'hsl(142, 76%, 36%)'
+    'Civil': 'hsl(142, 76%, 36%)',
+    'ICT': 'hsl(280, 80%, 60%)'
   };
 
-  const departments = departmentData 
+  const departments = departmentData
     ? Object.keys(departmentData).map(name => ({
-        name,
-        students: departmentData[name],
-        color: defaultColors[name] || 'hsl(0, 0%, 50%)'
-      })) 
+      name,
+      students: departmentData[name],
+      color: defaultColors[name] || 'hsl(0, 0%, 50%)'
+    }))
     : [
-        { name: 'Computer Science', students: 0, color: 'hsl(234, 89%, 54%)' },
-        { name: 'Mechanical', students: 0, color: 'hsl(174, 72%, 40%)' },
-        { name: 'Electronics', students: 0, color: 'hsl(38, 92%, 50%)' },
-        { name: 'Civil', students: 0, color: 'hsl(142, 76%, 36%)' },
-      ];
+      { name: 'Computer Science', students: 0, color: 'hsl(234, 89%, 54%)' },
+      { name: 'Mechanical', students: 0, color: 'hsl(174, 72%, 40%)' },
+      { name: 'Electronics', students: 0, color: 'hsl(38, 92%, 50%)' },
+      { name: 'Civil', students: 0, color: 'hsl(142, 76%, 36%)' },
+      { name: 'ICT', students: 0, color: 'hsl(280, 80%, 60%)' },
+    ];
 
   const totalStudents = departments.reduce((sum, dept) => sum + dept.students, 0);
 
@@ -38,8 +42,8 @@ const DepartmentChart = ({ departmentData }) => {
               <div key={index} className="department-item">
                 <div className="department-info">
                   <div className="department-name-row">
-                    <span 
-                      className="department-dot" 
+                    <span
+                      className="department-dot"
                       style={{ backgroundColor: dept.color }}
                     ></span>
                     <span className="department-name">{dept.name}</span>
@@ -47,9 +51,9 @@ const DepartmentChart = ({ departmentData }) => {
                   <span className="department-value">{dept.students}</span>
                 </div>
                 <div className="department-bar-container">
-                  <div 
+                  <div
                     className="department-bar"
-                    style={{ 
+                    style={{
                       width: `${percentage}%`,
                       backgroundColor: dept.color
                     }}
