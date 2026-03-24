@@ -41,31 +41,43 @@ exports.getDashboardStats = async (req, res) => {
     const subjectsData = JSON.parse(fs.readFileSync(subjectsDataPath, "utf-8"));
     const activeSubjects = Object.keys(subjectsData.subjects || {}).length;
 
-    // 4. Average Attendance
+    // 4. Average Attendance and Weekly Trends
     let avgAttendance = 0;
     const attendanceSnapshot = await db.collection("attendance").get();
 
     let totalPresent = 0;
     let totalRecords = 0;
 
+    const now = new Date();
+    // Normalize to start of day in UTC format as stored in DB
+    const msPerDay = 24 * 60 * 60 * 1000;
+    const dailyStats = {};
+    for (let i = 0; i < 21; i++) {
+      const d = new Date(now.getTime() - i * msPerDay);
+      const dateStr = d.toISOString().split("T")[0];
+      dailyStats[dateStr] = { total: 0, present: 0 };
+    }
+
     attendanceSnapshot.forEach((doc) => {
       const data = doc.data();
+      let docTotal = 0;
+      let docPresent = 0;
 
       // Handle old "attendance" object mapping studentIds to boolean/string
       if (data.hasOwnProperty('attendance') && typeof data.attendance === 'object' && !Array.isArray(data.attendance)) {
         Object.values(data.attendance).forEach((isPresent) => {
-          totalRecords += 1;
+          docTotal += 1;
           if (isPresent === true || isPresent === "Present" || isPresent === "present") {
-            totalPresent += 1;
+            docPresent += 1;
           }
         });
       }
       // Fallback for old "students" array format
       else if (data.hasOwnProperty('students') && Array.isArray(data.students)) {
         data.students.forEach((student) => {
-          totalRecords += 1;
+          docTotal += 1;
           if (student.status === "Present" || student.status === "present" || student.present === true || student.status === true) {
-            totalPresent += 1;
+            docPresent += 1;
           }
         });
       }
@@ -74,10 +86,48 @@ exports.getDashboardStats = async (req, res) => {
       else {
         Object.values(data).forEach((val) => {
           if (val && typeof val === 'object' && typeof val.total === 'number' && typeof val.attended === 'number') {
-            totalRecords += val.total;
-            totalPresent += val.attended;
+            docTotal += val.total;
+            docPresent += val.attended;
           }
         });
+      }
+
+      totalRecords += docTotal;
+      totalPresent += docPresent;
+
+      let dateKey = null;
+      if (data.date && typeof data.date === 'string') {
+        dateKey = data.date.split("T")[0];
+      }
+
+      if (dateKey && dailyStats[dateKey]) {
+        dailyStats[dateKey].total += docTotal;
+        dailyStats[dateKey].present += docPresent;
+      }
+    });
+
+    // Also fetch from modern class_sessions collection which has proper date fields
+    const classSessionsSnapshot = await db.collection("class_sessions").get();
+    classSessionsSnapshot.forEach((doc) => {
+      const data = doc.data();
+      let docTotal = 0;
+      let docPresent = 0;
+      
+      if (data.attendance && typeof data.attendance === 'object') {
+        Object.values(data.attendance).forEach(isPresent => {
+          docTotal++;
+          if (isPresent === true || isPresent === "true") docPresent++;
+        });
+      }
+
+      let dateKey = null;
+      if (data.date && typeof data.date === 'string') {
+        dateKey = data.date.split("T")[0];
+      }
+
+      if (dateKey && dailyStats[dateKey]) {
+        dailyStats[dateKey].total += docTotal;
+        dailyStats[dateKey].present += docPresent;
       }
     });
 
@@ -85,12 +135,71 @@ exports.getDashboardStats = async (req, res) => {
       avgAttendance = ((totalPresent / totalRecords) * 100).toFixed(1);
     }
 
+    // Calculate weekly trend (Monday to Saturday of the current week)
+    const weeklyTrend = [];
+    const dayNames = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+    
+    const dayOfWeek = now.getDay();
+    const diffToMonday = dayOfWeek === 0 ? 6 : dayOfWeek - 1;
+    const currentMonday = new Date(now.getTime() - diffToMonday * msPerDay);
+
+    let currentWeekTotal = 0;
+    let currentWeekPresent = 0;
+    
+    for (let i = 0; i < 6; i++) {
+      const d = new Date(currentMonday.getTime() + i * msPerDay);
+      const dateStr = d.toISOString().split("T")[0];
+      
+      let percentage = 0;
+      if (dailyStats[dateStr] && dailyStats[dateStr].total > 0) {
+        currentWeekTotal += dailyStats[dateStr].total;
+        currentWeekPresent += dailyStats[dateStr].present;
+        percentage = Math.round((dailyStats[dateStr].present / dailyStats[dateStr].total) * 100);
+      }
+      weeklyTrend.push({ day: dayNames[d.getDay()], percentage });
+    }
+
+    // Previous week (Monday to Saturday of the previous week)
+    const prevMonday = new Date(currentMonday.getTime() - 7 * msPerDay);
+    let prevWeekTotal = 0;
+    let prevWeekPresent = 0;
+    
+    for (let i = 0; i < 6; i++) {
+      const d = new Date(prevMonday.getTime() + i * msPerDay);
+      const dateStr = d.toISOString().split("T")[0];
+      if (dailyStats[dateStr]) {
+        prevWeekTotal += dailyStats[dateStr].total;
+        prevWeekPresent += dailyStats[dateStr].present;
+      }
+    }
+
+    let currentWeekAvg = 0;
+    if (currentWeekTotal > 0) {
+      currentWeekAvg = Math.round((currentWeekPresent / currentWeekTotal) * 100);
+    }
+
+    let prevWeekAvg = 0;
+    if (prevWeekTotal > 0) {
+      prevWeekAvg = Math.round((prevWeekPresent / prevWeekTotal) * 100);
+    }
+
+    let trendChange = 0;
+    if (prevWeekTotal > 0) {
+      trendChange = currentWeekAvg - prevWeekAvg;
+    } else if (currentWeekTotal > 0) {
+      trendChange = currentWeekAvg; 
+    }
+    
+    let trendChangeString = trendChange >= 0 ? `+${trendChange}%` : `${trendChange}%`;
+
     res.json({
       totalStudents,
       totalFaculty,
       activeSubjects,
       avgAttendance: parseFloat(avgAttendance),
-      departments: departmentsCount
+      departments: departmentsCount,
+      weeklyTrend,
+      trendChange: trendChangeString
     });
   } catch (error) {
     console.error("Error fetching dashboard stats:", error);

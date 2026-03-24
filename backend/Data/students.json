@@ -1056,6 +1056,13 @@
       "class": "CE5",
       "semester": 6,
       "department": "ICT"
+    },
+    "STU252": {
+      "name": "Shlok Dave",
+      "rollNo": 252,
+      "class": "CE1",
+      "semester": 6,
+      "department": "Computer Science"
     }
   }
 }

@@ -77,7 +77,7 @@ const AdminDashboardPage = () => {
 
         {/* Charts Row */}
         <div className="charts-grid">
-          <AttendanceChart />
+          <AttendanceChart weekData={stats.weeklyTrend} trendChange={stats.trendChange} />
           <DepartmentChart departmentData={stats.departments} />
         </div>
 

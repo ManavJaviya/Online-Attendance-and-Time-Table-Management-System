@@ -1056,6 +1056,13 @@
       "role": "student",
       "userId": "STU251",
       "department": "ICT"
+    },
+    "STU252": {
+      "email": "shlok252@edu.com",
+      "password": "STU252",
+      "role": "student",
+      "userId": "STU252",
+      "department": "Computer Science"
     }
   }
 }

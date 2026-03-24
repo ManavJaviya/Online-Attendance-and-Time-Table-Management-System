@@ -1,0 +1,65 @@
+{
+  "total": 162,
+  "sample": [
+    {
+      "id": "pdsw23XHWlhzBwD4pM89",
+      "date": "2026-02-27T14:16:25.576Z",
+      "hasStudentsArray": false,
+      "hasAttendanceObj": true
+    },
+    {
+      "id": "psMm3mhNF6HQ55kBjSnc",
+      "date": "2026-03-02T12:22:59.655Z",
+      "hasStudentsArray": false,
+      "hasAttendanceObj": true
+    },
+    {
+      "id": "tsGE2xpZC4GjCskYxDj5",
+      "date": "2026-02-27T14:41:24.706Z",
+      "hasStudentsArray": false,
+      "hasAttendanceObj": true
+    },
+    {
+      "id": "uXoMX0FO1XumPQPssvck",
+      "date": "2026-03-03T12:32:57.674Z",
+      "hasStudentsArray": false,
+      "hasAttendanceObj": true
+    },
+    {
+      "id": "usDwZb8h3PpDpToF6ts6",
+      "date": "2026-03-03T12:14:40.996Z",
+      "hasStudentsArray": false,
+      "hasAttendanceObj": true
+    },
+    {
+      "id": "v5FBi8fYWDaP4HHAbzXQ",
+      "date": "2026-02-27T14:50:01.163Z",
+      "hasStudentsArray": false,
+      "hasAttendanceObj": true
+    },
+    {
+      "id": "v9BoA5tc5XKjGxRFpgMq",
+      "date": "2026-03-02T12:14:44.419Z",
+      "hasStudentsArray": false,
+      "hasAttendanceObj": true
+    },
+    {
+      "id": "ygFt2VFNKyaMQWqXcBrs",
+      "date": "2026-03-01T12:23:00.355Z",
+      "hasStudentsArray": false,
+      "hasAttendanceObj": true
+    },
+    {
+      "id": "zPv9OwbCM8mDDIBuDG74",
+      "date": "2026-03-02T12:23:02.425Z",
+      "hasStudentsArray": false,
+      "hasAttendanceObj": true
+    },
+    {
+      "id": "zkgUm6lMDlz4MCEf4sW5",
+      "date": "2026-03-03T12:07:45.345Z",
+      "hasStudentsArray": false,
+      "hasAttendanceObj": true
+    }
+  ]
+}

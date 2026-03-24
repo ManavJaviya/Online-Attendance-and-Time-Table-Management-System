@@ -1,39 +1,54 @@
 import React from 'react';
 import './Attendancechart.css';
 
-const AttendanceChart = () => {
-  const weekData = [
-    { day: 'Mon', percentage: 88 },
-    { day: 'Tue', percentage: 92 },
-    { day: 'Wed', percentage: 85 },
-    { day: 'Thu', percentage: 90 },
-    { day: 'Fri', percentage: 87 },
-    { day: 'Sat', percentage: 78 },
+const AttendanceChart = ({ weekData, trendChange }) => {
+  const defaultData = [
+    { day: 'Mon', percentage: 0 },
+    { day: 'Tue', percentage: 0 },
+    { day: 'Wed', percentage: 0 },
+    { day: 'Thu', percentage: 0 },
+    { day: 'Fri', percentage: 0 },
+    { day: 'Sat', percentage: 0 },
   ];
 
+  const displayData = weekData && weekData.length > 0 ? weekData : defaultData;
   const maxPercentage = 100;
+
+  const isPositive = trendChange && trendChange.startsWith('+');
+  const trendColor = isPositive ? 'hsl(142, 76%, 36%)' : 'hsl(0, 84%, 60%)';
 
   return (
     <div className="chart-card">
       <div className="chart-header">
-        <h3 className="chart-title">Weekly Attendance Trend</h3>
-        <p className="chart-subtitle">Last 6 days</p>
+        <h3 className="chart-title">
+          Weekly Attendance Trend
+          {trendChange && (
+            <span style={{ fontSize: '0.8rem', marginLeft: '10px', color: trendColor, fontWeight: 'normal' }}>
+              ({trendChange} vs last week)
+            </span>
+          )}
+        </h3>
+        <p className="chart-subtitle">Last {displayData.length} days</p>
       </div>
       <div className="chart-content">
         <div className="bar-chart">
-          {weekData.map((data, index) => (
+          {displayData.map((data, index) => (
             <div key={index} className="bar-container">
               <div className="bar-wrapper">
                 <div
                   className="bar"
                   style={{
                     height: `${(data.percentage / maxPercentage) * 100}%`,
+                    minHeight: data.percentage > 0 ? '30px' : '0',
+                    paddingTop: data.percentage > 0 ? '0.5rem' : '0',
                     backgroundColor: data.percentage >= 85 ? 'hsl(142, 76%, 36%)' : 
                                    data.percentage >= 75 ? 'hsl(38, 92%, 50%)' : 
                                    'hsl(0, 84%, 60%)'
                   }}
                 >
-                  <span className="bar-value">{data.percentage}%</span>
+                  <span className="bar-value" style={{ color: data.percentage > 0 ? 'white' : 'var(--color-text-muted)', position: data.percentage === 0 ? 'absolute' : 'static', bottom: data.percentage === 0 ? '5px' : 'auto' }}>
+                    {data.percentage}%
+                  </span>
                 </div>
               </div>
               <span className="bar-label">{data.day}</span>

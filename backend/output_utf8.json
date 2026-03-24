@@ -1,0 +1,40 @@
+{
+  "totalStudents": 151,
+  "totalFaculty": 12,
+  "activeSubjects": 6,
+  "avgAttendance": 66.9,
+  "departments": {
+    "Computer Science": 30,
+    "Mechanical": 30,
+    "Electronics": 30,
+    "Civil": 30,
+    "ICT": 31
+  },
+  "weeklyTrend": [
+    {
+      "day": "Mon",
+      "percentage": 0
+    },
+    {
+      "day": "Tue",
+      "percentage": 100
+    },
+    {
+      "day": "Wed",
+      "percentage": 0
+    },
+    {
+      "day": "Thu",
+      "percentage": 0
+    },
+    {
+      "day": "Fri",
+      "percentage": 0
+    },
+    {
+      "day": "Sat",
+      "percentage": 0
+    }
+  ],
+  "trendChange": "+24%"
+}
