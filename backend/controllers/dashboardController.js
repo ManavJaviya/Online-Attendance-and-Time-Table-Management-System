@@ -7,7 +7,6 @@ exports.getDashboardStats = async (req, res) => {
     // 1. Total Students and Departments
     const studentDataPath = path.join(__dirname, "../Data/studentLoginData.json");
     const studentData = JSON.parse(fs.readFileSync(studentDataPath, "utf-8"));
-    const totalStudents = Object.keys(studentData.users || {}).length;
 
     const departmentsCount = {
       "Computer Science": 0,
@@ -17,13 +16,20 @@ exports.getDashboardStats = async (req, res) => {
       "ICT": 0
     };
 
+    let effectiveTotalStudents = 0;
+
     if (studentData.users) {
       Object.values(studentData.users).forEach(user => {
-        if (user.department && departmentsCount[user.department] !== undefined) {
-          departmentsCount[user.department]++;
+        effectiveTotalStudents++;
+        const dept = user.department || "Unassigned";
+        if (departmentsCount[dept] === undefined) {
+          departmentsCount[dept] = 0;
         }
+        departmentsCount[dept]++;
       });
     }
+
+    const totalStudents = effectiveTotalStudents;
 
     // 2. Total Faculty
     const facultyDataPath = path.join(__dirname, "../Data/facultyLoginData.json");
@@ -45,8 +51,8 @@ exports.getDashboardStats = async (req, res) => {
     attendanceSnapshot.forEach((doc) => {
       const data = doc.data();
 
-      // Handle "attendance" object mapping studentIds to boolean/string
-      if (data.attendance && typeof data.attendance === 'object' && !Array.isArray(data.attendance)) {
+      // Handle old "attendance" object mapping studentIds to boolean/string
+      if (data.hasOwnProperty('attendance') && typeof data.attendance === 'object' && !Array.isArray(data.attendance)) {
         Object.values(data.attendance).forEach((isPresent) => {
           totalRecords += 1;
           if (isPresent === true || isPresent === "Present" || isPresent === "present") {
@@ -54,12 +60,22 @@ exports.getDashboardStats = async (req, res) => {
           }
         });
       }
-      // Fallback for "students" array format
-      else if (data.students && Array.isArray(data.students)) {
+      // Fallback for old "students" array format
+      else if (data.hasOwnProperty('students') && Array.isArray(data.students)) {
         data.students.forEach((student) => {
           totalRecords += 1;
           if (student.status === "Present" || student.status === "present" || student.present === true || student.status === true) {
             totalPresent += 1;
+          }
+        });
+      }
+      // NEW FORMAT: Student aggregate records
+      // doc.id = studentId, data = { "SubjectName": { total: number, attended: number }, ... }
+      else {
+        Object.values(data).forEach((val) => {
+          if (val && typeof val === 'object' && typeof val.total === 'number' && typeof val.attended === 'number') {
+            totalRecords += val.total;
+            totalPresent += val.attended;
           }
         });
       }

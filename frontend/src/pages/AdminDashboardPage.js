@@ -48,7 +48,6 @@ const AdminDashboardPage = () => {
           <StatsCard
             title="Total Students"
             value={stats.totalStudents}
-            change="Live from Database"
             changeType="neutral"
             icon="👨‍🎓"
             iconClassName="stat-icon-primary"
@@ -56,7 +55,6 @@ const AdminDashboardPage = () => {
           <StatsCard
             title="Total Faculty"
             value={stats.totalFaculty}
-            change="Live from Database"
             changeType="neutral"
             icon="👨‍🏫"
             iconClassName="stat-icon-accent"
@@ -64,7 +62,6 @@ const AdminDashboardPage = () => {
           <StatsCard
             title="Active Subjects"
             value={stats.activeSubjects}
-            change="Live from Database"
             changeType="neutral"
             icon="📚"
             iconClassName="stat-icon-warning"
@@ -72,7 +69,6 @@ const AdminDashboardPage = () => {
           <StatsCard
             title="Avg. Attendance"
             value={stats.avgAttendance !== "Loading..." ? `${stats.avgAttendance}%` : "Loading..."}
-            change="Live from Database"
             changeType="neutral"
             icon="📈"
             iconClassName="stat-icon-success"
