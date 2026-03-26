@@ -1063,6 +1063,13 @@
       "role": "student",
       "userId": "STU252",
       "department": "Computer Science"
+    },
+    "STU253": {
+      "email": "sahil253@edu.com",
+      "password": "STU253",
+      "role": "student",
+      "userId": "STU253",
+      "department": "Mechanical"
     }
   }
 }

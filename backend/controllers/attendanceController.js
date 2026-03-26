@@ -1,5 +1,7 @@
 const admin = require("firebase-admin");
 const db = admin.firestore();
+const { logActivity } = require("../utils/activityLogger");
+
 
 // Get students by class
 exports.getStudentsByClass = async (req, res) => {
@@ -39,6 +41,8 @@ exports.markAttendance = async (req, res) => {
       facultyId: facultyId,
       students: attendanceData,
     });
+
+    logActivity('attendance', `Attendance marked for ${className}`, typeof facultyId === 'string' ? facultyId : 'Faculty', 'hsl(142, 76%, 36%)', '✓');
 
     res.json({ message: "Attendance saved successfully" });
 

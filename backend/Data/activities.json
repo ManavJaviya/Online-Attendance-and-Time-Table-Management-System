@@ -1,0 +1,29 @@
+[
+  {
+    "id": "1774507774631",
+    "type": "user",
+    "title": "New student added (Sahil Yadav)",
+    "user": "Admin",
+    "time": "2026-03-26T06:49:34.631Z",
+    "color": "hsl(234, 89%, 54%)",
+    "icon": "👥"
+  },
+  {
+    "id": "1774507585756",
+    "type": "attendance",
+    "title": "Attendance marked for CE4",
+    "user": "Faculty",
+    "time": "2026-03-26T06:46:25.756Z",
+    "color": "hsl(142, 76%, 36%)",
+    "icon": "✓"
+  },
+  {
+    "id": "1774507009414",
+    "type": "timetable",
+    "title": "Timetable updated for CE2",
+    "user": "Admin",
+    "time": "2026-03-26T06:36:49.414Z",
+    "color": "hsl(174, 72%, 40%)",
+    "icon": "📅"
+  }
+]

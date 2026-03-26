@@ -1,6 +1,32 @@
 const fs = require("fs");
 const path = require("path");
 const { db } = require("../config/firebase");
+const { logActivity } = require("../utils/activityLogger");
+
+exports.logFrontendActivity = (req, res) => {
+  try {
+    const { type, title, user, color, icon } = req.body;
+    logActivity(type, title, user, color, icon);
+    res.status(200).json({ message: "Activity logged" });
+  } catch (error) {
+    console.error("Error logging frontend activity:", error);
+    res.status(500).json({ error: "Failed to log activity" });
+  }
+};
+
+exports.getRecentActivities = (req, res) => {
+  try {
+    const activitiesPath = path.join(__dirname, "../Data/activities.json");
+    if (fs.existsSync(activitiesPath)) {
+      const data = fs.readFileSync(activitiesPath, "utf-8");
+      return res.status(200).json(JSON.parse(data));
+    }
+    return res.status(200).json([]);
+  } catch (error) {
+    console.error("Error fetching activities:", error);
+    res.status(500).json({ error: "Failed to fetch activities" });
+  }
+};
 
 exports.getDashboardStats = async (req, res) => {
   try {

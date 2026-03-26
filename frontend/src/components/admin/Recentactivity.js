@@ -1,54 +1,41 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import './Recentactivity.css';
 
+const timeAgo = (dateInput) => {
+  if (!dateInput) return '';
+  const date = new Date(dateInput);
+  const now = new Date();
+  const diffInSeconds = Math.floor((now - date) / 1000);
+
+  if (diffInSeconds < 60) return `Just now`;
+  const diffInMinutes = Math.floor(diffInSeconds / 60);
+  if (diffInMinutes < 60) return `${diffInMinutes} minute${diffInMinutes > 1 ? 's' : ''} ago`;
+  const diffInHours = Math.floor(diffInMinutes / 60);
+  if (diffInHours < 24) return `${diffInHours} hour${diffInHours > 1 ? 's' : ''} ago`;
+  const diffInDays = Math.floor(diffInHours / 24);
+  return `${diffInDays} day${diffInDays > 1 ? 's' : ''} ago`;
+};
+
 const RecentActivity = () => {
-  const activities = [
-    {
-      id: 1,
-      type: 'attendance',
-      title: 'Attendance marked for CSE-3A',
-      user: 'Dr. Sarah Johnson',
-      time: '10 minutes ago',
-      icon: '✓',
-      color: 'hsl(142, 76%, 36%)'
-    },
-    {
-      id: 2,
-      type: 'timetable',
-      title: 'Timetable updated for ME-2B',
-      user: 'Admin',
-      time: '1 hour ago',
-      icon: '📅',
-      color: 'hsl(174, 72%, 40%)'
-    },
-    {
-      id: 3,
-      type: 'user',
-      title: 'New faculty member added',
-      user: 'Prof. Michael Brown',
-      time: '2 hours ago',
-      icon: '👤',
-      color: 'hsl(234, 89%, 54%)'
-    },
-    {
-      id: 4,
-      type: 'attendance',
-      title: 'Low attendance alert for EC-1A',
-      user: 'System',
-      time: '3 hours ago',
-      icon: '⚠',
-      color: 'hsl(38, 92%, 50%)'
-    },
-    {
-      id: 5,
-      type: 'user',
-      title: '15 new students enrolled',
-      user: 'Admission Office',
-      time: '5 hours ago',
-      icon: '👥',
-      color: 'hsl(234, 89%, 54%)'
-    },
-  ];
+  const [activities, setActivities] = useState([]);
+
+  useEffect(() => {
+    const fetchActivities = async () => {
+      try {
+        const response = await axios.get('http://localhost:5000/api/dashboard/activities');
+        setActivities(response.data);
+      } catch (error) {
+        console.error('Error fetching activities:', error);
+      }
+    };
+
+    fetchActivities();
+    
+    // Auto-refresh activities every 15 seconds
+    const intervalId = setInterval(fetchActivities, 15000);
+    return () => clearInterval(intervalId);
+  }, []);
 
   return (
     <div className="activity-card">
@@ -57,27 +44,33 @@ const RecentActivity = () => {
         <button className="view-all-btn">View All</button>
       </div>
       <div className="activity-list">
-        {activities.map((activity) => (
+        {activities.length > 0 ? activities.map((activity) => (
           <div key={activity.id} className="activity-item">
             <div 
               className="activity-icon"
               style={{ 
-                backgroundColor: `${activity.color}15`,
-                color: activity.color
+                backgroundColor: `${activity.color || 'hsl(234, 89%, 54%)'}15`,
+                color: activity.color || 'hsl(234, 89%, 54%)'
               }}
             >
-              {activity.icon}
+              {activity.icon || 'ℹ️'}
             </div>
             <div className="activity-content">
               <p className="activity-item-title">{activity.title}</p>
               <p className="activity-meta">
                 <span className="activity-user">{activity.user}</span>
                 <span className="activity-separator">•</span>
-                <span className="activity-time">{activity.time}</span>
+                <span className="activity-time">{timeAgo(activity.time)}</span>
               </p>
             </div>
           </div>
-        ))}
+        )) : (
+          <div className="activity-item">
+            <div className="activity-content">
+              <p className="activity-meta">No recent activities found.</p>
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );

@@ -1063,6 +1063,13 @@
       "class": "CE1",
       "semester": 6,
       "department": "Computer Science"
+    },
+    "STU253": {
+      "name": "Sahil Yadav",
+      "rollNo": 253,
+      "class": "CE3",
+      "semester": 5,
+      "department": "Mechanical"
     }
   }
 }

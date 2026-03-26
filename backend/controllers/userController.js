@@ -1,6 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 const { db } = require('../config/firebase');
+const { logActivity } = require('../utils/activityLogger');
 
 // Utility to read and write JSON synchronously
 const readJson = (filename) => {
@@ -59,6 +60,8 @@ exports.addStudent = async (req, res) => {
             semester: semester || 1,
             department
         });
+
+        logActivity('user', `New student added (${name})`, 'Admin', 'hsl(234, 89%, 54%)', '👥');
 
         res.status(200).json({ message: "Student added successfully" });
     } catch (error) {
@@ -132,6 +135,8 @@ exports.addFaculty = async (req, res) => {
             subject: subject || "Unassigned",
             classes: classes || []
         });
+
+        logActivity('user', `New faculty member added (${name})`, 'Admin', 'hsl(234, 89%, 54%)', '👤');
 
         res.status(200).json({ message: "Faculty added successfully" });
     } catch (error) {

@@ -7,6 +7,9 @@ import ManageUsersPage from "./pages/ManageUsersPage";
 import StudentDashboardPage from "./pages/StudentDashboardPage";
 import ProtectedFacultyRoute from "./routes/ProtectedFacultyRoute";
 import FacultyTimetablePage from "./pages/FacultyTimetablePage";
+import ManageTimetablePage from "./pages/ManageTimetablePage";
+import ReportsPage from "./pages/ReportsPage";
+
 
 
 function App() {
@@ -16,6 +19,9 @@ function App() {
         <Route path="/" element={<LoginPage />} />
         <Route path="/admin" element={<AdminDashboardPage />} />
         <Route path="/admin/manage-users" element={<ManageUsersPage />} />
+        <Route path="/admin/manage-timetable" element={<ManageTimetablePage />} />
+        <Route path="/admin/reports" element={<ReportsPage />} />
+
 
         <Route
           path="/faculty"
