@@ -22,11 +22,6 @@ const AttendanceChart = ({ weekData, trendChange }) => {
       <div className="chart-header">
         <h3 className="chart-title">
           Weekly Attendance Trend
-          {trendChange && (
-            <span style={{ fontSize: '0.8rem', marginLeft: '10px', color: trendColor, fontWeight: 'normal' }}>
-              ({trendChange} vs last week)
-            </span>
-          )}
         </h3>
         <p className="chart-subtitle">Last {displayData.length} days</p>
       </div>

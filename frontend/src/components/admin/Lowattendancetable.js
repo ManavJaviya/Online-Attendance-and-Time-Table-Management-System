@@ -1,59 +1,27 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import './Lowattendancetable.css';
 
 const LowAttendanceTable = () => {
-  const lowAttendanceStudents = [
-    {
-      id: 1,
-      rollNo: 'CSE2021045',
-      name: 'Rahul Sharma',
-      class: 'CSE-3A',
-      subject: 'Data Structures',
-      attendance: 68,
-      totalClasses: 25,
-      present: 17
-    },
-    {
-      id: 2,
-      rollNo: 'ME2021032',
-      name: 'Priya Patel',
-      class: 'ME-2B',
-      subject: 'Thermodynamics',
-      attendance: 72,
-      totalClasses: 30,
-      present: 22
-    },
-    {
-      id: 3,
-      rollNo: 'EC2021018',
-      name: 'Amit Kumar',
-      class: 'EC-1A',
-      subject: 'Digital Electronics',
-      attendance: 65,
-      totalClasses: 28,
-      present: 18
-    },
-    {
-      id: 4,
-      rollNo: 'CSE2021089',
-      name: 'Sneha Gupta',
-      class: 'CSE-3A',
-      subject: 'Operating Systems',
-      attendance: 70,
-      totalClasses: 26,
-      present: 18
-    },
-    {
-      id: 5,
-      rollNo: 'CE2021055',
-      name: 'Vijay Singh',
-      class: 'CE-2A',
-      subject: 'Surveying',
-      attendance: 67,
-      totalClasses: 24,
-      present: 16
-    },
-  ];
+  const [lowAttendanceStudents, setLowAttendanceStudents] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchStudents = async () => {
+      try {
+        const response = await axios.get("http://localhost:5000/api/dashboard/students-attendance");
+        setLowAttendanceStudents(response.data);
+      } catch (error) {
+        console.error("Error fetching students attendance:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchStudents();
+  }, []);
+
+  const [selectedClass, setSelectedClass] = useState('All');
+  const [selectedThreshold, setSelectedThreshold] = useState(75);
 
   const getAttendanceStatus = (percentage) => {
     if (percentage >= 75) return 'status-warning';
@@ -61,14 +29,41 @@ const LowAttendanceTable = () => {
     return 'status-danger';
   };
 
+  const uniqueClasses = ['All', ...new Set(lowAttendanceStudents.map(s => s.class))];
+
+  const filteredStudents = lowAttendanceStudents.filter(student => {
+    const classMatch = selectedClass === 'All' || student.class === selectedClass;
+    const thresholdMatch = student.attendance < selectedThreshold;
+    return classMatch && thresholdMatch;
+  });
+
   return (
     <div className="low-attendance-card">
       <div className="low-attendance-header">
         <div>
           <h3 className="low-attendance-title">Low Attendance Alert</h3>
-          <p className="low-attendance-subtitle">Students below 75% attendance threshold</p>
+          <p className="low-attendance-subtitle">Students below {selectedThreshold}% attendance threshold</p>
         </div>
-        <button className="export-btn">Export Report</button>
+        <div className="alert-filters">
+          <select 
+            value={selectedClass} 
+            onChange={(e) => setSelectedClass(e.target.value)}
+            className="filter-select"
+          >
+            {uniqueClasses.map(cls => (
+              <option key={cls} value={cls}>{cls === 'All' ? 'All Classes' : cls}</option>
+            ))}
+          </select>
+          <select 
+            value={selectedThreshold} 
+            onChange={(e) => setSelectedThreshold(Number(e.target.value))}
+            className="filter-select"
+          >
+            {[100, 95, 90, 85, 80, 75, 70, 65, 60, 55, 50].map(threshold => (
+              <option key={threshold} value={threshold}>Below {threshold}%</option>
+            ))}
+          </select>
+        </div>
       </div>
       <div className="table-container">
         <table className="attendance-table">
@@ -84,39 +79,45 @@ const LowAttendanceTable = () => {
             </tr>
           </thead>
           <tbody>
-            {lowAttendanceStudents.map((student) => (
-              <tr key={student.id}>
-                <td className="roll-no">{student.rollNo}</td>
-                <td className="student-name">{student.name}</td>
-                <td>{student.class}</td>
-                <td>{student.subject}</td>
-                <td className="classes-count">
-                  {student.present}/{student.totalClasses}
-                </td>
-                <td>
-                  <div className="attendance-percentage">
-                    <div className="percentage-bar-bg">
-                      <div 
-                        className="percentage-bar-fill"
-                        style={{ 
-                          width: `${student.attendance}%`,
-                          backgroundColor: student.attendance >= 75 ? 'hsl(38, 92%, 50%)' :
-                                         student.attendance >= 65 ? 'hsl(0, 84%, 60%)' :
-                                         'hsl(0, 84%, 40%)'
-                        }}
-                      ></div>
+            {loading ? (
+              <tr><td colSpan="7" style={{textAlign: 'center'}}>Loading student data...</td></tr>
+            ) : filteredStudents.length === 0 ? (
+              <tr><td colSpan="7" style={{textAlign: 'center'}}>No students found matching criteria</td></tr>
+            ) : (
+              filteredStudents.map((student) => (
+                <tr key={student.id}>
+                  <td className="roll-no">{student.rollNo}</td>
+                  <td className="student-name">{student.name}</td>
+                  <td>{student.class}</td>
+                  <td>{student.subject}</td>
+                  <td className="classes-count">
+                    {student.present}/{student.totalClasses}
+                  </td>
+                  <td>
+                    <div className="attendance-percentage">
+                      <div className="percentage-bar-bg">
+                        <div 
+                          className="percentage-bar-fill"
+                          style={{ 
+                            width: `${student.attendance}%`,
+                            backgroundColor: student.attendance >= 75 ? 'hsl(38, 92%, 50%)' :
+                                           student.attendance >= 65 ? 'hsl(0, 84%, 60%)' :
+                                           'hsl(0, 84%, 40%)'
+                          }}
+                        ></div>
+                      </div>
+                      <span className="percentage-text">{student.attendance}%</span>
                     </div>
-                    <span className="percentage-text">{student.attendance}%</span>
-                  </div>
-                </td>
-                <td>
-                  <span className={`status-badge ${getAttendanceStatus(student.attendance)}`}>
-                    {student.attendance >= 75 ? 'Warning' :
-                     student.attendance >= 65 ? 'Critical' : 'Danger'}
-                  </span>
-                </td>
-              </tr>
-            ))}
+                  </td>
+                  <td>
+                    <span className={`status-badge ${getAttendanceStatus(student.attendance)}`}>
+                      {student.attendance >= 75 ? 'Warning' :
+                       student.attendance >= 65 ? 'Critical' : 'Danger'}
+                    </span>
+                  </td>
+                </tr>
+              ))
+            )}
           </tbody>
         </table>
       </div>

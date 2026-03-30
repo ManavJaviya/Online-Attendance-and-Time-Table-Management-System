@@ -14,6 +14,60 @@ exports.logFrontendActivity = (req, res) => {
   }
 };
 
+exports.getLowAttendanceStudents = async (req, res) => {
+  try {
+    const studentsPath = path.join(__dirname, "../Data/students.json");
+    let studentsData = {};
+    if (fs.existsSync(studentsPath)) {
+      studentsData = JSON.parse(fs.readFileSync(studentsPath, "utf-8")).students || {};
+    }
+
+    const attendanceSnapshot = await db.collection("attendance").get();
+    const attendanceData = {};
+    attendanceSnapshot.forEach(doc => {
+      attendanceData[doc.id] = doc.data();
+    });
+
+    const result = [];
+    Object.keys(studentsData).forEach(studentId => {
+      const student = studentsData[studentId];
+      let sTotal = 0;
+      let sAttended = 0;
+      let subject = "General"; // default 
+
+      if (attendanceData[studentId]) {
+        const studentAtt = attendanceData[studentId];
+        Object.keys(studentAtt).forEach(subjKey => {
+           if (studentAtt[subjKey] && typeof studentAtt[subjKey].total === 'number') {
+              sTotal += studentAtt[subjKey].total;
+              sAttended += studentAtt[subjKey].attended;
+              subject = subjKey;
+           }
+        });
+      }
+
+      // Automatically give 100% to students with 0 classes to avoid alert false positives
+      const percentage = sTotal > 0 ? Math.round((sAttended / sTotal) * 100) : 100;
+      
+      result.push({
+        id: studentId,
+        rollNo: student.rollNo,
+        name: student.name,
+        class: student.class,
+        subject: subject,
+        totalClasses: sTotal,
+        present: sAttended,
+        attendance: percentage
+      });
+    });
+
+    res.status(200).json(result);
+  } catch (error) {
+    console.error("Error fetching student attendance:", error);
+    res.status(500).json({ error: "Failed to fetch student attendance" });
+  }
+};
+
 exports.getRecentActivities = (req, res) => {
   try {
     const activitiesPath = path.join(__dirname, "../Data/activities.json");

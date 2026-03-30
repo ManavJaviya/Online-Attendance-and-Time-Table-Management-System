@@ -1,5 +1,23 @@
 [
   {
+    "id": "1774883716761",
+    "type": "user",
+    "title": "Student data synced via file upload. Added: 0, Removed: 153",
+    "user": "Admin",
+    "time": "2026-03-30T15:15:16.761Z",
+    "color": "hsl(38, 92%, 50%)",
+    "icon": "📤"
+  },
+  {
+    "id": "1774882973656",
+    "type": "user",
+    "title": "Student data synced via file upload. Added: 2, Removed: 152",
+    "user": "Admin",
+    "time": "2026-03-30T15:02:53.656Z",
+    "color": "hsl(38, 92%, 50%)",
+    "icon": "📤"
+  },
+  {
     "id": "1774507774631",
     "type": "user",
     "title": "New student added (Sahil Yadav)",

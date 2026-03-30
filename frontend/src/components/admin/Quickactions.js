@@ -25,10 +25,10 @@ const QuickActions = () => {
       route: '/admin/reports'
     },
     {
-      title: 'System Settings',
-      icon: '⚙️',
+      title: 'Update Student Data',
+      icon: '📤',
       color: 'hsl(38, 92%, 50%)',
-      route: '/admin/settings'
+      route: '/admin/upload-students'
     },
   ];
 

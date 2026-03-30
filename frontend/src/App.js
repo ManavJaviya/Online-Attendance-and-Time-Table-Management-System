@@ -9,8 +9,7 @@ import ProtectedFacultyRoute from "./routes/ProtectedFacultyRoute";
 import FacultyTimetablePage from "./pages/FacultyTimetablePage";
 import ManageTimetablePage from "./pages/ManageTimetablePage";
 import ReportsPage from "./pages/ReportsPage";
-
-
+import UploadStudentDataPage from "./pages/UploadStudentDataPage";
 
 function App() {
   return (
@@ -21,7 +20,7 @@ function App() {
         <Route path="/admin/manage-users" element={<ManageUsersPage />} />
         <Route path="/admin/manage-timetable" element={<ManageTimetablePage />} />
         <Route path="/admin/reports" element={<ReportsPage />} />
-
+        <Route path="/admin/upload-students" element={<UploadStudentDataPage />} />
 
         <Route
           path="/faculty"

@@ -1,0 +1,1075 @@
+{
+  "users": {
+    "STU101": {
+      "email": "aarav101@edu.com",
+      "password": "STU101",
+      "role": "student",
+      "userId": "STU101",
+      "department": "Computer Science"
+    },
+    "STU102": {
+      "email": "vivaan102@edu.com",
+      "password": "STU102",
+      "role": "student",
+      "userId": "STU102",
+      "department": "Computer Science"
+    },
+    "STU103": {
+      "email": "aditya103@edu.com",
+      "password": "STU103",
+      "role": "student",
+      "userId": "STU103",
+      "department": "Computer Science"
+    },
+    "STU104": {
+      "email": "krishna104@edu.com",
+      "password": "STU104",
+      "role": "student",
+      "userId": "STU104",
+      "department": "Computer Science"
+    },
+    "STU105": {
+      "email": "arjun105@edu.com",
+      "password": "STU105",
+      "role": "student",
+      "userId": "STU105",
+      "department": "Computer Science"
+    },
+    "STU106": {
+      "email": "sai106@edu.com",
+      "password": "STU106",
+      "role": "student",
+      "userId": "STU106",
+      "department": "Computer Science"
+    },
+    "STU107": {
+      "email": "rohan107@edu.com",
+      "password": "STU107",
+      "role": "student",
+      "userId": "STU107",
+      "department": "Computer Science"
+    },
+    "STU108": {
+      "email": "karan108@edu.com",
+      "password": "STU108",
+      "role": "student",
+      "userId": "STU108",
+      "department": "Computer Science"
+    },
+    "STU109": {
+      "email": "ishaan109@edu.com",
+      "password": "STU109",
+      "role": "student",
+      "userId": "STU109",
+      "department": "Computer Science"
+    },
+    "STU110": {
+      "email": "harsh110@edu.com",
+      "password": "STU110",
+      "role": "student",
+      "userId": "STU110",
+      "department": "Computer Science"
+    },
+    "STU111": {
+      "email": "yash111@edu.com",
+      "password": "STU111",
+      "role": "student",
+      "userId": "STU111",
+      "department": "Computer Science"
+    },
+    "STU112": {
+      "email": "manav112@edu.com",
+      "password": "STU112",
+      "role": "student",
+      "userId": "STU112",
+      "department": "Computer Science"
+    },
+    "STU113": {
+      "email": "dhruv113@edu.com",
+      "password": "STU113",
+      "role": "student",
+      "userId": "STU113",
+      "department": "Computer Science"
+    },
+    "STU114": {
+      "email": "raj114@edu.com",
+      "password": "STU114",
+      "role": "student",
+      "userId": "STU114",
+      "department": "Computer Science"
+    },
+    "STU115": {
+      "email": "nikhil115@edu.com",
+      "password": "STU115",
+      "role": "student",
+      "userId": "STU115",
+      "department": "Computer Science"
+    },
+    "STU116": {
+      "email": "siddharth116@edu.com",
+      "password": "STU116",
+      "role": "student",
+      "userId": "STU116",
+      "department": "Computer Science"
+    },
+    "STU117": {
+      "email": "omkar117@edu.com",
+      "password": "STU117",
+      "role": "student",
+      "userId": "STU117",
+      "department": "Computer Science"
+    },
+    "STU118": {
+      "email": "pranav118@edu.com",
+      "password": "STU118",
+      "role": "student",
+      "userId": "STU118",
+      "department": "Computer Science"
+    },
+    "STU119": {
+      "email": "ankit119@edu.com",
+      "password": "STU119",
+      "role": "student",
+      "userId": "STU119",
+      "department": "Computer Science"
+    },
+    "STU120": {
+      "email": "ritesh120@edu.com",
+      "password": "STU120",
+      "role": "student",
+      "userId": "STU120",
+      "department": "Computer Science"
+    },
+    "STU121": {
+      "email": "tejas121@edu.com",
+      "password": "STU121",
+      "role": "student",
+      "userId": "STU121",
+      "department": "Computer Science"
+    },
+    "STU122": {
+      "email": "parth122@edu.com",
+      "password": "STU122",
+      "role": "student",
+      "userId": "STU122",
+      "department": "Computer Science"
+    },
+    "STU123": {
+      "email": "kunal123@edu.com",
+      "password": "STU123",
+      "role": "student",
+      "userId": "STU123",
+      "department": "Computer Science"
+    },
+    "STU124": {
+      "email": "mayank124@edu.com",
+      "password": "STU124",
+      "role": "student",
+      "userId": "STU124",
+      "department": "Computer Science"
+    },
+    "STU125": {
+      "email": "chirag125@edu.com",
+      "password": "STU125",
+      "role": "student",
+      "userId": "STU125",
+      "department": "Computer Science"
+    },
+    "STU126": {
+      "email": "vikas126@edu.com",
+      "password": "STU126",
+      "role": "student",
+      "userId": "STU126",
+      "department": "Computer Science"
+    },
+    "STU127": {
+      "email": "sahil127@edu.com",
+      "password": "STU127",
+      "role": "student",
+      "userId": "STU127",
+      "department": "Computer Science"
+    },
+    "STU128": {
+      "email": "akash128@edu.com",
+      "password": "STU128",
+      "role": "student",
+      "userId": "STU128",
+      "department": "Computer Science"
+    },
+    "STU129": {
+      "email": "rajat129@edu.com",
+      "password": "STU129",
+      "role": "student",
+      "userId": "STU129",
+      "department": "Computer Science"
+    },
+    "STU130": {
+      "email": "deepak130@edu.com",
+      "password": "STU130",
+      "role": "student",
+      "userId": "STU130",
+      "department": "Computer Science"
+    },
+    "STU131": {
+      "email": "aditya131@edu.com",
+      "password": "STU131",
+      "role": "student",
+      "userId": "STU131",
+      "department": "Electronics"
+    },
+    "STU132": {
+      "email": "rohan132@edu.com",
+      "password": "STU132",
+      "role": "student",
+      "userId": "STU132",
+      "department": "Electronics"
+    },
+    "STU133": {
+      "email": "vivek133@edu.com",
+      "password": "STU133",
+      "role": "student",
+      "userId": "STU133",
+      "department": "Electronics"
+    },
+    "STU134": {
+      "email": "aman134@edu.com",
+      "password": "STU134",
+      "role": "student",
+      "userId": "STU134",
+      "department": "Electronics"
+    },
+    "STU135": {
+      "email": "saurabh135@edu.com",
+      "password": "STU135",
+      "role": "student",
+      "userId": "STU135",
+      "department": "Electronics"
+    },
+    "STU136": {
+      "email": "rahul136@edu.com",
+      "password": "STU136",
+      "role": "student",
+      "userId": "STU136",
+      "department": "Electronics"
+    },
+    "STU137": {
+      "email": "yogesh137@edu.com",
+      "password": "STU137",
+      "role": "student",
+      "userId": "STU137",
+      "department": "Electronics"
+    },
+    "STU138": {
+      "email": "nitin138@edu.com",
+      "password": "STU138",
+      "role": "student",
+      "userId": "STU138",
+      "department": "Electronics"
+    },
+    "STU139": {
+      "email": "ashish139@edu.com",
+      "password": "STU139",
+      "role": "student",
+      "userId": "STU139",
+      "department": "Electronics"
+    },
+    "STU140": {
+      "email": "kishan140@edu.com",
+      "password": "STU140",
+      "role": "student",
+      "userId": "STU140",
+      "department": "Electronics"
+    },
+    "STU141": {
+      "email": "hemant141@edu.com",
+      "password": "STU141",
+      "role": "student",
+      "userId": "STU141",
+      "department": "Electronics"
+    },
+    "STU142": {
+      "email": "chetan142@edu.com",
+      "password": "STU142",
+      "role": "student",
+      "userId": "STU142",
+      "department": "Electronics"
+    },
+    "STU143": {
+      "email": "gaurav143@edu.com",
+      "password": "STU143",
+      "role": "student",
+      "userId": "STU143",
+      "department": "Electronics"
+    },
+    "STU144": {
+      "email": "lokesh144@edu.com",
+      "password": "STU144",
+      "role": "student",
+      "userId": "STU144",
+      "department": "Electronics"
+    },
+    "STU145": {
+      "email": "bhavesh145@edu.com",
+      "password": "STU145",
+      "role": "student",
+      "userId": "STU145",
+      "department": "Electronics"
+    },
+    "STU146": {
+      "email": "mahesh146@edu.com",
+      "password": "STU146",
+      "role": "student",
+      "userId": "STU146",
+      "department": "Electronics"
+    },
+    "STU147": {
+      "email": "rakesh147@edu.com",
+      "password": "STU147",
+      "role": "student",
+      "userId": "STU147",
+      "department": "Electronics"
+    },
+    "STU148": {
+      "email": "ajay148@edu.com",
+      "password": "STU148",
+      "role": "student",
+      "userId": "STU148",
+      "department": "Electronics"
+    },
+    "STU149": {
+      "email": "sunil149@edu.com",
+      "password": "STU149",
+      "role": "student",
+      "userId": "STU149",
+      "department": "Electronics"
+    },
+    "STU150": {
+      "email": "tarun150@edu.com",
+      "password": "STU150",
+      "role": "student",
+      "userId": "STU150",
+      "department": "Electronics"
+    },
+    "STU151": {
+      "email": "varun151@edu.com",
+      "password": "STU151",
+      "role": "student",
+      "userId": "STU151",
+      "department": "Electronics"
+    },
+    "STU152": {
+      "email": "anurag152@edu.com",
+      "password": "STU152",
+      "role": "student",
+      "userId": "STU152",
+      "department": "Electronics"
+    },
+    "STU153": {
+      "email": "deep153@edu.com",
+      "password": "STU153",
+      "role": "student",
+      "userId": "STU153",
+      "department": "Electronics"
+    },
+    "STU154": {
+      "email": "rishi154@edu.com",
+      "password": "STU154",
+      "role": "student",
+      "userId": "STU154",
+      "department": "Electronics"
+    },
+    "STU155": {
+      "email": "ketan155@edu.com",
+      "password": "STU155",
+      "role": "student",
+      "userId": "STU155",
+      "department": "Electronics"
+    },
+    "STU156": {
+      "email": "amit156@edu.com",
+      "password": "STU156",
+      "role": "student",
+      "userId": "STU156",
+      "department": "Electronics"
+    },
+    "STU157": {
+      "email": "sandeep157@edu.com",
+      "password": "STU157",
+      "role": "student",
+      "userId": "STU157",
+      "department": "Electronics"
+    },
+    "STU158": {
+      "email": "harshit158@edu.com",
+      "password": "STU158",
+      "role": "student",
+      "userId": "STU158",
+      "department": "Electronics"
+    },
+    "STU159": {
+      "email": "pratik159@edu.com",
+      "password": "STU159",
+      "role": "student",
+      "userId": "STU159",
+      "department": "Electronics"
+    },
+    "STU160": {
+      "email": "jay160@edu.com",
+      "password": "STU160",
+      "role": "student",
+      "userId": "STU160",
+      "department": "Electronics"
+    },
+    "STU161": {
+      "email": "rohit161@edu.com",
+      "password": "STU161",
+      "role": "student",
+      "userId": "STU161",
+      "department": "Civil"
+    },
+    "STU162": {
+      "email": "abhishek162@edu.com",
+      "password": "STU162",
+      "role": "student",
+      "userId": "STU162",
+      "department": "Civil"
+    },
+    "STU163": {
+      "email": "tushar163@edu.com",
+      "password": "STU163",
+      "role": "student",
+      "userId": "STU163",
+      "department": "Civil"
+    },
+    "STU164": {
+      "email": "nilesh164@edu.com",
+      "password": "STU164",
+      "role": "student",
+      "userId": "STU164",
+      "department": "Civil"
+    },
+    "STU165": {
+      "email": "jayesh165@edu.com",
+      "password": "STU165",
+      "role": "student",
+      "userId": "STU165",
+      "department": "Civil"
+    },
+    "STU166": {
+      "email": "rajat166@edu.com",
+      "password": "STU166",
+      "role": "student",
+      "userId": "STU166",
+      "department": "Civil"
+    },
+    "STU167": {
+      "email": "sagar167@edu.com",
+      "password": "STU167",
+      "role": "student",
+      "userId": "STU167",
+      "department": "Civil"
+    },
+    "STU168": {
+      "email": "mohit168@edu.com",
+      "password": "STU168",
+      "role": "student",
+      "userId": "STU168",
+      "department": "Civil"
+    },
+    "STU169": {
+      "email": "anmol169@edu.com",
+      "password": "STU169",
+      "role": "student",
+      "userId": "STU169",
+      "department": "Civil"
+    },
+    "STU170": {
+      "email": "kartik170@edu.com",
+      "password": "STU170",
+      "role": "student",
+      "userId": "STU170",
+      "department": "Civil"
+    },
+    "STU171": {
+      "email": "sahil171@edu.com",
+      "password": "STU171",
+      "role": "student",
+      "userId": "STU171",
+      "department": "Civil"
+    },
+    "STU172": {
+      "email": "harsh172@edu.com",
+      "password": "STU172",
+      "role": "student",
+      "userId": "STU172",
+      "department": "Civil"
+    },
+    "STU173": {
+      "email": "aakash173@edu.com",
+      "password": "STU173",
+      "role": "student",
+      "userId": "STU173",
+      "department": "Civil"
+    },
+    "STU174": {
+      "email": "vinit174@edu.com",
+      "password": "STU174",
+      "role": "student",
+      "userId": "STU174",
+      "department": "Civil"
+    },
+    "STU175": {
+      "email": "raghav175@edu.com",
+      "password": "STU175",
+      "role": "student",
+      "userId": "STU175",
+      "department": "Civil"
+    },
+    "STU176": {
+      "email": "manish176@edu.com",
+      "password": "STU176",
+      "role": "student",
+      "userId": "STU176",
+      "department": "Civil"
+    },
+    "STU177": {
+      "email": "nirav177@edu.com",
+      "password": "STU177",
+      "role": "student",
+      "userId": "STU177",
+      "department": "Civil"
+    },
+    "STU178": {
+      "email": "parth178@edu.com",
+      "password": "STU178",
+      "role": "student",
+      "userId": "STU178",
+      "department": "Civil"
+    },
+    "STU179": {
+      "email": "umesh179@edu.com",
+      "password": "STU179",
+      "role": "student",
+      "userId": "STU179",
+      "department": "Civil"
+    },
+    "STU180": {
+      "email": "krunal180@edu.com",
+      "password": "STU180",
+      "role": "student",
+      "userId": "STU180",
+      "department": "Civil"
+    },
+    "STU181": {
+      "email": "darshan181@edu.com",
+      "password": "STU181",
+      "role": "student",
+      "userId": "STU181",
+      "department": "Civil"
+    },
+    "STU182": {
+      "email": "ramesh182@edu.com",
+      "password": "STU182",
+      "role": "student",
+      "userId": "STU182",
+      "department": "Civil"
+    },
+    "STU183": {
+      "email": "amit183@edu.com",
+      "password": "STU183",
+      "role": "student",
+      "userId": "STU183",
+      "department": "Civil"
+    },
+    "STU184": {
+      "email": "jatin184@edu.com",
+      "password": "STU184",
+      "role": "student",
+      "userId": "STU184",
+      "department": "Civil"
+    },
+    "STU185": {
+      "email": "bhavin185@edu.com",
+      "password": "STU185",
+      "role": "student",
+      "userId": "STU185",
+      "department": "Civil"
+    },
+    "STU186": {
+      "email": "suresh186@edu.com",
+      "password": "STU186",
+      "role": "student",
+      "userId": "STU186",
+      "department": "Civil"
+    },
+    "STU187": {
+      "email": "lakshya187@edu.com",
+      "password": "STU187",
+      "role": "student",
+      "userId": "STU187",
+      "department": "Civil"
+    },
+    "STU188": {
+      "email": "anand188@edu.com",
+      "password": "STU188",
+      "role": "student",
+      "userId": "STU188",
+      "department": "Civil"
+    },
+    "STU189": {
+      "email": "kishor189@edu.com",
+      "password": "STU189",
+      "role": "student",
+      "userId": "STU189",
+      "department": "Civil"
+    },
+    "STU190": {
+      "email": "vivek190@edu.com",
+      "password": "STU190",
+      "role": "student",
+      "userId": "STU190",
+      "department": "Civil"
+    },
+    "STU191": {
+      "email": "rohit191@edu.com",
+      "password": "STU191",
+      "role": "student",
+      "userId": "STU191",
+      "department": "Mechanical"
+    },
+    "STU192": {
+      "email": "adarsh192@edu.com",
+      "password": "STU192",
+      "role": "student",
+      "userId": "STU192",
+      "department": "Mechanical"
+    },
+    "STU193": {
+      "email": "mayur193@edu.com",
+      "password": "STU193",
+      "role": "student",
+      "userId": "STU193",
+      "department": "Mechanical"
+    },
+    "STU194": {
+      "email": "sanket194@edu.com",
+      "password": "STU194",
+      "role": "student",
+      "userId": "STU194",
+      "department": "Mechanical"
+    },
+    "STU195": {
+      "email": "harshal195@edu.com",
+      "password": "STU195",
+      "role": "student",
+      "userId": "STU195",
+      "department": "Mechanical"
+    },
+    "STU196": {
+      "email": "pranay196@edu.com",
+      "password": "STU196",
+      "role": "student",
+      "userId": "STU196",
+      "department": "Mechanical"
+    },
+    "STU197": {
+      "email": "vikram197@edu.com",
+      "password": "STU197",
+      "role": "student",
+      "userId": "STU197",
+      "department": "Mechanical"
+    },
+    "STU198": {
+      "email": "naman198@edu.com",
+      "password": "STU198",
+      "role": "student",
+      "userId": "STU198",
+      "department": "Mechanical"
+    },
+    "STU199": {
+      "email": "kiran199@edu.com",
+      "password": "STU199",
+      "role": "student",
+      "userId": "STU199",
+      "department": "Mechanical"
+    },
+    "STU200": {
+      "email": "tej200@edu.com",
+      "password": "STU200",
+      "role": "student",
+      "userId": "STU200",
+      "department": "Mechanical"
+    },
+    "STU201": {
+      "email": "aayush201@edu.com",
+      "password": "STU201",
+      "role": "student",
+      "userId": "STU201",
+      "department": "Mechanical"
+    },
+    "STU202": {
+      "email": "ritesh202@edu.com",
+      "password": "STU202",
+      "role": "student",
+      "userId": "STU202",
+      "department": "Mechanical"
+    },
+    "STU203": {
+      "email": "jaydeep203@edu.com",
+      "password": "STU203",
+      "role": "student",
+      "userId": "STU203",
+      "department": "Mechanical"
+    },
+    "STU204": {
+      "email": "chintan204@edu.com",
+      "password": "STU204",
+      "role": "student",
+      "userId": "STU204",
+      "department": "Mechanical"
+    },
+    "STU205": {
+      "email": "harish205@edu.com",
+      "password": "STU205",
+      "role": "student",
+      "userId": "STU205",
+      "department": "Mechanical"
+    },
+    "STU206": {
+      "email": "niraj206@edu.com",
+      "password": "STU206",
+      "role": "student",
+      "userId": "STU206",
+      "department": "Mechanical"
+    },
+    "STU207": {
+      "email": "sohan207@edu.com",
+      "password": "STU207",
+      "role": "student",
+      "userId": "STU207",
+      "department": "Mechanical"
+    },
+    "STU208": {
+      "email": "rajat208@edu.com",
+      "password": "STU208",
+      "role": "student",
+      "userId": "STU208",
+      "department": "Mechanical"
+    },
+    "STU209": {
+      "email": "manoj209@edu.com",
+      "password": "STU209",
+      "role": "student",
+      "userId": "STU209",
+      "department": "Mechanical"
+    },
+    "STU210": {
+      "email": "amitabh210@edu.com",
+      "password": "STU210",
+      "role": "student",
+      "userId": "STU210",
+      "department": "Mechanical"
+    },
+    "STU211": {
+      "email": "siddhesh211@edu.com",
+      "password": "STU211",
+      "role": "student",
+      "userId": "STU211",
+      "department": "Mechanical"
+    },
+    "STU212": {
+      "email": "raghavendra212@edu.com",
+      "password": "STU212",
+      "role": "student",
+      "userId": "STU212",
+      "department": "Mechanical"
+    },
+    "STU213": {
+      "email": "bhavesh213@edu.com",
+      "password": "STU213",
+      "role": "student",
+      "userId": "STU213",
+      "department": "Mechanical"
+    },
+    "STU214": {
+      "email": "lokesh214@edu.com",
+      "password": "STU214",
+      "role": "student",
+      "userId": "STU214",
+      "department": "Mechanical"
+    },
+    "STU215": {
+      "email": "anurag215@edu.com",
+      "password": "STU215",
+      "role": "student",
+      "userId": "STU215",
+      "department": "Mechanical"
+    },
+    "STU216": {
+      "email": "vimal216@edu.com",
+      "password": "STU216",
+      "role": "student",
+      "userId": "STU216",
+      "department": "Mechanical"
+    },
+    "STU217": {
+      "email": "sagar217@edu.com",
+      "password": "STU217",
+      "role": "student",
+      "userId": "STU217",
+      "department": "Mechanical"
+    },
+    "STU218": {
+      "email": "yatin218@edu.com",
+      "password": "STU218",
+      "role": "student",
+      "userId": "STU218",
+      "department": "Mechanical"
+    },
+    "STU219": {
+      "email": "kishan219@edu.com",
+      "password": "STU219",
+      "role": "student",
+      "userId": "STU219",
+      "department": "Mechanical"
+    },
+    "STU220": {
+      "email": "naveen220@edu.com",
+      "password": "STU220",
+      "role": "student",
+      "userId": "STU220",
+      "department": "Mechanical"
+    },
+    "STU221": {
+      "email": "rohit221@edu.com",
+      "password": "STU221",
+      "role": "student",
+      "userId": "STU221",
+      "department": "ICT"
+    },
+    "STU222": {
+      "email": "akshay222@edu.com",
+      "password": "STU222",
+      "role": "student",
+      "userId": "STU222",
+      "department": "ICT"
+    },
+    "STU223": {
+      "email": "darshit223@edu.com",
+      "password": "STU223",
+      "role": "student",
+      "userId": "STU223",
+      "department": "ICT"
+    },
+    "STU224": {
+      "email": "harsh224@edu.com",
+      "password": "STU224",
+      "role": "student",
+      "userId": "STU224",
+      "department": "ICT"
+    },
+    "STU225": {
+      "email": "sankalp225@edu.com",
+      "password": "STU225",
+      "role": "student",
+      "userId": "STU225",
+      "department": "ICT"
+    },
+    "STU226": {
+      "email": "vishal226@edu.com",
+      "password": "STU226",
+      "role": "student",
+      "userId": "STU226",
+      "department": "ICT"
+    },
+    "STU227": {
+      "email": "amit227@edu.com",
+      "password": "STU227",
+      "role": "student",
+      "userId": "STU227",
+      "department": "ICT"
+    },
+    "STU228": {
+      "email": "chetan228@edu.com",
+      "password": "STU228",
+      "role": "student",
+      "userId": "STU228",
+      "department": "ICT"
+    },
+    "STU229": {
+      "email": "jignesh229@edu.com",
+      "password": "STU229",
+      "role": "student",
+      "userId": "STU229",
+      "department": "ICT"
+    },
+    "STU230": {
+      "email": "kunal230@edu.com",
+      "password": "STU230",
+      "role": "student",
+      "userId": "STU230",
+      "department": "ICT"
+    },
+    "STU231": {
+      "email": "rahul231@edu.com",
+      "password": "STU231",
+      "role": "student",
+      "userId": "STU231",
+      "department": "ICT"
+    },
+    "STU232": {
+      "email": "tapan232@edu.com",
+      "password": "STU232",
+      "role": "student",
+      "userId": "STU232",
+      "department": "ICT"
+    },
+    "STU233": {
+      "email": "manish233@edu.com",
+      "password": "STU233",
+      "role": "student",
+      "userId": "STU233",
+      "department": "ICT"
+    },
+    "STU234": {
+      "email": "nikhil234@edu.com",
+      "password": "STU234",
+      "role": "student",
+      "userId": "STU234",
+      "department": "ICT"
+    },
+    "STU235": {
+      "email": "ravi235@edu.com",
+      "password": "STU235",
+      "role": "student",
+      "userId": "STU235",
+      "department": "ICT"
+    },
+    "STU236": {
+      "email": "yogesh236@edu.com",
+      "password": "STU236",
+      "role": "student",
+      "userId": "STU236",
+      "department": "ICT"
+    },
+    "STU237": {
+      "email": "parth237@edu.com",
+      "password": "STU237",
+      "role": "student",
+      "userId": "STU237",
+      "department": "ICT"
+    },
+    "STU238": {
+      "email": "hemal238@edu.com",
+      "password": "STU238",
+      "role": "student",
+      "userId": "STU238",
+      "department": "ICT"
+    },
+    "STU239": {
+      "email": "jay239@edu.com",
+      "password": "STU239",
+      "role": "student",
+      "userId": "STU239",
+      "department": "ICT"
+    },
+    "STU240": {
+      "email": "smit240@edu.com",
+      "password": "STU240",
+      "role": "student",
+      "userId": "STU240",
+      "department": "ICT"
+    },
+    "STU241": {
+      "email": "karan241@edu.com",
+      "password": "STU241",
+      "role": "student",
+      "userId": "STU241",
+      "department": "ICT"
+    },
+    "STU242": {
+      "email": "rohit242@edu.com",
+      "password": "STU242",
+      "role": "student",
+      "userId": "STU242",
+      "department": "ICT"
+    },
+    "STU243": {
+      "email": "devansh243@edu.com",
+      "password": "STU243",
+      "role": "student",
+      "userId": "STU243",
+      "department": "ICT"
+    },
+    "STU244": {
+      "email": "ankit244@edu.com",
+      "password": "STU244",
+      "role": "student",
+      "userId": "STU244",
+      "department": "ICT"
+    },
+    "STU245": {
+      "email": "sagar245@edu.com",
+      "password": "STU245",
+      "role": "student",
+      "userId": "STU245",
+      "department": "ICT"
+    },
+    "STU246": {
+      "email": "vivek246@edu.com",
+      "password": "STU246",
+      "role": "student",
+      "userId": "STU246",
+      "department": "ICT"
+    },
+    "STU247": {
+      "email": "yash247@edu.com",
+      "password": "STU247",
+      "role": "student",
+      "userId": "STU247",
+      "department": "ICT"
+    },
+    "STU248": {
+      "email": "kishor248@edu.com",
+      "password": "STU248",
+      "role": "student",
+      "userId": "STU248",
+      "department": "ICT"
+    },
+    "STU249": {
+      "email": "ritesh249@edu.com",
+      "password": "STU249",
+      "role": "student",
+      "userId": "STU249",
+      "department": "ICT"
+    },
+    "STU250": {
+      "email": "dhruv250@edu.com",
+      "password": "STU250",
+      "role": "student",
+      "userId": "STU250",
+      "department": "ICT"
+    },
+    "STU251": {
+      "email": "heet251@edu.com",
+      "password": "STU251",
+      "role": "student",
+      "userId": "STU251",
+      "department": "ICT"
+    },
+    "STU252": {
+      "email": "shlok252@edu.com",
+      "password": "STU252",
+      "role": "student",
+      "userId": "STU252",
+      "department": "Computer Science"
+    },
+    "STU253": {
+      "email": "sahil253@edu.com",
+      "password": "STU253",
+      "role": "student",
+      "userId": "STU253",
+      "department": "Mechanical"
+    }
+  }
+}

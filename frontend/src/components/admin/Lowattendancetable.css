@@ -27,22 +27,26 @@
   margin: 0;
 }
 
-.export-btn {
-  padding: 0.625rem 1.25rem;
-  background-color: var(--color-primary);
-  color: white;
-  border: none;
-  border-radius: 0.5rem;
-  font-size: 0.875rem;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.2s ease;
+.alert-filters {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
 }
 
-.export-btn:hover {
-  background-color: hsl(234, 89%, 48%);
-  transform: translateY(-1px);
-  box-shadow: 0 4px 8px rgba(79, 70, 229, 0.25);
+.filter-select {
+  padding: 0.5rem 1rem;
+  border: 1px solid hsl(220, 20%, 90%);
+  border-radius: 0.5rem;
+  font-size: 0.875rem;
+  color: var(--color-text-dark);
+  background-color: white;
+  cursor: pointer;
+  outline: none;
+  transition: border-color 0.2s ease;
+}
+
+.filter-select:focus {
+  border-color: var(--color-primary);
 }
 
 .table-container {
@@ -162,7 +166,13 @@
     gap: 1rem;
   }
 
-  .export-btn {
+  .alert-filters {
+    width: 100%;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .filter-select {
     width: 100%;
   }
 }

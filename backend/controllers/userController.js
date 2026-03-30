@@ -12,6 +12,92 @@ const writeJson = (filename, data) => {
     fs.writeFileSync(path.join(__dirname, '../Data', filename), JSON.stringify(data, null, 2), 'utf8');
 };
 
+exports.syncStudents = async (req, res) => {
+    try {
+        const { students } = req.body;
+        if (!Array.isArray(students)) {
+            return res.status(400).json({ error: "Invalid data format. Expected an array of students." });
+        }
+
+        const loginData = readJson('studentLoginData.json');
+        const studentsData = readJson('students.json');
+        
+        loginData.users = loginData.users || {};
+        studentsData.students = studentsData.students || {};
+
+        const uploadedStudentsMap = {};
+        for (const s of students) {
+            if (s.username) {
+                uploadedStudentsMap[s.username] = s;
+            }
+        }
+
+        const existingUserIds = Object.keys(studentsData.students);
+
+        let added = 0;
+        let removed = 0;
+        let unchanged = 0;
+
+        // 1. Remove students not in the uploaded file
+        for (const existingId of existingUserIds) {
+            const existingStudent = studentsData.students[existingId];
+            const uploadedStudent = uploadedStudentsMap[existingId];
+
+            if (!uploadedStudent) {
+                delete loginData.users[existingId];
+                delete studentsData.students[existingId];
+                db.collection('users').doc(existingId).delete().catch(e => console.error(e));
+                db.collection('students').doc(existingId).delete().catch(e => console.error(e));
+                removed++;
+            } else if (existingStudent.class === uploadedStudent.class) {
+                unchanged++;
+            }
+        }
+
+        // 2. Add or Overwrite students
+        for (const userId of Object.keys(uploadedStudentsMap)) {
+            const uploadedStudent = uploadedStudentsMap[userId];
+            const existingStudent = studentsData.students[userId];
+
+            if (!existingStudent || existingStudent.class !== uploadedStudent.class) {
+                const { name, email, password, rollno, department, class: className } = uploadedStudent;
+                
+                loginData.users[userId] = {
+                    email: email || `${userId.toLowerCase()}@example.com`,
+                    password: password || 'defaultPass123',
+                    role: "student",
+                    userId,
+                    department: department || "Unassigned"
+                };
+
+                studentsData.students[userId] = {
+                    name: name || "Unknown",
+                    rollNo: rollno || "",
+                    class: className || "",
+                    semester: existingStudent ? existingStudent.semester : 1,
+                    department: department || "Unassigned"
+                };
+
+                // run async non-blocking for firebase saves to speed up endpoint
+                db.collection('users').doc(userId).set(loginData.users[userId]).catch(e => console.error(e));
+                db.collection('students').doc(userId).set(studentsData.students[userId]).catch(e => console.error(e));
+                added++;
+            }
+        }
+
+        writeJson('studentLoginData.json', loginData);
+        writeJson('students.json', studentsData);
+
+        logActivity('user', `Student data synced via file upload. Added: ${added}, Removed: ${removed}`, 'Admin', 'hsl(38, 92%, 50%)', '📤');
+
+        res.status(200).json({ message: `Sync complete. Added/Updated: ${added}. Removed: ${removed}. Unchanged: ${unchanged}.` });
+
+    } catch (error) {
+        console.error("Sync Students Error:", error);
+        res.status(500).json({ error: "Failed to sync student data." });
+    }
+};
+
 exports.addStudent = async (req, res) => {
     try {
         const { userId, name, email, password, department, className, rollNo, semester } = req.body;
