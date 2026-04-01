@@ -8,7 +8,7 @@ import TodaySchedule from "../components/student/Todayschedule";
 import AttendanceAlert from "../components/student/Attendancealert";
 
 import { db } from "../firebase";
-import { doc, getDoc, onSnapshot } from "firebase/firestore";
+import { doc, getDoc, onSnapshot, collection, query, where, getDocs } from "firebase/firestore";
 
 /* ===== LECTURE TIME MAP (PROFESSIONAL) ===== */
 const LECTURE_TIMES = {
@@ -31,6 +31,7 @@ const StudentDashboardPage = () => {
   const [subjectAttendance, setSubjectAttendance] = useState([]);
   const [todaySchedule, setTodaySchedule] = useState([]);
   const [overallAttendance, setOverallAttendance] = useState(0);
+  const [missedClassesCount, setMissedClassesCount] = useState(0);
 
   /* ===== LOAD DATA ===== */
   useEffect(() => {
@@ -46,6 +47,40 @@ const StudentDashboardPage = () => {
       fetchTodaySchedule();
     }
   }, [studentClass]);
+
+  useEffect(() => {
+    if (studentClass && studentId) {
+      fetchMissedClasses();
+    }
+  }, [studentClass, studentId]);
+
+  /* ===== MISSED CLASSES ===== */
+  const fetchMissedClasses = async () => {
+    try {
+      const q = query(collection(db, "class_sessions"), where("class", "==", studentClass));
+      const snap = await getDocs(q);
+      
+      const now = new Date();
+      const currentMonth = now.getMonth();
+      const currentYear = now.getFullYear();
+
+      let missed = 0;
+      snap.forEach((docSnap) => {
+        const data = docSnap.data();
+        const sessionDate = new Date(data.date);
+
+        if (sessionDate.getMonth() === currentMonth && sessionDate.getFullYear() === currentYear) {
+           // student is absent if their id is not in attendance, or attendance[studentId] is false
+           if (!data.attendance || data.attendance[studentId] === false || data.attendance[studentId] === undefined) {
+              missed++;
+           }
+        }
+      });
+      setMissedClassesCount(missed);
+    } catch (err) {
+      console.error("Error fetching missed classes", err);
+    }
+  };
 
   /* ===== STUDENT PROFILE ===== */
   const fetchStudentProfile = async () => {
@@ -201,6 +236,22 @@ const StudentDashboardPage = () => {
             changeType="negative"
             icon="⚠"
           />
+
+          <div
+            onClick={() => navigate("/student/missed")}
+            style={{ cursor: "pointer", transition: "transform 0.2s" }}
+            onMouseEnter={(e) => (e.currentTarget.style.transform = "scale(1.02)")}
+            onMouseLeave={(e) => (e.currentTarget.style.transform = "scale(1)")}
+            title="Click to view missed classes and topics"
+          >
+            <StatsCard
+              title="Missed Classes"
+              value={missedClassesCount}
+              change="This Month"
+              changeType="negative"
+              icon="🚫"
+            />
+          </div>
         </div>
 
         {/* SUBJECT ATTENDANCE */}

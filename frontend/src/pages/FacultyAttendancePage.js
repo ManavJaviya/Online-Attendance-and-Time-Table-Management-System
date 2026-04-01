@@ -73,6 +73,11 @@ export default function FacultyAttendancePage() {
       return;
     }
 
+    if (!topic.trim()) {
+      alert("Please enter a topic for this lecture!");
+      return;
+    }
+
     // Immediately alert and navigate so the user doesn't have to wait
     alert("Attendance submitted successfully!");
     navigate("/faculty");
@@ -85,7 +90,7 @@ export default function FacultyAttendancePage() {
           facultyId: user.userId,
           class: selectedClass,
           subject: selectedSubject,
-          topic: topic || "No topic",
+          topic: topic.trim(),
           date: new Date().toISOString(),
           attendance: attendance // Map of studentId -> boolean
         });

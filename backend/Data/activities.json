@@ -1,5 +1,14 @@
 [
   {
+    "id": "1775051114445",
+    "type": "attendance",
+    "title": "Attendance marked for CE2",
+    "user": "Faculty",
+    "time": "2026-04-01T13:45:14.445Z",
+    "color": "hsl(142, 76%, 36%)",
+    "icon": "✓"
+  },
+  {
     "id": "1775022820873",
     "type": "attendance",
     "title": "Attendance marked for CE5",

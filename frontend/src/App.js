@@ -11,6 +11,8 @@ import ManageTimetablePage from "./pages/ManageTimetablePage";
 import ReportsPage from "./pages/ReportsPage";
 import UploadStudentDataPage from "./pages/UploadStudentDataPage";
 
+import StudentMissedClassesPage from "./pages/StudentMissedClassesPage";
+
 function App() {
   return (
     <BrowserRouter>
@@ -34,6 +36,7 @@ function App() {
         <Route path="/faculty/attendance" element={<FacultyAttendancePage />} />
      
         <Route path="/student" element={<StudentDashboardPage />} />
+        <Route path="/student/missed" element={<StudentMissedClassesPage />} />
         <Route path="/faculty/timetable" element={<FacultyTimetablePage />} />
       </Routes>
     </BrowserRouter>
