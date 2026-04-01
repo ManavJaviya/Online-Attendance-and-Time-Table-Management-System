@@ -7,106 +7,173 @@
       "CE2"
     ]
   },
-  "FAC207": {
-    "name": "Prof. Nilesh Parmar",
-    "subject": "Data Structures",
-    "classes": [
-      "CE3",
-      "CE4",
-      "CE5"
-    ]
-  },
   "FAC202": {
-    "name": "Prof. Anil Shah",
-    "subject": "DBMS",
+    "name": "Prof. Sunita Sharma",
+    "subject": "Computer Networks",
     "classes": [
-      "CE1",
-      "CE3"
-    ]
-  },
-  "FAC208": {
-    "name": "Prof. Ravi Joshi",
-    "subject": "DBMS",
-    "classes": [
-      "CE2",
-      "CE4",
-      "CE5"
+      "CE1"
     ]
   },
   "FAC203": {
-    "name": "Prof. Kiran Patel",
-    "subject": "Computer Networks",
-    "classes": [
-      "CE1",
-      "CE4"
-    ]
-  },
-  "FAC209": {
     "name": "Prof. Amit Trivedi",
-    "subject": "Computer Networks",
+    "subject": "Software Engineering",
     "classes": [
-      "CE2",
-      "CE3",
-      "CE5"
+      "CE1"
     ]
   },
   "FAC204": {
-    "name": "Prof. Suresh Nair",
+    "name": "Prof. Neha Joshi",
     "subject": "Artificial Intelligence",
     "classes": [
-      "CE1",
-      "CE5"
-    ]
-  },
-  "FAC210": {
-    "name": "Prof. Neha Kulkarni",
-    "subject": "Artificial Intelligence",
-    "classes": [
-      "CE2",
-      "CE3",
-      "CE4"
+      "CE1"
     ]
   },
   "FAC205": {
-    "name": "Prof. Vivek Desai",
-    "subject": "Theory of Computation",
+    "name": "Prof. Vikram Patel",
+    "subject": "Database Management",
     "classes": [
-      "CE1",
-      "CE2",
-      "CE3"
-    ]
-  },
-  "FAC211": {
-    "name": "Prof. Rohan Mehta",
-    "subject": "Theory of Computation",
-    "classes": [
-      "CE4",
-      "CE5"
+      "CE1"
     ]
   },
   "FAC206": {
-    "name": "Prof. Manish Trivedi",
-    "subject": "Software Engineering",
+    "name": "Prof. Priya Desai",
+    "subject": "Operating Systems",
     "classes": [
-      "CE1",
+      "CE2"
+    ]
+  },
+  "FAC207": {
+    "name": "Prof. Karan Shah",
+    "subject": "Machine Learning",
+    "classes": [
+      "CE2"
+    ]
+  },
+  "FAC208": {
+    "name": "Prof. Anita Gupta",
+    "subject": "Web Technologies",
+    "classes": [
+      "CE2"
+    ]
+  },
+  "FAC209": {
+    "name": "Prof. Ravi Kumar",
+    "subject": "Cloud Computing",
+    "classes": [
+      "CE2"
+    ]
+  },
+  "FAC210": {
+    "name": "Prof. Meera Nair",
+    "subject": "Cyber Security",
+    "classes": [
+      "CE2"
+    ]
+  },
+  "FAC211": {
+    "name": "Prof. Dhruv Bhatt",
+    "subject": "Computer Graphics",
+    "classes": [
+      "CE3",
       "CE4"
     ]
   },
   "FAC212": {
-    "name": "Prof. Pooja Shah",
-    "subject": "Software Engineering",
+    "name": "Prof. Sonal Parikh",
+    "subject": "Compiler Design",
     "classes": [
-      "CE2",
-      "CE3",
-      "CE5"
+      "CE3"
     ]
   },
   "FAC213": {
-    "name": "Prof. Aryan Bhatt",
-    "subject": "Operating System",
+    "name": "Prof. Harsh Chauhan",
+    "subject": "Theory of Computation",
     "classes": [
-      "CE1",
       "CE3"
+    ]
+  },
+  "FAC214": {
+    "name": "Prof. Kavya Solanki",
+    "subject": "Distributed Systems",
+    "classes": [
+      "CE3"
+    ]
+  },
+  "FAC215": {
+    "name": "Prof. Manish Gajjar",
+    "subject": "Mobile Computing",
+    "classes": [
+      "CE3"
+    ]
+  },
+  "FAC216": {
+    "name": "Prof. Siddharth Vora",
+    "subject": "Data Science",
+    "classes": [
+      "CE4"
+    ]
+  },
+  "FAC217": {
+    "name": "Prof. Hetal Raval",
+    "subject": "IoT Systems",
+    "classes": [
+      "CE4"
+    ]
+  },
+  "FAC218": {
+    "name": "Prof. Jignesh Bhavsar",
+    "subject": "Embedded Systems",
+    "classes": [
+      "CE4"
+    ]
+  },
+  "FAC219": {
+    "name": "Prof. Trisha Malhotra",
+    "subject": "Python Programming",
+    "classes": [
+      "CE4"
+    ]
+  },
+  "FAC220": {
+    "name": "Prof. Yash Upadhyay",
+    "subject": "Advanced Algorithms",
+    "classes": [
+      "CE4"
+    ]
+  },
+  "FAC221": {
+    "name": "Prof. Foram Vasani",
+    "subject": "Computer Architecture",
+    "classes": [
+      "CE5"
+    ]
+  },
+  "FAC222": {
+    "name": "Prof. Neel Waghela",
+    "subject": "Digital Electronics",
+    "classes": [
+      "CE5"
+    ]
+  },
+  "FAC223": {
+    "name": "Prof. Krupa Lakhani",
+    "subject": "Probability & Statistics",
+    "classes": [
+      "CE5"
+    ]
+  },
+  "FAC224": {
+    "name": "Prof. Arpit Zaveri",
+    "subject": "Software Testing",
+    "classes": [
+      "CE5"
+    ]
+  },
+  "FAC225": {
+    "name": "Prof. Bindiya Gajjar",
+    "subject": "Linux & Shell Scripting",
+    "classes": [
+      "CE5"
     ]
   }
 }

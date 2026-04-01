@@ -87,18 +87,17 @@ exports.getAttendanceReports = async (req, res) => {
 
 exports.getTimetableReports = async (req, res) => {
     try {
-        const allClasses = ['CE1', 'CE2', 'CE3', 'CE4', 'CE5'];
         const classTimetables = {};
         const teacherWorkload = {};
         const clashes = [];
+        const allClasses = [];
 
-        // Parse local JSONs
-        for (const cls of allClasses) {
-            const filePath = path.join(__dirname, `../Data/Timetable${cls}.json`);
-            if (fs.existsSync(filePath)) {
-                classTimetables[cls] = JSON.parse(fs.readFileSync(filePath, 'utf-8'));
-            }
-        }
+        // Fetch from Firestore instead of mock local JSONs
+        const timetableSnap = await db.collection("timetable").get();
+        timetableSnap.forEach(doc => {
+            classTimetables[doc.id] = doc.data();
+            allClasses.push(doc.id);
+        });
 
         // Compute teacher workloads and clashes
         const dayMap = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday'];

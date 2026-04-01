@@ -27,39 +27,20 @@ exports.syncStudents = async (req, res) => {
 
         const uploadedStudentsMap = {};
         for (const s of students) {
-            if (s.username) {
-                uploadedStudentsMap[s.username] = s;
+            if (s.userId) {
+                uploadedStudentsMap[s.userId] = s;
             }
         }
-
-        const existingUserIds = Object.keys(studentsData.students);
 
         let added = 0;
-        let removed = 0;
         let unchanged = 0;
 
-        // 1. Remove students not in the uploaded file
-        for (const existingId of existingUserIds) {
-            const existingStudent = studentsData.students[existingId];
-            const uploadedStudent = uploadedStudentsMap[existingId];
-
-            if (!uploadedStudent) {
-                delete loginData.users[existingId];
-                delete studentsData.students[existingId];
-                db.collection('users').doc(existingId).delete().catch(e => console.error(e));
-                db.collection('students').doc(existingId).delete().catch(e => console.error(e));
-                removed++;
-            } else if (existingStudent.class === uploadedStudent.class) {
-                unchanged++;
-            }
-        }
-
-        // 2. Add or Overwrite students
+        // Only add new students; skip if they already exist
         for (const userId of Object.keys(uploadedStudentsMap)) {
             const uploadedStudent = uploadedStudentsMap[userId];
             const existingStudent = studentsData.students[userId];
 
-            if (!existingStudent || existingStudent.class !== uploadedStudent.class) {
+            if (!existingStudent) {
                 const { name, email, password, rollno, department, class: className } = uploadedStudent;
                 
                 loginData.users[userId] = {
@@ -74,7 +55,7 @@ exports.syncStudents = async (req, res) => {
                     name: name || "Unknown",
                     rollNo: rollno || "",
                     class: className || "",
-                    semester: existingStudent ? existingStudent.semester : 1,
+                    semester: 1,
                     department: department || "Unassigned"
                 };
 
@@ -82,15 +63,19 @@ exports.syncStudents = async (req, res) => {
                 db.collection('users').doc(userId).set(loginData.users[userId]).catch(e => console.error(e));
                 db.collection('students').doc(userId).set(studentsData.students[userId]).catch(e => console.error(e));
                 added++;
+            } else {
+                unchanged++;
             }
         }
 
-        writeJson('studentLoginData.json', loginData);
-        writeJson('students.json', studentsData);
+        if (added > 0) {
+            writeJson('studentLoginData.json', loginData);
+            writeJson('students.json', studentsData);
+        }
 
-        logActivity('user', `Student data synced via file upload. Added: ${added}, Removed: ${removed}`, 'Admin', 'hsl(38, 92%, 50%)', '📤');
+        logActivity('user', `Student data synced via file upload. Added: ${added}, Skipped existing: ${unchanged}`, 'Admin', 'hsl(38, 92%, 50%)', '📤');
 
-        res.status(200).json({ message: `Sync complete. Added/Updated: ${added}. Removed: ${removed}. Unchanged: ${unchanged}.` });
+        res.status(200).json({ message: `Sync complete. Added: ${added}. Skipped (Already Exists): ${unchanged}.` });
 
     } catch (error) {
         console.error("Sync Students Error:", error);

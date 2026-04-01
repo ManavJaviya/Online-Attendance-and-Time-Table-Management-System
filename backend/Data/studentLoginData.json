@@ -1,7 +1,7 @@
 {
   "users": {
     "STU101": {
-      "email": "aarav101@edu.com",
+      "email": "dhyey101@edu.com",
       "password": "STU101",
       "role": "student",
       "userId": "STU101",
@@ -1070,6 +1070,13 @@
       "role": "student",
       "userId": "STU253",
       "department": "Mechanical"
+    },
+    "STU254": {
+      "email": "shrey254@edu.com",
+      "password": "STU254",
+      "role": "student",
+      "userId": "STU254",
+      "department": "Computer Science"
     }
   }
 }

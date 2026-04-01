@@ -4,7 +4,8 @@ const admin = require("firebase-admin");
 const serviceAccount = require("../config/serviceAccountKey.json");
 
 // Import faculty login JSON file
-const facultyLoginData = require("../facultyLoginData.json");
+const facultyLoginData = require("../Data/facultyLoginData.json");
+
 
 // Initialize Firebase Admin SDK
 admin.initializeApp({

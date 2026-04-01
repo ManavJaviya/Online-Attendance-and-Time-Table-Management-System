@@ -44,7 +44,7 @@ const UploadStudentDataPage = () => {
 
       const headers = rows[0].split(',').map(h => h.trim().toLowerCase());
       
-      const expectedFields = ['username', 'name', 'email', 'password', 'rollno', 'class', 'department'];
+      const expectedFields = ['userid', 'name', 'email', 'password', 'rollno', 'class', 'department'];
       const missingFields = expectedFields.filter(field => !headers.includes(field));
       
       if (missingFields.length > 0) {
@@ -61,10 +61,11 @@ const UploadStudentDataPage = () => {
         const student = {};
         headers.forEach((header, index) => {
           if (values[index] !== undefined && header) {
-            student[header] = values[index];
+            const key = header === 'userid' ? 'userId' : header;
+            student[key] = values[index];
           }
         });
-        if (student.username) {
+        if (student.userId) {
           students.push(student);
         }
       }
@@ -110,7 +111,7 @@ const UploadStudentDataPage = () => {
             <span className="upload-icon">📄</span>
           </div>
           <h2 className="upload-card-title">Select Student File</h2>
-          <p className="upload-format-info">Accepted format: .csv with fields: username, name, email, password, rollno, class, department</p>
+          <p className="upload-format-info">Accepted format: .csv with fields: userId, name, email, password, rollno, class, department</p>
           
           <div className="file-input-wrapper">
             <input 

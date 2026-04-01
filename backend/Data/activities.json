@@ -1,5 +1,77 @@
 [
   {
+    "id": "1775022820873",
+    "type": "attendance",
+    "title": "Attendance marked for CE5",
+    "user": "Faculty",
+    "time": "2026-04-01T05:53:40.873Z",
+    "color": "hsl(142, 76%, 36%)",
+    "icon": "✓"
+  },
+  {
+    "id": "1775017469204",
+    "type": "user",
+    "title": "Student data synced via file upload. Added: 153, Skipped existing: 1",
+    "user": "Admin",
+    "time": "2026-04-01T04:24:29.204Z",
+    "color": "hsl(38, 92%, 50%)",
+    "icon": "📤"
+  },
+  {
+    "id": "1775015325617",
+    "type": "user",
+    "title": "New student added (Dhyey Patel)",
+    "user": "Admin",
+    "time": "2026-04-01T03:48:45.617Z",
+    "color": "hsl(234, 89%, 54%)",
+    "icon": "👥"
+  },
+  {
+    "id": "1774966480312",
+    "type": "user",
+    "title": "Student data synced via file upload. Added: 0, Removed: 0",
+    "user": "Admin",
+    "time": "2026-03-31T14:14:40.312Z",
+    "color": "hsl(38, 92%, 50%)",
+    "icon": "📤"
+  },
+  {
+    "id": "1774966316651",
+    "type": "user",
+    "title": "Student data synced via file upload. Added: 0, Removed: 0",
+    "user": "Admin",
+    "time": "2026-03-31T14:11:56.651Z",
+    "color": "hsl(38, 92%, 50%)",
+    "icon": "📤"
+  },
+  {
+    "id": "1774965942959",
+    "type": "user",
+    "title": "Student data synced via file upload. Added: 0, Removed: 0",
+    "user": "Admin",
+    "time": "2026-03-31T14:05:42.959Z",
+    "color": "hsl(38, 92%, 50%)",
+    "icon": "📤"
+  },
+  {
+    "id": "1774965038877",
+    "type": "user",
+    "title": "Student data synced via file upload. Added: 0, Removed: 154",
+    "user": "Admin",
+    "time": "2026-03-31T13:50:38.877Z",
+    "color": "hsl(38, 92%, 50%)",
+    "icon": "📤"
+  },
+  {
+    "id": "1774962924700",
+    "type": "user",
+    "title": "New student added (Shrey Patel)",
+    "user": "Admin",
+    "time": "2026-03-31T13:15:24.700Z",
+    "color": "hsl(234, 89%, 54%)",
+    "icon": "👥"
+  },
+  {
     "id": "1774883716761",
     "type": "user",
     "title": "Student data synced via file upload. Added: 0, Removed: 153",
