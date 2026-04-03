@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import Navbar from '../components/Navbar';
 import axios from 'axios';
 import './ManageTimetablePage.css';
@@ -8,6 +9,7 @@ const DAYS = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday'];
 const LECTURES = ['lec1', 'lec2', 'lec3', 'lec4', 'lec5'];
 
 const ManageTimetablePage = () => {
+  const navigate = useNavigate();
   const [selectedClass, setSelectedClass] = useState('');
   const [timetable, setTimetable] = useState(null);
   const [isEditing, setIsEditing] = useState(false);
@@ -70,9 +72,16 @@ const ManageTimetablePage = () => {
     <div className="manage-timetable-layout">
       <Navbar />
       <div className="manage-timetable-container">
-        <div className="header-section">
-          <h1>Manage Timetable</h1>
-          <p>Select a class to view and edit its timetable</p>
+        <div className="header-section" style={{ display: 'flex', alignItems: 'flex-start', gap: '1rem', textAlign: 'left' }}>
+          <button className="back-arrow-btn" onClick={() => navigate("/admin")} title="Go back to dashboard" style={{ padding: '0.625rem 1.25rem', background: 'transparent', color: 'black', border: 'none', cursor: 'pointer', marginTop: '0.25rem', flexShrink: 0, display: 'inline-flex', alignItems: 'center', justifyContent: 'center', minWidth: '45px', minHeight: '45px' }}>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
+              <polyline points="15 18 9 12 15 6"></polyline>
+            </svg>
+          </button>
+          <div>
+            <h1 style={{ margin: '0 0 0.5rem 0' }}>Manage Timetable</h1>
+            <p style={{ margin: 0 }}>Select a class to view and edit its timetable</p>
+          </div>
         </div>
 
         <div className="controls-section">

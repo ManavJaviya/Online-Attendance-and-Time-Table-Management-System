@@ -19,6 +19,7 @@ const timeAgo = (dateInput) => {
 
 const RecentActivity = () => {
   const [activities, setActivities] = useState([]);
+  const [showAll, setShowAll] = useState(false);
 
   useEffect(() => {
     const fetchActivities = async () => {
@@ -37,14 +38,18 @@ const RecentActivity = () => {
     return () => clearInterval(intervalId);
   }, []);
 
+  const displayedActivities = showAll ? activities : activities.slice(0, 4);
+
   return (
     <div className="activity-card">
       <div className="activity-header">
         <h3 className="activity-title">Recent Activity</h3>
-        <button className="view-all-btn">View All</button>
+        <button className="view-all-btn" onClick={() => setShowAll(!showAll)}>
+          {showAll ? 'Show Less' : 'View All'}
+        </button>
       </div>
       <div className="activity-list">
-        {activities.length > 0 ? activities.map((activity) => (
+        {displayedActivities.length > 0 ? displayedActivities.map((activity) => (
           <div key={activity.id} className="activity-item">
             <div 
               className="activity-icon"

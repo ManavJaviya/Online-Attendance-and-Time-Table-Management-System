@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import Navbar from '../components/Navbar';
 import axios from 'axios';
 import './ManageUsersPage.css';
 
 const ManageUsersPage = () => {
+    const navigate = useNavigate();
     const [activeTab, setActiveTab] = useState('student');
     
     // Student states
@@ -96,9 +98,16 @@ const ManageUsersPage = () => {
         <div className="manage-users-layout">
             <Navbar />
             <div className="manage-users-container">
-                <div className="dashboard-header">
-                    <h1 className="dashboard-title">Manage Users</h1>
-                    <p className="dashboard-subtitle">Add or remove Students and Faculty.</p>
+                <div className="dashboard-header" style={{ display: 'flex', alignItems: 'flex-start', gap: '1rem', textAlign: 'left' }}>
+                    <button className="back-arrow-btn" onClick={() => navigate("/admin")} title="Go back to dashboard" style={{ padding: '0.625rem 1.25rem', background: 'transparent', color: 'black', border: 'none', cursor: 'pointer', marginTop: '0.25rem', flexShrink: 0, display: 'inline-flex', alignItems: 'center', justifyContent: 'center', minWidth: '45px', minHeight: '45px' }}>
+                      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
+                        <polyline points="15 18 9 12 15 6"></polyline>
+                      </svg>
+                    </button>
+                    <div>
+                        <h1 className="dashboard-title" style={{ margin: '0 0 0.5rem 0' }}>Manage Users</h1>
+                        <p className="dashboard-subtitle" style={{ margin: 0 }}>Add or remove Students and Faculty.</p>
+                    </div>
                 </div>
 
                 {message && <div className="message-alert">{message}</div>}

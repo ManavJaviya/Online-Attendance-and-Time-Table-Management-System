@@ -98,12 +98,16 @@ const UploadStudentDataPage = () => {
     <div className="upload-page-layout">
       <Navbar />
       <div className="upload-page-container">
-        <div className="upload-header">
-          <button className="back-btn" onClick={() => navigate('/admin')}>
-            &larr; Back to Dashboard
+        <div className="upload-header" style={{ display: 'flex', alignItems: 'flex-start', gap: '1rem', textAlign: 'left' }}>
+          <button className="back-arrow-btn" onClick={() => navigate('/admin')} title="Go back to dashboard" style={{ padding: '0.625rem 1.25rem', background: 'transparent', color: 'black', border: 'none', cursor: 'pointer', marginTop: '0.25rem', flexShrink: 0, display: 'inline-flex', alignItems: 'center', justifyContent: 'center', minWidth: '45px', minHeight: '45px' }}>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
+              <polyline points="15 18 9 12 15 6"></polyline>
+            </svg>
           </button>
-          <h1 className="upload-title">Update Student Data</h1>
-          <p className="upload-subtitle">Upload a CSV file to synchronize the student database.</p>
+          <div>
+            <h1 className="upload-title" style={{ margin: '0 0 0.5rem 0' }}>Update Student Data</h1>
+            <p className="upload-subtitle" style={{ margin: 0 }}>Upload a CSV file to synchronize the student database.</p>
+          </div>
         </div>
 
         <div className="upload-card">
