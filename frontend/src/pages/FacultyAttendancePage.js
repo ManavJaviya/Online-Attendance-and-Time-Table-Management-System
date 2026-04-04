@@ -21,6 +21,8 @@ export default function FacultyAttendancePage() {
   const [topic, setTopic] = useState("");
   const [students, setStudents] = useState([]);
   const [attendance, setAttendance] = useState({});
+  const [initialAttendance, setInitialAttendance] = useState({});
+  const existingSession = location.state?.existingSession;
 
   // ================= FETCH STUDENTS =================
   useEffect(() => {
@@ -40,7 +42,15 @@ export default function FacultyAttendancePage() {
         const initial = Object.fromEntries(
           filtered.map(s => [s.id, false])
         );
-        setAttendance(initial);
+        
+        if (existingSession) {
+          setAttendance({ ...initial, ...existingSession.attendance });
+          setTopic(existingSession.topic);
+          setInitialAttendance(existingSession.attendance);
+        } else {
+          setAttendance(initial);
+          setInitialAttendance({});
+        }
 
       } catch (error) {
         console.error("Error fetching students:", error);
@@ -48,7 +58,7 @@ export default function FacultyAttendancePage() {
     };
 
     fetchStudents();
-  }, [selectedClass]);
+  }, [selectedClass, existingSession]);
 
   // ================= TOGGLE =================
   const toggleStudent = (id) => {
@@ -79,52 +89,102 @@ export default function FacultyAttendancePage() {
     }
 
     // Immediately alert and navigate so the user doesn't have to wait
-    alert("Attendance submitted successfully!");
+    alert(existingSession ? "Attendance updated successfully!" : "Attendance submitted successfully!");
     navigate("/faculty");
 
     // Process everything in the background
     const processAttendance = async () => {
       try {
-        // 1. Save the lecture session
-        await addDoc(collection(db, "class_sessions"), {
-          facultyId: user.userId,
-          class: selectedClass,
-          subject: selectedSubject,
-          topic: topic.trim(),
-          date: new Date().toISOString(),
-          attendance: attendance // Map of studentId -> boolean
-        });
-
-        // 2. Update each student's attendance summary in parallel to speed it up
-        await Promise.all(students.map(async (student) => {
-          const isPresent = attendance[student.id];
-          const studentAttendanceRef = doc(db, "attendance", student.id);
-          const snap = await getDoc(studentAttendanceRef);
-
-          let currentData = {};
-          if (snap.exists()) {
-            currentData = snap.data();
-          }
-
-          const currentSubjectStats = currentData[selectedSubject] || { attended: 0, total: 0 };
-
-          await setDoc(studentAttendanceRef, {
-            [selectedSubject]: {
-              total: currentSubjectStats.total + 1,
-              attended: currentSubjectStats.attended + (isPresent ? 1 : 0)
-            }
+        if (existingSession) {
+          // UPDATE MODE
+          await setDoc(doc(db, "class_sessions", existingSession.id), {
+            topic: topic.trim(),
+            attendance: attendance
           }, { merge: true });
-        }));
+          
+          const changedStudents = students.filter(
+            s => (attendance[s.id] || false) !== (initialAttendance[s.id] || false)
+          );
 
-        // 3. Log the activity using the backend generic endpoint
-        await axios.post("http://localhost:5000/api/dashboard/log-activity", {
-          type: "attendance",
-          title: `Attendance marked for ${selectedClass}`,
-          user: user.name || "Faculty",
-          color: "hsl(142, 76%, 36%)",
-          icon: "✓"
-        });
+          await Promise.all(changedStudents.map(async (student) => {
+            const isNowPresent = attendance[student.id] || false;
+            const wasPresent = initialAttendance[student.id] || false;
 
+            const studentAttendanceRef = doc(db, "attendance", student.id);
+            const snap = await getDoc(studentAttendanceRef);
+
+            let currentData = {};
+            if (snap.exists()) {
+              currentData = snap.data();
+            }
+
+            const stats = currentData[selectedSubject] || { attended: 0, total: 0 };
+            
+            let attended = stats.attended || 0;
+            if (isNowPresent && !wasPresent) {
+              attended += 1;
+            } else if (!isNowPresent && wasPresent) {
+              attended = Math.max(0, attended - 1);
+            }
+
+            await setDoc(studentAttendanceRef, {
+              [selectedSubject]: {
+                total: stats.total || 1,
+                attended: attended
+              }
+            }, { merge: true });
+          }));
+
+          await axios.post("http://localhost:5000/api/dashboard/log-activity", {
+            type: "attendance",
+            title: `Attendance updated for ${selectedClass}`,
+            user: user.name || "Faculty",
+            color: "hsl(38, 92%, 50%)",
+            icon: "🔄"
+          });
+
+        } else {
+          // CREATE MODE
+          // 1. Save the lecture session
+          await addDoc(collection(db, "class_sessions"), {
+            facultyId: user.userId,
+            class: selectedClass,
+            subject: selectedSubject,
+            topic: topic.trim(),
+            date: new Date().toISOString(),
+            attendance: attendance // Map of studentId -> boolean
+          });
+
+          // 2. Update each student's attendance summary in parallel to speed it up
+          await Promise.all(students.map(async (student) => {
+            const isPresent = attendance[student.id];
+            const studentAttendanceRef = doc(db, "attendance", student.id);
+            const snap = await getDoc(studentAttendanceRef);
+
+            let currentData = {};
+            if (snap.exists()) {
+              currentData = snap.data();
+            }
+
+            const currentSubjectStats = currentData[selectedSubject] || { attended: 0, total: 0 };
+
+            await setDoc(studentAttendanceRef, {
+              [selectedSubject]: {
+                total: currentSubjectStats.total + 1,
+                attended: currentSubjectStats.attended + (isPresent ? 1 : 0)
+              }
+            }, { merge: true });
+          }));
+
+          // 3. Log the activity using the backend generic endpoint
+          await axios.post("http://localhost:5000/api/dashboard/log-activity", {
+            type: "attendance",
+            title: `Attendance marked for ${selectedClass}`,
+            user: user.name || "Faculty",
+            color: "hsl(142, 76%, 36%)",
+            icon: "✓"
+          });
+        }
       } catch (error) {
         console.error("Error saving attendance:", error);
       }
@@ -160,7 +220,7 @@ export default function FacultyAttendancePage() {
                   </svg>
                 </button>
                 <div>
-                  <h1>Mark Attendance</h1>
+                  <h1>{existingSession ? "Update Attendance" : "Mark Attendance"}</h1>
                   <p>Class: {selectedClass}</p>
                 </div>
               </div>
@@ -201,7 +261,7 @@ export default function FacultyAttendancePage() {
               {/* SUBMIT */}
               <div className="submit-wrapper">
                 <button className="submit-btn" onClick={handleSubmit}>
-                  Submit Attendance
+                  {existingSession ? "Update Attendance" : "Submit Attendance"}
                 </button>
               </div>
 

@@ -3,7 +3,7 @@ import Navbar from "../components/Navbar";
 import StatsCard from "../components/admin/Statscard";
 import TodaySchedule from "../components/student/Todayschedule";
 import { useNavigate } from "react-router-dom";
-import { doc, getDoc } from "firebase/firestore";
+import { doc, getDoc, collection, query, where, getDocs } from "firebase/firestore";
 import { db } from "../firebase";
 import "./FacultyDashboardPage.css";
 
@@ -13,6 +13,7 @@ const FacultyDashboardPage = () => {
 
   const [facultyData, setFacultyData] = useState(null);
   const [todaySchedule, setTodaySchedule] = useState([]);
+  const [todaySessions, setTodaySessions] = useState([]);
 
   /* ================= FETCH FACULTY DATA ================= */
   useEffect(() => {
@@ -32,6 +33,32 @@ const FacultyDashboardPage = () => {
     };
 
     fetchFacultyData();
+  }, [user]);
+
+  /* ================= FETCH TODAY'S SESSIONS ================= */
+  useEffect(() => {
+    const fetchTodaySessions = async () => {
+      try {
+        if (!user?.userId) return;
+
+        const q = query(
+          collection(db, "class_sessions"),
+          where("facultyId", "==", user.userId)
+        );
+        const snap = await getDocs(q);
+
+        const todayStr = new Date().toISOString().split("T")[0];
+        const sessions = snap.docs
+          .map(doc => ({ id: doc.id, ...doc.data() }))
+          .filter(s => s?.date?.startsWith(todayStr));
+
+        setTodaySessions(sessions);
+      } catch (error) {
+        console.error("Error fetching today's sessions:", error);
+      }
+    };
+
+    fetchTodaySessions();
   }, [user]);
 
   /* ================= FETCH TODAY'S TIMETABLE ================= */
@@ -159,29 +186,39 @@ const FacultyDashboardPage = () => {
 
           <div className="classes-list">
             {facultyData?.classes?.length > 0 ? (
-              facultyData.classes.map((cls, index) => (
-                <div key={index} className="class-item">
-                  <div className="class-left">
-                    <h3 className="class-subject">
-                      {facultyData.subject}
-                    </h3>
-                    <span className="class-code">{cls}</span>
-                  </div>
+              facultyData.classes.map((cls, index) => {
+                const existingSession = todaySessions.find(
+                  s => s.class === cls && s.subject === facultyData.subject
+                );
+                
+                return (
+                  <div key={index} className="class-item">
+                    <div className="class-left">
+                      <h3 className="class-subject">
+                        {facultyData.subject}
+                      </h3>
+                      <span className="class-code">{cls}</span>
+                    </div>
 
-                  <div className="class-right">
-                    <button
-                      className="btn btn-primary btn-sm"
-                      onClick={() =>
-                        navigate("/faculty/attendance", {
-                          state: { className: cls, subject: facultyData.subject }
-                        })
-                      }
-                    >
-                      Mark Attendance
-                    </button>
+                    <div className="class-right">
+                      <button
+                        className={`btn ${existingSession ? 'btn-warning' : 'btn-primary'} btn-sm`}
+                        onClick={() =>
+                          navigate("/faculty/attendance", {
+                            state: { 
+                              className: cls, 
+                              subject: facultyData.subject,
+                              existingSession: existingSession
+                            }
+                          })
+                        }
+                      >
+                        {existingSession ? "Update Attendance" : "Mark Attendance"}
+                      </button>
+                    </div>
                   </div>
-                </div>
-              ))
+                );
+              })
             ) : (
               <div className="no-classes">
                 No classes assigned yet.

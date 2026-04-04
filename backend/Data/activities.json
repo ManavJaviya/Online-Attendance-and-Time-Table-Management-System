@@ -1,5 +1,86 @@
 [
   {
+    "id": "1775294790138",
+    "type": "attendance",
+    "title": "Attendance marked for CE1",
+    "user": "Faculty",
+    "time": "2026-04-04T09:26:30.139Z",
+    "color": "hsl(142, 76%, 36%)",
+    "icon": "✓"
+  },
+  {
+    "id": "1775294666438",
+    "type": "attendance",
+    "title": "Attendance marked for CE1",
+    "user": "Faculty",
+    "time": "2026-04-04T09:24:26.439Z",
+    "color": "hsl(142, 76%, 36%)",
+    "icon": "✓"
+  },
+  {
+    "id": "1775293375030",
+    "type": "attendance",
+    "title": "Attendance marked for CE1",
+    "user": "Faculty",
+    "time": "2026-04-04T09:02:55.031Z",
+    "color": "hsl(142, 76%, 36%)",
+    "icon": "✓"
+  },
+  {
+    "id": "1775292245632",
+    "type": "attendance",
+    "title": "Attendance marked for CE3",
+    "user": "Faculty",
+    "time": "2026-04-04T08:44:05.632Z",
+    "color": "hsl(142, 76%, 36%)",
+    "icon": "✓"
+  },
+  {
+    "id": "1775292141840",
+    "type": "attendance",
+    "title": "Attendance marked for CE1",
+    "user": "Faculty",
+    "time": "2026-04-04T08:42:21.841Z",
+    "color": "hsl(142, 76%, 36%)",
+    "icon": "✓"
+  },
+  {
+    "id": "1775291041321",
+    "type": "attendance",
+    "title": "Attendance updated for CE1",
+    "user": "Faculty",
+    "time": "2026-04-04T08:24:01.321Z",
+    "color": "hsl(38, 92%, 50%)",
+    "icon": "🔄"
+  },
+  {
+    "id": "1775291002687",
+    "type": "attendance",
+    "title": "Attendance updated for CE1",
+    "user": "Faculty",
+    "time": "2026-04-04T08:23:22.689Z",
+    "color": "hsl(38, 92%, 50%)",
+    "icon": "🔄"
+  },
+  {
+    "id": "1775290901281",
+    "type": "attendance",
+    "title": "Attendance updated for CE1",
+    "user": "Faculty",
+    "time": "2026-04-04T08:21:41.281Z",
+    "color": "hsl(38, 92%, 50%)",
+    "icon": "🔄"
+  },
+  {
+    "id": "1775290890621",
+    "type": "attendance",
+    "title": "Attendance marked for CE1",
+    "user": "Faculty",
+    "time": "2026-04-04T08:21:30.623Z",
+    "color": "hsl(142, 76%, 36%)",
+    "icon": "✓"
+  },
+  {
     "id": "1775137988645",
     "type": "attendance",
     "title": "Attendance marked for CE1",

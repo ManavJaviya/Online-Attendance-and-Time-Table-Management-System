@@ -3,6 +3,7 @@ import Navbar from "../components/Navbar";
 import { useNavigate } from "react-router-dom";
 import StatsCard from "../components/student/Statscard";
 import AttendanceCircular from "../components/student/AttendanceCircular";
+import DailyAttendanceCard from "../components/student/DailyAttendanceCard";
 import SubjectAttendance from "../components/student/Subjectattendance";
 import TodaySchedule from "../components/student/Todayschedule";
 import AttendanceAlert from "../components/student/Attendancealert";
@@ -32,6 +33,7 @@ const StudentDashboardPage = () => {
   const [todaySchedule, setTodaySchedule] = useState([]);
   const [overallAttendance, setOverallAttendance] = useState(0);
   const [missedClassesCount, setMissedClassesCount] = useState(0);
+  const [dailyAttendance, setDailyAttendance] = useState({ yesterday: [], today: [] });
 
   /* ===== LOAD DATA ===== */
   useEffect(() => {
@@ -51,6 +53,7 @@ const StudentDashboardPage = () => {
   useEffect(() => {
     if (studentClass && studentId) {
       fetchMissedClasses();
+      fetchDailyAttendance();
     }
   }, [studentClass, studentId]);
 
@@ -59,7 +62,7 @@ const StudentDashboardPage = () => {
     try {
       const q = query(collection(db, "class_sessions"), where("class", "==", studentClass));
       const snap = await getDocs(q);
-      
+
       const now = new Date();
       const currentMonth = now.getMonth();
       const currentYear = now.getFullYear();
@@ -70,15 +73,94 @@ const StudentDashboardPage = () => {
         const sessionDate = new Date(data.date);
 
         if (sessionDate.getMonth() === currentMonth && sessionDate.getFullYear() === currentYear) {
-           // student is absent if their id is not in attendance, or attendance[studentId] is false
-           if (!data.attendance || data.attendance[studentId] === false || data.attendance[studentId] === undefined) {
-              missed++;
-           }
+          // student is absent if their id is not in attendance, or attendance[studentId] is false
+          if (!data.attendance || data.attendance[studentId] === false || data.attendance[studentId] === undefined) {
+            missed++;
+          }
         }
       });
       setMissedClassesCount(missed);
     } catch (err) {
       console.error("Error fetching missed classes", err);
+    }
+  };
+
+  /* ===== DAILY ATTENDANCE (YESTERDAY & TODAY) ===== */
+  const fetchDailyAttendance = async () => {
+    try {
+      const todayDate = new Date();
+      const yesterdayDate = new Date();
+      yesterdayDate.setDate(todayDate.getDate() - 1);
+
+      const todayStartTs = new Date(todayDate).setHours(0, 0, 0, 0);
+      const yesterdayStartTs = new Date(yesterdayDate).setHours(0, 0, 0, 0);
+
+      const todayDayName = todayDate.toLocaleDateString("en-US", { weekday: "long" }).toLowerCase();
+      const yesterdayDayName = yesterdayDate.toLocaleDateString("en-US", { weekday: "long" }).toLowerCase();
+
+      // Fetch timetable
+      const ttRef = doc(db, "timetable", studentClass);
+      const ttSnap = await getDoc(ttRef);
+      const ttData = ttSnap.exists() ? ttSnap.data() : null;
+
+      // Fetch class sessions
+      const sessionQ = query(collection(db, "class_sessions"), where("class", "==", studentClass));
+      const sessionSnap = await getDocs(sessionQ);
+      let sessions = sessionSnap.docs.map(doc => doc.data());
+
+      // Sort sessions chronologically (oldest first)
+      sessions.sort((a, b) => new Date(a.date) - new Date(b.date));
+
+      const getSessionForLecture = (subject, fromTs) => {
+        for (let i = 0; i < sessions.length; i++) {
+          const s = sessions[i];
+          if (s.subject === subject) {
+            const sTime = new Date(s.date).getTime();
+            if (sTime >= fromTs) {
+              return sessions.splice(i, 1)[0]; // consume session
+            }
+          }
+        }
+        return null;
+      };
+
+      const buildAttendance = (dayName, startTs) => {
+        if (!ttData || !ttData[dayName]) return [];
+
+        const schedule = ttData[dayName];
+        const orderedKeys = ["lec1", "lec2", "lec3", "lec4", "lec5"];
+        const result = [];
+        let index = 1;
+
+        for (const key of orderedKeys) {
+          if (schedule[key]) {
+            const ttSubject = schedule[key].subject;
+            const session = getSessionForLecture(ttSubject, startTs);
+
+            let status = "Pending";
+            if (session && session.attendance) {
+              status = session.attendance[studentId] ? "Present" : "Absent";
+            }
+
+            result.push({
+              id: index,
+              subject: ttSubject,
+              faculty: schedule[key].facultyId,
+              time: LECTURE_TIMES[key],
+              status: status
+            });
+            index++;
+          }
+        }
+        return result;
+      };
+
+      setDailyAttendance({
+        yesterday: buildAttendance(yesterdayDayName, yesterdayStartTs),
+        today: buildAttendance(todayDayName, todayStartTs)
+      });
+    } catch (err) {
+      console.error("Error fetching daily attendance", err);
     }
   };
 
@@ -237,22 +319,25 @@ const StudentDashboardPage = () => {
             icon="⚠"
           />
 
-          <div
+          <StatsCard
+            title="Missed Classes"
+            value={missedClassesCount}
+            change="This Month"
+            changeType="negative"
+            icon="🚫"
             onClick={() => navigate("/student/missed")}
             style={{ cursor: "pointer", transition: "transform 0.2s" }}
             onMouseEnter={(e) => (e.currentTarget.style.transform = "scale(1.02)")}
             onMouseLeave={(e) => (e.currentTarget.style.transform = "scale(1)")}
-            title="Click to view missed classes and topics"
-          >
-            <StatsCard
-              title="Missed Classes"
-              value={missedClassesCount}
-              change="This Month"
-              changeType="negative"
-              icon="🚫"
-            />
-          </div>
+            titleAttribute="Click to view missed classes and topics"
+          />
         </div>
+
+        {/* DAILY ATTENDANCE CARD */}
+        <DailyAttendanceCard
+          yesterdayData={dailyAttendance.yesterday}
+          todayData={dailyAttendance.today}
+        />
 
         {/* SUBJECT ATTENDANCE */}
         <div className="classes-card">

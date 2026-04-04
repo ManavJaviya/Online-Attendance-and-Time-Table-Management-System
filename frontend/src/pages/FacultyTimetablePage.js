@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import { doc, getDoc } from "firebase/firestore";
 import { db } from "../firebase";
@@ -7,6 +8,7 @@ import "./FacultyDashboardPage.css";
 const DAYS = ["monday", "tuesday", "wednesday", "thursday", "friday"];
 
 const FacultyTimetablePage = () => {
+  const navigate = useNavigate();
   const user = JSON.parse(localStorage.getItem("user"));
   const facultyId = user?.userId;
 
@@ -32,11 +34,18 @@ const FacultyTimetablePage = () => {
       <Navbar />
 
       <div className="faculty-dashboard-container">
-        <div className="dashboard-header">
-          <h1 className="dashboard-title">Weekly Timetable</h1>
-          <p className="dashboard-subtitle">
-            Complete teaching schedule
-          </p>
+        <div className="dashboard-header header-with-back">
+          <button className="back-arrow-btn" onClick={() => navigate("/faculty")} title="Go back to dashboard">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
+              <polyline points="15 18 9 12 15 6"></polyline>
+            </svg>
+          </button>
+          <div>
+            <h1 className="dashboard-title" style={{ margin: '0 0 0.5rem 0' }}>Weekly Timetable</h1>
+            <p className="dashboard-subtitle" style={{ margin: 0 }}>
+              Complete teaching schedule
+            </p>
+          </div>
         </div>
 
         {DAYS.map((day) => (

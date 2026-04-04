@@ -1,7 +1,7 @@
 import React from 'react';
 import './Statscard.css';
 
-const StatsCard = ({ title, value, change, changeType = 'neutral', icon, iconClassName }) => {
+const StatsCard = ({ title, value, change, changeType = 'neutral', icon, iconClassName, titleAttribute, ...props }) => {
   const getChangeClass = () => {
     switch (changeType) {
       case 'positive':
@@ -14,7 +14,7 @@ const StatsCard = ({ title, value, change, changeType = 'neutral', icon, iconCla
   };
 
   return (
-    <div className="student-stats-card">
+    <div className="student-stats-card" title={titleAttribute} {...props}>
       <div className="stats-card-content">
         <div className="stats-info">
           <p className="stats-title">{title}</p>
