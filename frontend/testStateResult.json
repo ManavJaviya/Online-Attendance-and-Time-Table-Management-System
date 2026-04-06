@@ -1,0 +1,27 @@
+{
+  "lec1": {
+    "time": "08:00 – 09:00",
+    "facultyId": "FAC202",
+    "subject": "Computer Networks"
+  },
+  "lec4": {
+    "subject": "Artificial Intelligence",
+    "facultyId": "FAC204",
+    "time": "11:30 – 12:30"
+  },
+  "lec5": {
+    "subject": "Database Management",
+    "facultyId": "FAC205",
+    "time": "12:30 – 01:30"
+  },
+  "lec3": {
+    "subject": "Software Engineering",
+    "time": "10:00 – 11:00",
+    "facultyId": "FAC203"
+  },
+  "lec2": {
+    "subject": "Data Structures",
+    "time": "09:00 – 10:00",
+    "facultyId": "FAC201"
+  }
+}

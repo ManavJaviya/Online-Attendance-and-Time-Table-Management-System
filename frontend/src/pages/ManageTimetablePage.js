@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Navbar from '../components/Navbar';
 import axios from 'axios';
+import { doc, onSnapshot, collection, getDocs } from 'firebase/firestore';
+import { db } from '../firebase';
 import './ManageTimetablePage.css';
 
 const CLASSES = ['CE1', 'CE2', 'CE3', 'CE4', 'CE5'];
@@ -11,46 +13,90 @@ const LECTURES = ['lec1', 'lec2', 'lec3', 'lec4', 'lec5'];
 const ManageTimetablePage = () => {
   const navigate = useNavigate();
   const [selectedClass, setSelectedClass] = useState('');
+  const [dbTimetable, setDbTimetable] = useState(null);
   const [timetable, setTimetable] = useState(null);
   const [isEditing, setIsEditing] = useState(false);
   const [message, setMessage] = useState('');
   const [error, setError] = useState('');
+  const [facultyList, setFacultyList] = useState([]);
+
+  // Fetch all faculty once
+  useEffect(() => {
+    const fetchFaculty = async () => {
+      try {
+        const snap = await getDocs(collection(db, "faculty"));
+        const list = [];
+        snap.forEach(doc => {
+          list.push({ id: doc.id, ...doc.data() });
+        });
+        setFacultyList(list);
+      } catch (err) {
+        console.error("Error fetching faculty list:", err);
+      }
+    };
+    fetchFaculty();
+  }, []);
+
+  // Sync dbTimetable to timetable when not editing
+  useEffect(() => {
+    if (!isEditing) {
+      setTimetable(dbTimetable ? JSON.parse(JSON.stringify(dbTimetable)) : null);
+    }
+  }, [dbTimetable, isEditing]);
 
   useEffect(() => {
+    let unsubscribe = () => {};
     if (selectedClass) {
-      fetchTimetable(selectedClass);
       setIsEditing(false);
       setMessage('');
       setError('');
+      
+      unsubscribe = onSnapshot(doc(db, "timetable", selectedClass), (docSnap) => {
+        if (docSnap.exists()) {
+          setDbTimetable(docSnap.data());
+          setError('');
+        } else {
+          setError('Failed to fetch timetable. Ensure it exists.');
+          setDbTimetable(null);
+        }
+      }, (err) => {
+        console.error("Error fetching timetable realtime:", err);
+        setError('Failed to fetch timetable.');
+        setDbTimetable(null);
+      });
     } else {
+      setDbTimetable(null);
       setTimetable(null);
     }
-  }, [selectedClass]);
 
-  const fetchTimetable = async (classId) => {
-    try {
-      const response = await axios.get(`http://localhost:5000/api/timetable/${classId}`);
-      setTimetable(response.data);
-    } catch (err) {
-      console.error(err);
-      setError('Failed to fetch timetable. Ensure it exists.');
-      setTimetable(null);
-    }
-  };
+    return () => unsubscribe();
+  }, [selectedClass]);
 
   const handleEditToggle = () => {
     setIsEditing(!isEditing);
     setMessage('');
   };
 
-  const handleInputChange = (day, lec, field, value) => {
+  const handleCancel = () => {
+    setIsEditing(false);
+    setTimetable(dbTimetable ? JSON.parse(JSON.stringify(dbTimetable)) : null);
+  };
+
+  const handleSubjectChange = (day, lec, subjectName) => {
+    // Find the faculty who teaches this subject for the current class
+    const foundFaculty = facultyList.find(f => 
+      f.subject === subjectName && f.classes?.includes(selectedClass)
+    );
+    
+    // Update both subject and faculty ID in one go
     setTimetable(prev => ({
       ...prev,
       [day]: {
         ...prev[day],
         [lec]: {
-          ...prev[day][lec],
-          [field]: value
+          ...prev[day]?.[lec],
+          subject: subjectName,
+          facultyId: foundFaculty ? foundFaculty.id : ''
         }
       }
     }));
@@ -107,7 +153,7 @@ const ManageTimetablePage = () => {
                 <button className="btn-edit" onClick={handleEditToggle}>Edit Timetable</button>
               ) : (
                 <div className="edit-actions">
-                  <button className="btn-cancel" onClick={() => { fetchTimetable(selectedClass); setIsEditing(false); }}>Cancel</button>
+                  <button className="btn-cancel" onClick={handleCancel}>Cancel</button>
                   <button className="btn-submit" onClick={handleSubmit}>Submit</button>
                 </div>
               )}
@@ -131,18 +177,30 @@ const ManageTimetablePage = () => {
                         <td key={lec} className="timetable-cell">
                           {isEditing ? (
                             <div className="cell-inputs">
-                              <input 
-                                type="text" 
-                                placeholder="Subject"
+                              <select 
                                 value={timetable[day]?.[lec]?.subject || ''}
-                                onChange={(e) => handleInputChange(day, lec, 'subject', e.target.value)}
-                              />
-                              <input 
-                                type="text" 
-                                placeholder="Faculty ID"
-                                value={timetable[day]?.[lec]?.facultyId || ''}
-                                onChange={(e) => handleInputChange(day, lec, 'facultyId', e.target.value)}
-                              />
+                                onChange={(e) => handleSubjectChange(day, lec, e.target.value)}
+                                style={{
+                                  padding: '0.5rem',
+                                  border: '1px solid #e2e8f0',
+                                  borderRadius: '4px',
+                                  fontSize: '0.875rem',
+                                  outline: 'none',
+                                  width: '100%',
+                                  backgroundColor: 'white',
+                                  cursor: 'pointer'
+                                }}
+                              >
+                                <option value="">- Free Slot -</option>
+                                {facultyList
+                                  .filter(f => f.classes?.includes(selectedClass))
+                                  .map(f => (
+                                    <option key={f.id} value={f.subject}>{f.subject}</option>
+                                  ))}
+                              </select>
+                              <div className="faculty" style={{ fontSize: '0.75rem', marginTop: '4px', color: '#64748b' }}>
+                                {timetable[day]?.[lec]?.facultyId || 'No Faculty Assg.'}
+                              </div>
                             </div>
                           ) : (
                             <div className="cell-display">
