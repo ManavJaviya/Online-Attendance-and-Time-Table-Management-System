@@ -247,15 +247,15 @@ const ReportsPage = () => {
     <div className="reports-layout">
       <Navbar />
       <div className="reports-container fade-in">
-        <div className="reports-header" style={{ display: 'flex', alignItems: 'flex-start', gap: '1rem', textAlign: 'left' }}>
-          <button className="back-arrow-btn" onClick={() => navigate("/admin")} title="Go back to dashboard" style={{ padding: '0.625rem 1.25rem', background: 'transparent', color: 'black', border: 'none', cursor: 'pointer', marginTop: '0.25rem', flexShrink: 0, display: 'inline-flex', alignItems: 'center', justifyContent: 'center', minWidth: '45px', minHeight: '45px' }}>
+        <div className="reports-header">
+          <button className="back-arrow-btn" onClick={() => navigate("/admin")} title="Go back to dashboard">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
               <polyline points="15 18 9 12 15 6"></polyline>
             </svg>
           </button>
-          <div>
-            <h1 style={{ margin: '0 0 0.5rem 0' }}>System Reports & Analytics</h1>
-            <p style={{ margin: 0 }}>Comprehensive overview of attendance, timetables, and performance benchmarks</p>
+          <div className="reports-header-text">
+            <h1>System Reports & Analytics</h1>
+            <p>Comprehensive overview of attendance, timetables, and performance benchmarks</p>
           </div>
         </div>
 

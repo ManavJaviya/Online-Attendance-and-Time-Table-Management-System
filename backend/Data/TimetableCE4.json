@@ -2,8 +2,8 @@
   "monday": {
     "lec1": {
       "facultyId": "FAC216",
-      "time": "08:00 – 09:00",
-      "subject": "Data Science"
+      "subject": "Data Science",
+      "time": "08:00 – 09:00"
     },
     "lec2": {
       "subject": "IoT Systems",
@@ -11,68 +11,68 @@
       "time": "09:00 – 10:00"
     },
     "lec3": {
-      "time": "10:00 – 11:00",
+      "subject": "Embedded Systems",
       "facultyId": "FAC218",
-      "subject": "Embedded Systems"
+      "time": "10:00 – 11:00"
     },
     "lec4": {
-      "time": "11:30 – 12:30",
       "facultyId": "FAC219",
-      "subject": "Python Programming"
+      "subject": "Python Programming",
+      "time": "11:30 – 12:30"
     },
     "lec5": {
-      "time": "12:30 – 01:30",
+      "subject": "Advanced Algorithms",
       "facultyId": "FAC220",
-      "subject": "Advanced Algorithms"
+      "time": "12:30 – 01:30"
     }
   },
   "tuesday": {
     "lec1": {
-      "subject": "IoT Systems",
       "time": "08:00 – 09:00",
+      "subject": "IoT Systems",
       "facultyId": "FAC217"
     },
     "lec2": {
-      "subject": "Embedded Systems",
       "time": "09:00 – 10:00",
+      "subject": "Embedded Systems",
       "facultyId": "FAC218"
     },
     "lec3": {
-      "subject": "Python Programming",
       "time": "10:00 – 11:00",
-      "facultyId": "FAC219"
+      "facultyId": "FAC219",
+      "subject": "Python Programming"
     },
     "lec4": {
       "facultyId": "FAC220",
-      "time": "11:30 – 12:30",
-      "subject": "Advanced Algorithms"
+      "subject": "Advanced Algorithms",
+      "time": "11:30 – 12:30"
     },
     "lec5": {
-      "subject": "Data Science",
       "facultyId": "FAC216",
+      "subject": "Data Science",
       "time": "12:30 – 01:30"
     }
   },
   "wednesday": {
     "lec1": {
       "time": "08:00 – 09:00",
-      "facultyId": "FAC218",
-      "subject": "Embedded Systems"
+      "subject": "Embedded Systems",
+      "facultyId": "FAC218"
     },
     "lec2": {
-      "subject": "Python Programming",
+      "time": "09:00 – 10:00",
       "facultyId": "FAC219",
-      "time": "09:00 – 10:00"
+      "subject": "Python Programming"
     },
     "lec3": {
-      "subject": "Computer Graphics",
       "time": "10:00 – 11:00",
+      "subject": "Computer Graphics",
       "facultyId": "FAC211"
     },
     "lec4": {
-      "time": "11:30 – 12:30",
+      "subject": "Data Science",
       "facultyId": "FAC216",
-      "subject": "Data Science"
+      "time": "11:30 – 12:30"
     },
     "lec5": {
       "time": "12:30 – 01:30",
@@ -83,27 +83,27 @@
   "thursday": {
     "lec1": {
       "subject": "Python Programming",
-      "time": "08:00 – 09:00",
-      "facultyId": "FAC219"
+      "facultyId": "FAC219",
+      "time": "08:00 – 09:00"
     },
     "lec2": {
+      "facultyId": "FAC220",
       "subject": "Advanced Algorithms",
-      "time": "09:00 – 10:00",
-      "facultyId": "FAC220"
+      "time": "09:00 – 10:00"
     },
     "lec3": {
       "time": "10:00 – 11:00",
-      "facultyId": "FAC216",
-      "subject": "Data Science"
+      "subject": "Data Science",
+      "facultyId": "FAC216"
     },
     "lec4": {
+      "time": "11:30 – 12:30",
       "subject": "IoT Systems",
-      "facultyId": "FAC217",
-      "time": "11:30 – 12:30"
+      "facultyId": "FAC217"
     },
     "lec5": {
-      "subject": "Embedded Systems",
       "facultyId": "FAC218",
+      "subject": "Embedded Systems",
       "time": "12:30 – 01:30"
     }
   },
@@ -115,13 +115,13 @@
     },
     "lec2": {
       "time": "09:00 – 10:00",
-      "facultyId": "FAC216",
-      "subject": "Data Science"
+      "subject": "Data Science",
+      "facultyId": "FAC216"
     },
     "lec3": {
       "facultyId": "FAC217",
-      "time": "10:00 – 11:00",
-      "subject": "IoT Systems"
+      "subject": "IoT Systems",
+      "time": "10:00 – 11:00"
     },
     "lec4": {
       "subject": "Embedded Systems",
@@ -130,8 +130,8 @@
     },
     "lec5": {
       "facultyId": "FAC219",
-      "time": "12:30 – 01:30",
-      "subject": "Python Programming"
+      "subject": "Python Programming",
+      "time": "12:30 – 01:30"
     }
   }
 }

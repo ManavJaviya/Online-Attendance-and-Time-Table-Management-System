@@ -3,6 +3,11 @@
   background-color: #f8f9fa;
   display: flex;
   flex-direction: column;
+  box-sizing: border-box;
+}
+
+.missed-classes-layout * {
+  box-sizing: border-box;
 }
 
 .missed-classes-container {
@@ -197,6 +202,22 @@
     padding: 20px;
   }
   
+  .missed-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+    margin-bottom: 25px;
+  }
+
+  .missed-header h1 {
+    font-size: 24px;
+    line-height: 1.2;
+  }
+
+  .empty-state {
+    padding: 40px 20px;
+  }
+
   .missed-card {
     flex-direction: column;
     gap: 20px;
@@ -213,6 +234,7 @@
   .missed-card-right {
     flex-direction: column;
     align-items: flex-start;
+    gap: 15px;
   }
 
   .youtube-search-btn {

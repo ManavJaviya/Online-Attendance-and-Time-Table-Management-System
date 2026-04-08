@@ -1,46 +1,46 @@
 {
   "monday": {
     "lec1": {
-      "time": "08:00 – 09:00",
+      "subject": "Computer Graphics",
       "facultyId": "FAC211",
-      "subject": "Computer Graphics"
+      "time": "08:00 – 09:00"
     },
     "lec2": {
       "time": "09:00 – 10:00",
-      "facultyId": "FAC212",
-      "subject": "Compiler Design"
+      "subject": "Compiler Design",
+      "facultyId": "FAC212"
     },
     "lec3": {
-      "facultyId": "FAC213",
       "time": "10:00 – 11:00",
-      "subject": "Theory of Computation"
+      "subject": "Theory of Computation",
+      "facultyId": "FAC213"
     },
     "lec4": {
       "time": "11:30 – 12:30",
-      "facultyId": "FAC214",
-      "subject": "Distributed Systems"
+      "subject": "Distributed Systems",
+      "facultyId": "FAC214"
     },
     "lec5": {
       "facultyId": "FAC215",
-      "time": "12:30 – 01:30",
-      "subject": "Mobile Computing"
+      "subject": "Mobile Computing",
+      "time": "12:30 – 01:30"
     }
   },
   "tuesday": {
     "lec1": {
-      "time": "08:00 – 09:00",
+      "subject": "Compiler Design",
       "facultyId": "FAC212",
-      "subject": "Compiler Design"
+      "time": "08:00 – 09:00"
     },
     "lec2": {
       "time": "09:00 – 10:00",
-      "facultyId": "FAC213",
-      "subject": "Theory of Computation"
+      "subject": "Theory of Computation",
+      "facultyId": "FAC213"
     },
     "lec3": {
       "time": "10:00 – 11:00",
-      "facultyId": "FAC214",
-      "subject": "Distributed Systems"
+      "subject": "Distributed Systems",
+      "facultyId": "FAC214"
     },
     "lec4": {
       "time": "11:30 – 12:30",
@@ -48,90 +48,90 @@
       "subject": "Mobile Computing"
     },
     "lec5": {
+      "facultyId": "FAC211",
       "subject": "Computer Graphics",
-      "time": "12:30 – 01:30",
-      "facultyId": "FAC211"
+      "time": "12:30 – 01:30"
     }
   },
   "wednesday": {
     "lec1": {
-      "facultyId": "FAC213",
       "time": "08:00 – 09:00",
-      "subject": "Theory of Computation"
+      "subject": "Theory of Computation",
+      "facultyId": "FAC213"
     },
     "lec2": {
-      "time": "09:00 – 10:00",
+      "subject": "Distributed Systems",
       "facultyId": "FAC214",
-      "subject": "Distributed Systems"
+      "time": "09:00 – 10:00"
     },
     "lec3": {
       "subject": "Mobile Computing",
-      "time": "10:00 – 11:00",
-      "facultyId": "FAC215"
+      "facultyId": "FAC215",
+      "time": "10:00 – 11:00"
     },
     "lec4": {
       "facultyId": "FAC211",
-      "time": "11:30 – 12:30",
-      "subject": "Computer Graphics"
+      "subject": "Computer Graphics",
+      "time": "11:30 – 12:30"
     },
     "lec5": {
-      "subject": "Compiler Design",
+      "time": "12:30 – 01:30",
       "facultyId": "FAC212",
-      "time": "12:30 – 01:30"
+      "subject": "Compiler Design"
     }
   },
   "thursday": {
     "lec1": {
-      "subject": "Distributed Systems",
+      "time": "08:00 – 09:00",
       "facultyId": "FAC214",
-      "time": "08:00 – 09:00"
+      "subject": "Distributed Systems"
     },
     "lec2": {
       "subject": "Mobile Computing",
-      "time": "09:00 – 10:00",
-      "facultyId": "FAC215"
+      "facultyId": "FAC215",
+      "time": "09:00 – 10:00"
     },
     "lec3": {
+      "time": "10:00 – 11:00",
       "subject": "Computer Graphics",
-      "facultyId": "FAC211",
-      "time": "10:00 – 11:00"
+      "facultyId": "FAC211"
     },
     "lec4": {
-      "facultyId": "FAC212",
       "time": "11:30 – 12:30",
+      "facultyId": "FAC212",
       "subject": "Compiler Design"
     },
     "lec5": {
-      "subject": "Theory of Computation",
+      "time": "12:30 – 01:30",
       "facultyId": "FAC213",
-      "time": "12:30 – 01:30"
+      "subject": "Theory of Computation"
     }
   },
   "friday": {
     "lec1": {
+      "facultyId": "FAC215",
       "subject": "Mobile Computing",
-      "time": "08:00 – 09:00",
-      "facultyId": "FAC215"
+      "time": "08:00 – 09:00"
     },
     "lec2": {
       "facultyId": "FAC211",
-      "time": "09:00 – 10:00",
-      "subject": "Computer Graphics"
+      "subject": "Computer Graphics",
+      "time": "09:00 – 10:00"
     },
     "lec3": {
-      "subject": "Compiler Design",
       "time": "10:00 – 11:00",
-      "facultyId": "FAC212"
+      "facultyId": "FAC212",
+      "subject": "Compiler Design"
     },
     "lec4": {
-      "subject": "Theory of Computation",
       "time": "11:30 – 12:30",
-      "facultyId": "FAC213"
+      "facultyId": "FAC213",
+      "subject": "Theory of Computation"
     },
     "lec5": {
+      "subject": "Distributed Systems",
       "facultyId": "FAC214",
-      "time": "12:30 – 01:30",
-      "subject": "Distributed Systems"
+      "time": "12:30 – 01:30"
     }
   }
 }

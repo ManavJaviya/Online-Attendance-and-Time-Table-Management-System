@@ -1,24 +1,24 @@
 {
   "monday": {
     "lec1": {
+      "subject": "Computer Architecture",
       "facultyId": "FAC221",
-      "time": "08:00 – 09:00",
-      "subject": "Computer Architecture"
+      "time": "08:00 – 09:00"
     },
     "lec2": {
-      "time": "09:00 – 10:00",
       "facultyId": "FAC222",
-      "subject": "Digital Electronics"
+      "subject": "Digital Electronics",
+      "time": "09:00 – 10:00"
     },
     "lec3": {
+      "time": "10:00 – 11:00",
       "subject": "Probability & Statistics",
-      "facultyId": "FAC223",
-      "time": "10:00 – 11:00"
+      "facultyId": "FAC223"
     },
     "lec4": {
-      "subject": "Software Testing",
+      "time": "11:30 – 12:30",
       "facultyId": "FAC224",
-      "time": "11:30 – 12:30"
+      "subject": "Software Testing"
     },
     "lec5": {
       "subject": "Linux & Shell Scripting",
@@ -28,41 +28,41 @@
   },
   "tuesday": {
     "lec1": {
-      "subject": "Digital Electronics",
       "time": "08:00 – 09:00",
+      "subject": "Digital Electronics",
       "facultyId": "FAC222"
     },
     "lec2": {
-      "facultyId": "FAC223",
       "time": "09:00 – 10:00",
+      "facultyId": "FAC223",
       "subject": "Probability & Statistics"
     },
     "lec3": {
-      "time": "10:00 – 11:00",
+      "subject": "Software Testing",
       "facultyId": "FAC224",
-      "subject": "Software Testing"
+      "time": "10:00 – 11:00"
     },
     "lec4": {
-      "subject": "Linux & Shell Scripting",
+      "time": "11:30 – 12:30",
       "facultyId": "FAC225",
-      "time": "11:30 – 12:30"
+      "subject": "Linux & Shell Scripting"
     },
     "lec5": {
+      "facultyId": "FAC221",
       "subject": "Computer Architecture",
-      "time": "12:30 – 01:30",
-      "facultyId": "FAC221"
+      "time": "12:30 – 01:30"
     }
   },
   "wednesday": {
     "lec1": {
-      "time": "08:00 – 09:00",
       "facultyId": "FAC223",
-      "subject": "Probability & Statistics"
+      "subject": "Probability & Statistics",
+      "time": "08:00 – 09:00"
     },
     "lec2": {
+      "subject": "Software Testing",
       "facultyId": "FAC224",
-      "time": "09:00 – 10:00",
-      "subject": "Software Testing"
+      "time": "09:00 – 10:00"
     },
     "lec3": {
       "subject": "Linux & Shell Scripting",
@@ -70,21 +70,21 @@
       "time": "10:00 – 11:00"
     },
     "lec4": {
-      "facultyId": "FAC221",
       "time": "11:30 – 12:30",
-      "subject": "Computer Architecture"
+      "subject": "Computer Architecture",
+      "facultyId": "FAC221"
     },
     "lec5": {
-      "facultyId": "FAC222",
       "time": "12:30 – 01:30",
+      "facultyId": "FAC222",
       "subject": "Digital Electronics"
     }
   },
   "thursday": {
     "lec1": {
       "time": "08:00 – 09:00",
-      "facultyId": "FAC224",
-      "subject": "Software Testing"
+      "subject": "Software Testing",
+      "facultyId": "FAC224"
     },
     "lec2": {
       "time": "09:00 – 10:00",
@@ -92,14 +92,14 @@
       "subject": "Linux & Shell Scripting"
     },
     "lec3": {
-      "subject": "Computer Architecture",
+      "time": "10:00 – 11:00",
       "facultyId": "FAC221",
-      "time": "10:00 – 11:00"
+      "subject": "Computer Architecture"
     },
     "lec4": {
       "facultyId": "FAC222",
-      "time": "11:30 – 12:30",
-      "subject": "Digital Electronics"
+      "subject": "Digital Electronics",
+      "time": "11:30 – 12:30"
     },
     "lec5": {
       "time": "12:30 – 01:30",
@@ -109,24 +109,24 @@
   },
   "friday": {
     "lec1": {
-      "facultyId": "FAC225",
       "time": "08:00 – 09:00",
-      "subject": "Linux & Shell Scripting"
+      "subject": "Linux & Shell Scripting",
+      "facultyId": "FAC225"
     },
     "lec2": {
       "facultyId": "FAC221",
-      "time": "09:00 – 10:00",
-      "subject": "Computer Architecture"
+      "subject": "Computer Architecture",
+      "time": "09:00 – 10:00"
     },
     "lec3": {
+      "subject": "Digital Electronics",
       "facultyId": "FAC222",
-      "time": "10:00 – 11:00",
-      "subject": "Digital Electronics"
+      "time": "10:00 – 11:00"
     },
     "lec4": {
-      "subject": "Probability & Statistics",
       "time": "11:30 – 12:30",
-      "facultyId": "FAC223"
+      "facultyId": "FAC223",
+      "subject": "Probability & Statistics"
     },
     "lec5": {
       "subject": "Software Testing",

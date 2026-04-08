@@ -33,7 +33,7 @@ const FacultyDashboardPage = () => {
     };
 
     fetchFacultyData();
-  }, [user]);
+  }, [user?.userId]);
 
   /* ================= FETCH TODAY'S SESSIONS ================= */
   useEffect(() => {
@@ -59,7 +59,7 @@ const FacultyDashboardPage = () => {
     };
 
     fetchTodaySessions();
-  }, [user]);
+  }, [user?.userId]);
 
   /* ================= FETCH TODAY'S TIMETABLE ================= */
   useEffect(() => {
@@ -102,7 +102,7 @@ const FacultyDashboardPage = () => {
     };
 
     fetchTodaySchedule();
-  }, [user]);
+  }, [user?.userId]);
 
   /* ================= NAVIGATION ================= */
   const handleViewTimetable = () => {

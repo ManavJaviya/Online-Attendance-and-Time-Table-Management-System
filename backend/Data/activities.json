@@ -1,5 +1,41 @@
 [
   {
+    "id": "1775642320364",
+    "type": "attendance",
+    "title": "Attendance marked for CE2",
+    "user": "Faculty",
+    "time": "2026-04-08T09:58:40.364Z",
+    "color": "hsl(142, 76%, 36%)",
+    "icon": "✓"
+  },
+  {
+    "id": "1775642293787",
+    "type": "attendance",
+    "title": "Attendance marked for CE1",
+    "user": "Faculty",
+    "time": "2026-04-08T09:58:13.787Z",
+    "color": "hsl(142, 76%, 36%)",
+    "icon": "✓"
+  },
+  {
+    "id": "1775562806406",
+    "type": "attendance",
+    "title": "Attendance marked for CE3",
+    "user": "Faculty",
+    "time": "2026-04-07T11:53:26.408Z",
+    "color": "hsl(142, 76%, 36%)",
+    "icon": "✓"
+  },
+  {
+    "id": "1775560518681",
+    "type": "attendance",
+    "title": "Attendance marked for CE2",
+    "user": "Faculty",
+    "time": "2026-04-07T11:15:18.682Z",
+    "color": "hsl(142, 76%, 36%)",
+    "icon": "✓"
+  },
+  {
     "id": "1775485889699",
     "type": "timetable",
     "title": "Timetable updated for CE1",
