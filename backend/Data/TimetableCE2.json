@@ -6,30 +6,30 @@
       "facultyId": "FAC201"
     },
     "lec2": {
-      "time": "09:00 – 10:00",
       "facultyId": "FAC207",
+      "time": "09:00 – 10:00",
       "subject": "Machine Learning"
     },
     "lec3": {
-      "subject": "Web Technologies",
       "facultyId": "FAC208",
-      "time": "10:00 – 11:00"
+      "time": "10:00 – 11:00",
+      "subject": "Web Technologies"
     },
     "lec4": {
-      "facultyId": "FAC209",
       "time": "11:30 – 12:30",
-      "subject": "Cloud Computing"
+      "subject": "Cloud Computing",
+      "facultyId": "FAC209"
     },
     "lec5": {
       "subject": "Cyber Security",
-      "facultyId": "FAC210",
-      "time": "12:30 – 01:30"
+      "time": "12:30 – 01:30",
+      "facultyId": "FAC210"
     }
   },
   "tuesday": {
     "lec1": {
-      "time": "08:00 – 09:00",
       "facultyId": "FAC207",
+      "time": "08:00 – 09:00",
       "subject": "Machine Learning"
     },
     "lec2": {
@@ -39,72 +39,72 @@
     },
     "lec3": {
       "time": "10:00 – 11:00",
-      "facultyId": "FAC209",
-      "subject": "Cloud Computing"
+      "subject": "Cloud Computing",
+      "facultyId": "FAC209"
     },
     "lec4": {
+      "subject": "Cyber Security",
       "time": "11:30 – 12:30",
-      "facultyId": "FAC210",
-      "subject": "Cyber Security"
+      "facultyId": "FAC210"
     },
     "lec5": {
       "time": "12:30 – 01:30",
-      "facultyId": "FAC206",
-      "subject": "Operating Systems"
+      "subject": "Operating Systems",
+      "facultyId": "FAC206"
     }
   },
   "wednesday": {
     "lec1": {
       "facultyId": "FAC208",
-      "time": "08:00 – 09:00",
-      "subject": "Web Technologies"
+      "subject": "Web Technologies",
+      "time": "08:00 – 09:00"
     },
     "lec2": {
-      "facultyId": "FAC209",
       "time": "09:00 – 10:00",
-      "subject": "Cloud Computing"
+      "subject": "Cloud Computing",
+      "facultyId": "FAC209"
     },
     "lec3": {
       "facultyId": "FAC210",
-      "time": "10:00 – 11:00",
-      "subject": "Cyber Security"
+      "subject": "Cyber Security",
+      "time": "10:00 – 11:00"
     },
     "lec4": {
-      "time": "11:30 – 12:30",
       "facultyId": "FAC206",
+      "time": "11:30 – 12:30",
       "subject": "Operating Systems"
     },
     "lec5": {
+      "subject": "Machine Learning",
       "time": "12:30 – 01:30",
-      "facultyId": "FAC207",
-      "subject": "Machine Learning"
+      "facultyId": "FAC207"
     }
   },
   "thursday": {
     "lec1": {
+      "time": "08:00 – 09:00",
       "subject": "Cloud Computing",
-      "facultyId": "FAC209",
-      "time": "08:00 – 09:00"
+      "facultyId": "FAC209"
     },
     "lec2": {
       "facultyId": "FAC210",
-      "time": "09:00 – 10:00",
-      "subject": "Cyber Security"
+      "subject": "Cyber Security",
+      "time": "09:00 – 10:00"
     },
     "lec3": {
-      "subject": "Operating Systems",
       "time": "10:00 – 11:00",
+      "subject": "Operating Systems",
       "facultyId": "FAC206"
     },
     "lec4": {
+      "facultyId": "FAC207",
       "subject": "Machine Learning",
-      "time": "11:30 – 12:30",
-      "facultyId": "FAC207"
+      "time": "11:30 – 12:30"
     },
     "lec5": {
+      "time": "12:30 – 01:30",
       "subject": "Web Technologies",
-      "facultyId": "FAC208",
-      "time": "12:30 – 01:30"
+      "facultyId": "FAC208"
     }
   },
   "friday": {
@@ -114,24 +114,24 @@
       "subject": "Cyber Security"
     },
     "lec2": {
-      "time": "09:00 – 10:00",
       "facultyId": "FAC206",
-      "subject": "Operating Systems"
+      "subject": "Operating Systems",
+      "time": "09:00 – 10:00"
     },
     "lec3": {
-      "time": "10:00 – 11:00",
       "facultyId": "FAC207",
+      "time": "10:00 – 11:00",
       "subject": "Machine Learning"
     },
     "lec4": {
+      "time": "11:30 – 12:30",
       "subject": "Web Technologies",
-      "facultyId": "FAC208",
-      "time": "11:30 – 12:30"
+      "facultyId": "FAC208"
     },
     "lec5": {
       "subject": "Cloud Computing",
-      "facultyId": "FAC209",
-      "time": "12:30 – 01:30"
+      "time": "12:30 – 01:30",
+      "facultyId": "FAC209"
     }
   }
 }

@@ -1,117 +1,117 @@
 {
   "monday": {
     "lec1": {
-      "subject": "Data Structures",
       "facultyId": "FAC201",
+      "subject": "Data Structures",
       "time": "08:00 – 09:00"
     },
     "lec2": {
-      "subject": "Computer Networks",
       "facultyId": "FAC201",
+      "subject": "Computer Networks",
       "time": "09:00 – 10:00"
     },
     "lec3": {
-      "subject": "Software Engineering",
       "time": "10:00 – 11:00",
+      "subject": "Software Engineering",
       "facultyId": "FAC203"
     },
     "lec4": {
-      "subject": "Artificial Intelligence",
       "facultyId": "FAC204",
+      "subject": "Artificial Intelligence",
       "time": "11:30 – 12:30"
     },
     "lec5": {
-      "subject": "Database Management",
       "facultyId": "FAC205",
-      "time": "12:30 – 01:30"
+      "time": "12:30 – 01:30",
+      "subject": "Database Management"
     }
   },
   "tuesday": {
     "lec1": {
+      "facultyId": "FAC202",
       "subject": "Computer Networks",
-      "time": "08:00 – 09:00",
-      "facultyId": "FAC202"
+      "time": "08:00 – 09:00"
     },
     "lec2": {
       "facultyId": "FAC203",
-      "time": "09:00 – 10:00",
-      "subject": "Software Engineering"
+      "subject": "Software Engineering",
+      "time": "09:00 – 10:00"
     },
     "lec3": {
-      "time": "10:00 – 11:00",
       "facultyId": "FAC204",
+      "time": "10:00 – 11:00",
       "subject": "Artificial Intelligence"
     },
     "lec4": {
-      "time": "11:30 – 12:30",
       "facultyId": "FAC205",
+      "time": "11:30 – 12:30",
       "subject": "Database Management"
     },
     "lec5": {
-      "time": "12:30 – 01:30",
       "facultyId": "FAC201",
-      "subject": "Data Structures"
+      "subject": "Data Structures",
+      "time": "12:30 – 01:30"
     }
   },
   "wednesday": {
     "lec1": {
-      "time": "08:00 – 09:00",
       "facultyId": "FAC203",
+      "time": "08:00 – 09:00",
       "subject": "Software Engineering"
     },
     "lec2": {
-      "subject": "Artificial Intelligence",
+      "facultyId": "FAC204",
       "time": "09:00 – 10:00",
-      "facultyId": "FAC204"
+      "subject": "Artificial Intelligence"
     },
     "lec3": {
+      "facultyId": "FAC205",
       "subject": "Database Management",
-      "time": "10:00 – 11:00",
-      "facultyId": "FAC205"
+      "time": "10:00 – 11:00"
     },
     "lec4": {
-      "facultyId": "FAC201",
       "time": "11:30 – 12:30",
-      "subject": "Data Structures"
+      "subject": "Data Structures",
+      "facultyId": "FAC201"
     },
     "lec5": {
+      "subject": "Computer Networks",
       "time": "12:30 – 01:30",
-      "facultyId": "FAC202",
-      "subject": "Computer Networks"
+      "facultyId": "FAC202"
     }
   },
   "thursday": {
     "lec1": {
-      "facultyId": "FAC204",
       "time": "08:00 – 09:00",
-      "subject": "Artificial Intelligence"
+      "subject": "Artificial Intelligence",
+      "facultyId": "FAC204"
     },
     "lec2": {
-      "subject": "Database Management",
       "time": "09:00 – 10:00",
+      "subject": "Database Management",
       "facultyId": "FAC205"
     },
     "lec3": {
+      "subject": "Data Structures",
       "time": "10:00 – 11:00",
-      "facultyId": "FAC201",
-      "subject": "Data Structures"
+      "facultyId": "FAC201"
     },
     "lec4": {
+      "time": "11:30 – 12:30",
       "subject": "Computer Networks",
-      "facultyId": "FAC202",
-      "time": "11:30 – 12:30"
+      "facultyId": "FAC202"
     },
     "lec5": {
-      "facultyId": "FAC203",
+      "subject": "Software Engineering",
       "time": "12:30 – 01:30",
-      "subject": "Software Engineering"
+      "facultyId": "FAC203"
     }
   },
   "friday": {
     "lec1": {
-      "subject": "Database Management",
+      "facultyId": "FAC205",
       "time": "08:00 – 09:00",
-      "facultyId": "FAC205"
+      "subject": "Database Management"
     },
     "lec2": {
       "facultyId": "FAC201",
@@ -119,19 +119,19 @@
       "subject": "Data Structures"
     },
     "lec3": {
-      "subject": "Computer Networks",
       "time": "10:00 – 11:00",
+      "subject": "Computer Networks",
       "facultyId": "FAC202"
     },
     "lec4": {
-      "facultyId": "FAC203",
       "time": "11:30 – 12:30",
-      "subject": "Software Engineering"
+      "subject": "Software Engineering",
+      "facultyId": "FAC203"
     },
     "lec5": {
-      "facultyId": "FAC204",
       "time": "12:30 – 01:30",
-      "subject": "Artificial Intelligence"
+      "subject": "Artificial Intelligence",
+      "facultyId": "FAC204"
     }
   }
 }
