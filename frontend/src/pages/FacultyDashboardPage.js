@@ -229,18 +229,7 @@ const FacultyDashboardPage = () => {
 
         {/* ================= QUICK ACTIONS ================= */}
         <div className="quick-actions-grid">
-          <div
-            className="action-card"
-            onClick={() => navigate("/faculty/attendance")}
-          >
-            <div className="action-icon action-icon-primary">📋</div>
-            <div className="action-content">
-              <h3 className="action-title">Mark Attendance</h3>
-              <p className="action-description">
-                Record student attendance
-              </p>
-            </div>
-          </div>
+
 
           <div className="action-card" onClick={handleViewTimetable}>
             <div className="action-icon action-icon-accent">📅</div>

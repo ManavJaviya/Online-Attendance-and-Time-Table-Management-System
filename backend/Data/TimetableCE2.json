@@ -1,9 +1,9 @@
 {
   "monday": {
     "lec1": {
-      "subject": "Data Structures",
+      "facultyId": "FAC201",
       "time": "08:00 – 09:00",
-      "facultyId": "FAC201"
+      "subject": "Data Structures"
     },
     "lec2": {
       "subject": "Machine Learning",
@@ -11,26 +11,26 @@
       "facultyId": "FAC207"
     },
     "lec3": {
+      "facultyId": "FAC208",
       "subject": "Web Technologies",
-      "time": "10:00 – 11:00",
-      "facultyId": "FAC208"
+      "time": "10:00 – 11:00"
     },
     "lec4": {
-      "subject": "Cloud Computing",
+      "facultyId": "FAC209",
       "time": "11:30 – 12:30",
-      "facultyId": "FAC209"
+      "subject": "Cloud Computing"
     },
     "lec5": {
-      "subject": "Cyber Security",
+      "facultyId": "FAC210",
       "time": "12:30 – 01:30",
-      "facultyId": "FAC210"
+      "subject": "Cyber Security"
     }
   },
   "tuesday": {
     "lec1": {
+      "facultyId": "FAC207",
       "subject": "Machine Learning",
-      "time": "08:00 – 09:00",
-      "facultyId": "FAC207"
+      "time": "08:00 – 09:00"
     },
     "lec2": {
       "subject": "Web Technologies",
@@ -38,19 +38,19 @@
       "facultyId": "FAC208"
     },
     "lec3": {
-      "subject": "Cloud Computing",
       "time": "10:00 – 11:00",
+      "subject": "Cloud Computing",
       "facultyId": "FAC209"
     },
     "lec4": {
+      "facultyId": "FAC210",
       "subject": "Cyber Security",
-      "time": "11:30 – 12:30",
-      "facultyId": "FAC210"
+      "time": "11:30 – 12:30"
     },
     "lec5": {
-      "subject": "Operating Systems",
+      "facultyId": "FAC206",
       "time": "12:30 – 01:30",
-      "facultyId": "FAC206"
+      "subject": "Operating Systems"
     }
   },
   "wednesday": {
@@ -60,19 +60,19 @@
       "facultyId": "FAC208"
     },
     "lec2": {
-      "subject": "Cloud Computing",
+      "facultyId": "FAC209",
       "time": "09:00 – 10:00",
-      "facultyId": "FAC209"
+      "subject": "Cloud Computing"
     },
     "lec3": {
-      "subject": "Cyber Security",
       "time": "10:00 – 11:00",
+      "subject": "Cyber Security",
       "facultyId": "FAC210"
     },
     "lec4": {
-      "subject": "Operating Systems",
+      "facultyId": "FAC206",
       "time": "11:30 – 12:30",
-      "facultyId": "FAC206"
+      "subject": "Operating Systems"
     },
     "lec5": {
       "subject": "Machine Learning",
@@ -92,36 +92,36 @@
       "facultyId": "FAC210"
     },
     "lec3": {
+      "facultyId": "FAC206",
       "subject": "Operating Systems",
-      "time": "10:00 – 11:00",
-      "facultyId": "FAC206"
+      "time": "10:00 – 11:00"
     },
     "lec4": {
-      "subject": "Machine Learning",
+      "facultyId": "FAC207",
       "time": "11:30 – 12:30",
-      "facultyId": "FAC207"
+      "subject": "Machine Learning"
     },
     "lec5": {
+      "facultyId": "FAC208",
       "subject": "Web Technologies",
-      "time": "12:30 – 01:30",
-      "facultyId": "FAC208"
+      "time": "12:30 – 01:30"
     }
   },
   "friday": {
     "lec1": {
+      "facultyId": "FAC210",
       "subject": "Cyber Security",
-      "time": "08:00 – 09:00",
-      "facultyId": "FAC210"
+      "time": "08:00 – 09:00"
     },
     "lec2": {
+      "facultyId": "FAC206",
       "subject": "Operating Systems",
-      "time": "09:00 – 10:00",
-      "facultyId": "FAC206"
+      "time": "09:00 – 10:00"
     },
     "lec3": {
+      "facultyId": "FAC207",
       "subject": "Machine Learning",
-      "time": "10:00 – 11:00",
-      "facultyId": "FAC207"
+      "time": "10:00 – 11:00"
     },
     "lec4": {
       "subject": "Web Technologies",
@@ -129,9 +129,9 @@
       "facultyId": "FAC208"
     },
     "lec5": {
+      "facultyId": "FAC209",
       "subject": "Cloud Computing",
-      "time": "12:30 – 01:30",
-      "facultyId": "FAC209"
+      "time": "12:30 – 01:30"
     }
   }
 }
