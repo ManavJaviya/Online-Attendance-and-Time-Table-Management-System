@@ -16,6 +16,8 @@
 .role-grid {
   display: flex;
   gap: 30px;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .role-card {
@@ -44,7 +46,10 @@
 /* LOGIN FORM */
 
 .login-form {
-  width: 320px;
+  width: 100%;
+  max-width: 320px;
+  padding: 0 20px;
+  box-sizing: border-box;
   display: flex;
   flex-direction: column;
   gap: 12px;
@@ -69,4 +74,32 @@
   text-align: center;
   cursor: pointer;
   color: #666;
+}
+
+/* MOBILE RESPONSIVE FOR LOGIN PAGE */
+@media (max-width: 768px) {
+  .role-grid {
+    flex-wrap: nowrap;
+    gap: 15px;
+    width: 100%;
+    padding: 0 15px;
+    box-sizing: border-box;
+    max-width: 400px;
+  }
+
+  .role-card {
+    width: auto;
+    flex: 1;
+    height: 110px;
+  }
+
+  .role-icon {
+    font-size: 32px;
+    margin-bottom: 5px;
+  }
+
+  .role-card h3 {
+    font-size: 13px;
+    margin: 0;
+  }
 }

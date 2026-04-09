@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Navbar from '../components/Navbar';
-import axios from 'axios';
+import { doc, setDoc, deleteDoc } from 'firebase/firestore';
+import { db } from '../firebase';
+import { logActivityToDb } from '../utils/activityLogger';
 import './ManageUsersPage.css';
 
 const ManageUsersPage = () => {
@@ -35,32 +37,44 @@ const ManageUsersPage = () => {
     const handleAddStudent = async (e) => {
         e.preventDefault();
         try {
-            const res = await axios.post("http://localhost:5000/api/users/student", {
-                userId: stuUserId,
-                name: stuName,
+            const rollNoInt = parseInt(stuRollNo, 10) || '';
+            const semesterInt = parseInt(stuSemester, 10) || 1;
+
+            await setDoc(doc(db, "users", stuUserId), {
                 email: stuEmail,
                 password: stuPassword,
-                department: stuDept,
-                rollNo: parseInt(stuRollNo, 10) || '',
-                className: stuClass,
-                semester: parseInt(stuSemester, 10) || 1
+                role: "student",
+                userId: stuUserId,
+                department: stuDept
             });
-            setMessage(res.data.message || "Student added successfully");
+
+            await setDoc(doc(db, "students", stuUserId), {
+                name: stuName,
+                rollNo: rollNoInt,
+                class: stuClass,
+                semester: semesterInt,
+                department: stuDept
+            });
+
+            await logActivityToDb('user', `New student added (${stuName})`, 'Admin', 'hsl(234, 89%, 54%)', '👥');
+
+            setMessage("Student added successfully");
             setStuUserId(''); setStuName(''); setStuEmail(''); setStuPassword(''); setStuDepartment('');
             setStuRollNo(''); setStuClass(''); setStuSemester('');
         } catch (error) {
-            setMessage(error.response?.data?.error || "Error adding student");
+            setMessage("Error adding student");
         }
     };
 
     const handleRemoveStudent = async (e) => {
         e.preventDefault();
         try {
-            const res = await axios.delete(`http://localhost:5000/api/users/student/${removeStuId}`);
-            setMessage(res.data.message || "Student removed successfully");
+            await deleteDoc(doc(db, "users", removeStuId));
+            await deleteDoc(doc(db, "students", removeStuId));
+            setMessage("Student removed successfully");
             setRemoveStuId('');
         } catch (error) {
-            setMessage(error.response?.data?.error || "Error removing student");
+            setMessage("Error removing student");
         }
     };
 
@@ -68,29 +82,38 @@ const ManageUsersPage = () => {
         e.preventDefault();
         try {
             const parsedClasses = facClasses.split(',').map(c => c.trim()).filter(c => c !== '');
-            const res = await axios.post("http://localhost:5000/api/users/faculty", {
-                userId: facUserId,
-                name: facName,
+            
+            await setDoc(doc(db, "users", facUserId), {
                 email: facEmail,
                 password: facPassword,
-                subject: facSubject,
+                role: "faculty",
+                userId: facUserId
+            });
+
+            await setDoc(doc(db, "faculty", facUserId), {
+                name: facName,
+                subject: facSubject || "Unassigned",
                 classes: parsedClasses
             });
-            setMessage(res.data.message || "Faculty added successfully");
+
+            await logActivityToDb('user', `New faculty member added (${facName})`, 'Admin', 'hsl(234, 89%, 54%)', '👤');
+
+            setMessage("Faculty added successfully");
             setFacUserId(''); setFacName(''); setFacEmail(''); setFacPassword(''); setFacSubject(''); setFacClasses('');
         } catch (error) {
-            setMessage(error.response?.data?.error || "Error adding faculty");
+            setMessage("Error adding faculty");
         }
     };
 
     const handleRemoveFaculty = async (e) => {
         e.preventDefault();
         try {
-            const res = await axios.delete(`http://localhost:5000/api/users/faculty/${removeFacId}`);
-            setMessage(res.data.message || "Faculty removed successfully");
+            await deleteDoc(doc(db, "users", removeFacId));
+            await deleteDoc(doc(db, "faculty", removeFacId));
+            setMessage("Faculty removed successfully");
             setRemoveFacId('');
         } catch (error) {
-            setMessage(error.response?.data?.error || "Error removing faculty");
+            setMessage("Error removing faculty");
         }
     };
 

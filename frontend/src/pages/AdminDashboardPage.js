@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import { getDashboardStats } from '../api/dashboardService';
 import Navbar from '../components/Navbar';
 import StatsCard from '../components/admin/Statscard';
 import AttendanceChart from '../components/admin/Attendancechart';
@@ -20,10 +20,10 @@ const AdminDashboardPage = () => {
   useEffect(() => {
     const fetchStats = async () => {
       try {
-        const response = await axios.get("http://localhost:5000/api/dashboard/stats");
-        console.log("Dashboard API Response:", response.data);
-        console.log("Departments in response:", response.data.departments);
-        setStats(response.data);
+        const data = await getDashboardStats();
+        console.log("Dashboard API Response:", data);
+        console.log("Departments in response:", data.departments);
+        setStats(data);
       } catch (error) {
         console.error("Error fetching dashboard stats:", error);
       }

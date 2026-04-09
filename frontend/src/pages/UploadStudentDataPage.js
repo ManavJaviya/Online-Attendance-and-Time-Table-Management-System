@@ -1,6 +1,8 @@
 import React, { useState, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
+import { doc, getDoc, setDoc } from 'firebase/firestore';
+import { db } from '../firebase';
+import { logActivityToDb } from '../utils/activityLogger';
 import Navbar from '../components/Navbar';
 import './UploadStudentDataPage.css';
 
@@ -71,8 +73,42 @@ const UploadStudentDataPage = () => {
       }
 
       try {
-        const response = await axios.post("http://localhost:5000/api/users/sync-students", { students });
-        setStatusMessage('file uploaded successfully and student data updated. ' + (response.data.message || ''));
+        let added = 0;
+        let unchanged = 0;
+
+        await Promise.all(students.map(async (student) => {
+          const { userId, name, email, password, rollno, department, class: className } = student;
+          
+          const studentRef = doc(db, 'students', userId);
+          const studentSnap = await getDoc(studentRef);
+
+          if (!studentSnap.exists()) {
+            await setDoc(doc(db, 'users', userId), {
+               email: email || `${userId.toLowerCase()}@example.com`,
+               password: password || 'defaultPass123',
+               role: "student",
+               userId,
+               department: department || "Unassigned"
+            });
+
+            await setDoc(studentRef, {
+               name: name || "Unknown",
+               rollNo: rollno || "",
+               class: className || "",
+               semester: 1,
+               department: department || "Unassigned"
+            });
+            added++;
+          } else {
+            unchanged++;
+          }
+        }));
+
+        if (added > 0) {
+           await logActivityToDb('user', `Student data synced. Added: ${added}, Skipped: ${unchanged}`, 'Admin', 'hsl(38, 92%, 50%)', '📤');
+        }
+
+        setStatusMessage(`File uploaded successfully. Added: ${added}. Skipped: ${unchanged}.`);
         setIsError(false);
       } catch (error) {
         console.error('Sync error:', error);

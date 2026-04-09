@@ -1,13 +1,13 @@
 {
   "monday": {
     "lec1": {
-      "facultyId": "FAC216",
+      "subject": "Data Science",
       "time": "08:00 – 09:00",
-      "subject": "Data Science"
+      "facultyId": "FAC216"
     },
     "lec2": {
-      "time": "09:00 – 10:00",
       "subject": "IoT Systems",
+      "time": "09:00 – 10:00",
       "facultyId": "FAC217"
     },
     "lec3": {
@@ -21,31 +21,31 @@
       "facultyId": "FAC219"
     },
     "lec5": {
-      "facultyId": "FAC220",
+      "subject": "Advanced Algorithms",
       "time": "12:30 – 01:30",
-      "subject": "Advanced Algorithms"
+      "facultyId": "FAC220"
     }
   },
   "tuesday": {
     "lec1": {
-      "facultyId": "FAC217",
       "subject": "IoT Systems",
-      "time": "08:00 – 09:00"
+      "time": "08:00 – 09:00",
+      "facultyId": "FAC217"
     },
     "lec2": {
-      "time": "09:00 – 10:00",
       "subject": "Embedded Systems",
+      "time": "09:00 – 10:00",
       "facultyId": "FAC218"
     },
     "lec3": {
-      "facultyId": "FAC219",
+      "subject": "Python Programming",
       "time": "10:00 – 11:00",
-      "subject": "Python Programming"
+      "facultyId": "FAC219"
     },
     "lec4": {
-      "facultyId": "FAC220",
+      "subject": "Advanced Algorithms",
       "time": "11:30 – 12:30",
-      "subject": "Advanced Algorithms"
+      "facultyId": "FAC220"
     },
     "lec5": {
       "subject": "Data Science",
@@ -55,24 +55,24 @@
   },
   "wednesday": {
     "lec1": {
-      "time": "08:00 – 09:00",
       "subject": "Embedded Systems",
+      "time": "08:00 – 09:00",
       "facultyId": "FAC218"
     },
     "lec2": {
-      "facultyId": "FAC219",
       "subject": "Python Programming",
-      "time": "09:00 – 10:00"
+      "time": "09:00 – 10:00",
+      "facultyId": "FAC219"
     },
     "lec3": {
-      "time": "10:00 – 11:00",
       "subject": "Computer Graphics",
+      "time": "10:00 – 11:00",
       "facultyId": "FAC211"
     },
     "lec4": {
-      "facultyId": "FAC216",
       "subject": "Data Science",
-      "time": "11:30 – 12:30"
+      "time": "11:30 – 12:30",
+      "facultyId": "FAC216"
     },
     "lec5": {
       "subject": "IoT Systems",
@@ -87,24 +87,24 @@
       "facultyId": "FAC219"
     },
     "lec2": {
-      "facultyId": "FAC220",
+      "subject": "Advanced Algorithms",
       "time": "09:00 – 10:00",
-      "subject": "Advanced Algorithms"
+      "facultyId": "FAC220"
     },
     "lec3": {
-      "time": "10:00 – 11:00",
       "subject": "Data Science",
+      "time": "10:00 – 11:00",
       "facultyId": "FAC216"
     },
     "lec4": {
-      "facultyId": "FAC217",
+      "subject": "IoT Systems",
       "time": "11:30 – 12:30",
-      "subject": "IoT Systems"
+      "facultyId": "FAC217"
     },
     "lec5": {
-      "facultyId": "FAC218",
+      "subject": "Embedded Systems",
       "time": "12:30 – 01:30",
-      "subject": "Embedded Systems"
+      "facultyId": "FAC218"
     }
   },
   "friday": {
@@ -114,9 +114,9 @@
       "facultyId": "FAC220"
     },
     "lec2": {
-      "facultyId": "FAC216",
+      "subject": "Data Science",
       "time": "09:00 – 10:00",
-      "subject": "Data Science"
+      "facultyId": "FAC216"
     },
     "lec3": {
       "subject": "IoT Systems",
@@ -124,8 +124,8 @@
       "facultyId": "FAC217"
     },
     "lec4": {
-      "time": "11:30 – 12:30",
       "subject": "Embedded Systems",
+      "time": "11:30 – 12:30",
       "facultyId": "FAC218"
     },
     "lec5": {

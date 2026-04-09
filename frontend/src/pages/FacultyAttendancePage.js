@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import Navbar from "../components/Navbar";
-import axios from "axios";
+import { logActivityToDb } from "../utils/activityLogger";
 import { collection, getDocs, addDoc, doc, setDoc, getDoc } from "firebase/firestore";
 import { db } from "../firebase";
 import "./FacultyAttendancePage.css";
@@ -135,13 +135,13 @@ export default function FacultyAttendancePage() {
             }, { merge: true });
           }));
 
-          await axios.post("http://localhost:5000/api/dashboard/log-activity", {
-            type: "attendance",
-            title: `Attendance updated for ${selectedClass}`,
-            user: user.name || "Faculty",
-            color: "hsl(38, 92%, 50%)",
-            icon: "🔄"
-          });
+          await logActivityToDb(
+            "attendance",
+            `Attendance updated for ${selectedClass}`,
+            user.name || "Faculty",
+            "hsl(38, 92%, 50%)",
+            "🔄"
+          );
 
         } else {
           // CREATE MODE
@@ -176,14 +176,14 @@ export default function FacultyAttendancePage() {
             }, { merge: true });
           }));
 
-          // 3. Log the activity using the backend generic endpoint
-          await axios.post("http://localhost:5000/api/dashboard/log-activity", {
-            type: "attendance",
-            title: `Attendance marked for ${selectedClass}`,
-            user: user.name || "Faculty",
-            color: "hsl(142, 76%, 36%)",
-            icon: "✓"
-          });
+          // 3. Log the activity directly to firebase
+          await logActivityToDb(
+            "attendance",
+            `Attendance marked for ${selectedClass}`,
+            user.name || "Faculty",
+            "hsl(142, 76%, 36%)",
+            "✓"
+          );
         }
       } catch (error) {
         console.error("Error saving attendance:", error);

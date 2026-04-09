@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import { getLowAttendanceStudents } from '../../api/dashboardService';
 import './Lowattendancetable.css';
 
 const LowAttendanceTable = () => {
@@ -9,8 +9,8 @@ const LowAttendanceTable = () => {
   useEffect(() => {
     const fetchStudents = async () => {
       try {
-        const response = await axios.get("http://localhost:5000/api/dashboard/students-attendance");
-        setLowAttendanceStudents(response.data);
+        const data = await getLowAttendanceStudents();
+        setLowAttendanceStudents(data);
       } catch (error) {
         console.error("Error fetching students attendance:", error);
       } finally {

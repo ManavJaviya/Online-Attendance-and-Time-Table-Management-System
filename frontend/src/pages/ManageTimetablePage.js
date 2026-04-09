@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Navbar from '../components/Navbar';
-import axios from 'axios';
-import { doc, onSnapshot, collection, getDocs } from 'firebase/firestore';
+import { doc, onSnapshot, collection, getDocs, setDoc } from 'firebase/firestore';
 import { db } from '../firebase';
 import './ManageTimetablePage.css';
 
@@ -104,7 +103,7 @@ const ManageTimetablePage = () => {
 
   const handleSubmit = async () => {
     try {
-      await axios.put(`http://localhost:5000/api/timetable/${selectedClass}`, timetable);
+      await setDoc(doc(db, "timetable", selectedClass), timetable);
       setMessage('Timetable updated for selected class');
       setIsEditing(false);
       setError('');

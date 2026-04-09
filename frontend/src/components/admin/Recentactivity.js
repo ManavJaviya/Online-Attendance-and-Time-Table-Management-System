@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import { collection, query, orderBy, limit, getDocs } from 'firebase/firestore';
+import { db } from '../../firebase';
 import './Recentactivity.css';
 
 const timeAgo = (dateInput) => {
@@ -24,8 +25,14 @@ const RecentActivity = () => {
   useEffect(() => {
     const fetchActivities = async () => {
       try {
-        const response = await axios.get('http://localhost:5000/api/dashboard/activities');
-        setActivities(response.data);
+        const q = query(
+          collection(db, "activities"),
+          orderBy("timestamp", "desc"),
+          limit(10)
+        );
+        const snapshot = await getDocs(q);
+        const data = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+        setActivities(data);
       } catch (error) {
         console.error('Error fetching activities:', error);
       }
@@ -65,7 +72,7 @@ const RecentActivity = () => {
               <p className="activity-meta">
                 <span className="activity-user">{activity.user}</span>
                 <span className="activity-separator">•</span>
-                <span className="activity-time">{timeAgo(activity.time)}</span>
+                <span className="activity-time">{timeAgo(activity.timestamp || activity.time)}</span>
               </p>
             </div>
           </div>
